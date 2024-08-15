@@ -6,15 +6,13 @@ using namespace Gerenciadores;
 
 class Ente {
 protected:
-	int id;
+	const int id;
 	static Gerenciador_Grafico* pGG;
-	sf::Texture texture;
+	sf::Texture* texture;
 
 public:
 	Ente();
 	virtual ~Ente();
 	virtual void executar() = 0;
-	void desenhar();
+	virtual void desenhar() = 0;
 };
-
-Gerenciador_Grafico* Ente::pGG = NULL;

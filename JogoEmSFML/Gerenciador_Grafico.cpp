@@ -45,4 +45,11 @@ namespace Gerenciadores {
 	void Gerenciador_Grafico::camera_segue(sf::Vector2f posicao1, sf::Vector2f posicao2) {
 
 	}
+
+	Gerenciador_Grafico* Gerenciador_Grafico::instancia = nullptr;
+	Gerenciador_Grafico* Gerenciador_Grafico::getInstancia() {
+		if (instancia == nullptr)
+			instancia = new Gerenciador_Grafico();
+		return instancia;
+	}
 }

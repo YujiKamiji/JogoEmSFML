@@ -1,7 +1,8 @@
 #include "Ente.h"
 
-Ente::Ente() {}
+Gerenciador_Grafico* Ente::pGG = Gerenciador_Grafico::getInstancia();
+
+Ente::Ente():
+id(0) {}
 
 Ente::~Ente() {}
-
-void desenhar() {}
