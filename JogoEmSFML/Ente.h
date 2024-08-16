@@ -8,7 +8,7 @@ class Ente {
 protected:
 	const int id;
 	static Gerenciador_Grafico* pGG;
-	sf::Texture* texture;
+	sf::Texture* textura;
 
 public:
 	Ente();
