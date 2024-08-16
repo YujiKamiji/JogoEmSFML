@@ -1,5 +1,4 @@
 #pragma once
-
 #include "stdafx.h"
 
 namespace Listas {
@@ -21,9 +20,35 @@ namespace Listas {
 				info = NULL;
 			}
 			TE* getInfo() { return info; }
-			Elemento<TE>*  getProx() { return prox; }
+			Elemento<TE>*  getProx() { return pProx; }
 			void setInfo(TE* i) { info = i; }
 			void setProx(Elemento<TE>* p) { pProx = p; }
+		};
+
+		template<class TE>
+		class Iterador {
+		private:
+			Elemento<TE>* atual;
+
+		public:
+			Iterador(Elemento<TE>* a = nullptr):
+			atual(a) {}
+			~Iterador() {}
+
+			Iterador& operator++() {
+				pAtual = atual->getProx();
+				return *this;
+			}
+			Iterador operator++(int) {
+				Iterator temp = *this;
+				++(*this);
+				return temp;
+			}
+			bool operator==(const Elemento<TE>* e) const { return atual == e; }
+			bool operator!=(const Elemento<TE>* e) const { return !(atual == e); }
+			void operator=(const Elemento<TE>* e) { atual = e; }
+			TE* operator*() { return atual->getInfo(); }
+			const Elemento<TE>* getAtual() const { return atual; }
 		};
 
 	private:
@@ -54,5 +79,8 @@ namespace Listas {
 				pPrimeiro = aux;
 			}
 		}
+
+		Iterador<TL> inicio() { return Iterador<TL>(pPrimeiro) };
+		Iterador<TL> fim() { return Iterador<TL>(pUltimo->getProx) }
 	};
 }
