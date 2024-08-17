@@ -11,6 +11,7 @@ namespace Entidades {
 			int intervaloAtaque;
 			bool olhandoDireita;
 			bool atacando;
+			bool vivo;
 
 			float velocidadeMax;
 			float aceleracao;

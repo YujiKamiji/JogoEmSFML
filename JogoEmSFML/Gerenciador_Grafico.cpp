@@ -21,6 +21,10 @@ namespace Gerenciadores {
 		delete janela;
 	}
 
+	void Gerenciador_Grafico::desenhar(sf::RectangleShape* corpo) {
+		janela->draw(*corpo);
+	}
+
 	void Gerenciador_Grafico::mostrar() {
 		if (janela_aberta())
 			janela->display();

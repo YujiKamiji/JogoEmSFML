@@ -19,6 +19,7 @@ namespace Gerenciadores {
 	public:
 		~Gerenciador_Grafico();
 
+		void desenhar(sf::RectangleShape* corpo);
 		void mostrar();
 		void limpar();
 		void fechar_janela();

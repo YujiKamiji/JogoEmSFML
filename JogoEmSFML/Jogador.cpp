@@ -2,9 +2,11 @@
 
 namespace Entidades {
 	namespace Personagens {
+		int Jogador::cont = 1;
+
 		Jogador::Jogador():
-			Personagem(), pontuacao(0), dano(10), intervaloAtaque(500),
-			olhandoDireita(true), atacando(false), velocidadeMax(10), aceleracao(1),
+			Personagem(), pontuacao(0), dano(10), intervaloAtaque(500), jogadorId(cont++),
+			olhandoDireita(true), atacando(false), vivo(true), velocidadeMax(10), aceleracao(1),
 			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 
 		{
 			ataque.setOrigin(ataque.getSize() / 2.f);
@@ -12,8 +14,11 @@ namespace Entidades {
 		Jogador::~Jogador() {}
 
 		void Jogador::executar() {
+			if (vidas <= 0)
+				vivo = false;
 			mover();
 			atacar();
+			desenhar();
 		}
 
 		void Jogador::mover() {
@@ -114,12 +119,50 @@ namespace Entidades {
 						velocidades.y = 6;
 				}
 			}
+			corpo.move(velocidades.x, velocidades.y);
 		}
-		void Jogador::atacar() {}
 
-		void Jogador::desenhar() {}
+		void Jogador::atacar() {
+			if (intervaloAtaque <= 0) {
+				atacando = true;
+				intervaloAtaque = 500;
+
+				if (jogadorId == 1) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
+						if (olhandoDireita)
+							ataque.setPosition(sf::Vector2f
+							(corpo.getPosition().x + ataque.getSize().x,
+								corpo.getPosition().y));
+						else
+							ataque.setPosition(sf::Vector2f
+							(-(corpo.getPosition().x + ataque.getSize().x),
+								corpo.getPosition().y));
+					}
+				}
+				if (jogadorId == 2) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
+						if (olhandoDireita)
+							ataque.setPosition(sf::Vector2f
+							(corpo.getPosition().x + ataque.getSize().x,
+								corpo.getPosition().y));
+						else
+							ataque.setPosition(sf::Vector2f
+							(-(corpo.getPosition().x + ataque.getSize().x),
+								corpo.getPosition().y));
+					}
+				}
+			}
+		}
+
+		void Jogador::desenhar() {
+			if (vivo) {
+				if (atacando)
+					pGG->desenhar(&ataque);
+				pGG->desenhar(&corpo);
+			}
+		}
 		void Jogador::salvar() {}
 
-		sf::Vector2f Jogador::getVelocidade() {}
+		sf::Vector2f Jogador::getVelocidade() { return velocidades; }
 	}
 }
