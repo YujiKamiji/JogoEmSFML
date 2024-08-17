@@ -3,7 +3,7 @@
 
 namespace Entidades {
 	Entidade::Entidade():
-		Ente(), posicao(0, 0), velocidades(0, 0), noAr(true), massa(0) {}
+		Ente(), posicao(0, 0), velocidades(0, 0), noAr(true) {}
 
 	Entidade::~Entidade() {}
 

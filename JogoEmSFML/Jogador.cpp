@@ -1,0 +1,125 @@
+#include "Jogador.h"
+
+namespace Entidades {
+	namespace Personagens {
+		Jogador::Jogador():
+			Personagem(), pontuacao(0), dano(10), intervaloAtaque(500),
+			olhandoDireita(true), atacando(false), velocidadeMax(10), aceleracao(1),
+			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 
+		{
+			ataque.setOrigin(ataque.getSize() / 2.f);
+		}
+		Jogador::~Jogador() {}
+
+		void Jogador::executar() {
+			mover();
+			atacar();
+		}
+
+		void Jogador::mover() {
+			//Andar
+			if (jogadorId == 1) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+				{
+					if (velocidades.x <= velocidadeMax)
+						velocidades.x += aceleracao;
+					if (!olhandoDireita)
+					{
+						//corpo.setTexture(pGG->load_textures(""));
+						olhandoDireita = true;
+					}
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+				{
+					if (velocidades.x >= -velocidadeMax)
+						velocidades.x -= aceleracao;
+					if (olhandoDireita)
+					{
+						//corpo.setTexture(pGG->load_textures(""));
+						olhandoDireita = false;
+					}
+				}
+				else {
+					if (olhandoDireita) {
+						if (velocidades.x >= 0)
+							velocidades.x -= aceleracao * 2;
+						else
+							velocidades.x = 0;
+					}
+					else {
+						if (velocidades.x <= 0)
+							velocidades.x += aceleracao * 2;
+						else
+							velocidades.x = 0;
+					}
+				}
+					
+			}
+
+			if (jogadorId == 2) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				{
+					if (velocidades.x <= velocidadeMax)
+						velocidades.x += aceleracao;
+					if (!olhandoDireita)
+					{
+						//corpo.setTexture(pGG->load_textures(""));
+						olhandoDireita = true;
+					}
+				}
+				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				{
+					if (velocidades.x >= -velocidadeMax)
+						velocidades.x -= aceleracao;
+					if (olhandoDireita)
+					{
+						//corpo.setTexture(pGG->load_textures(""));
+						olhandoDireita = false;
+					}
+				}
+				else {
+					if (olhandoDireita) {
+						if (velocidades.x >= 0)
+							velocidades.x -= aceleracao * 2;
+						else
+							velocidades.x = 0;
+					}
+					else {
+						if (velocidades.x <= 0)
+							velocidades.x += aceleracao * 2;
+						else
+							velocidades.x = 0;
+					}
+				}
+
+			}
+
+			//Queda
+			if (noAr) {
+				if (velocidades.y >= -16) {
+					velocidades.y -= GRAVIDADE;
+				}
+				else
+					velocidades.y = VEL_TERMINAL;
+			}
+			//Pulo
+			else {
+				velocidades.y = 0;
+				if (jogadorId == 1) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+						velocidades.y = 6;
+				}
+				if (jogadorId == 1) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+						velocidades.y = 6;
+				}
+			}
+		}
+		void Jogador::atacar() {}
+
+		void Jogador::desenhar() {}
+		void Jogador::salvar() {}
+
+		sf::Vector2f Jogador::getVelocidade() {}
+	}
+}

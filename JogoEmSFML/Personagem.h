@@ -17,8 +17,9 @@ namespace Entidades {
 			sf::Vector2f getTamanho();
 
 			int getVidas();
+			void receberDano(int dano);
 			virtual void mover() = 0;
-			virtual void atacar(int dano) = 0;
+			virtual void atacar() = 0;
 
 			virtual void executar() = 0;
 			virtual void desenhar() = 0;

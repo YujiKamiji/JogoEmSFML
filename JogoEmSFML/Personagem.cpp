@@ -17,5 +17,7 @@ namespace Entidades {
 		sf::Vector2f Personagem::getTamanho() { return corpo.getSize(); }
 
 		int Personagem::getVidas() { return vidas; }
+
+		void Personagem::receberDano(int dano) { vidas -= dano; }
 	}
 }

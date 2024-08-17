@@ -2,8 +2,6 @@
 #include "stdafx.h"
 #include "Gerenciador_Grafico.h"
 
-#define GRAVIDADE;
-
 using namespace Gerenciadores;
 
 class Ente {

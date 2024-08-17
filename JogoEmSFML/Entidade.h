@@ -2,13 +2,15 @@
 #include "stdafx.h"
 #include "Ente.h"
 
+#define GRAVIDADE 2;
+#define VEL_TERMINAL -16;
+
 namespace Entidades {
 	class Entidade: public Ente {
 	protected:
 		sf::Vector2f posicao;
 		sf::Vector2f velocidades;
 		bool noAr;
-		float massa;
 
 	public:
 		Entidade();
