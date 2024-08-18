@@ -8,6 +8,7 @@ namespace Entidades {
 		protected:
 			sf::RectangleShape corpo;
 			int vidas;
+			bool vivo;
 
 		public:
 			Personagem(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
