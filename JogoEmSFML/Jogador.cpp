@@ -4,7 +4,7 @@ namespace Entidades {
 	namespace Personagens {
 		int Jogador::cont = 1;
 
-		Jogador::Jogador(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
+		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
 			Personagem(pos, tam), pontuacao(0), dano(10), intervaloAtaque(500), jogadorId(cont++),
 			olhandoDireita(true), atacando(false), velocidadeMax(10), aceleracao(1),
 			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 

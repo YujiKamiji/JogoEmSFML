@@ -3,7 +3,7 @@
 
 namespace Entidades {
 	namespace Personagens {
-		Personagem::Personagem(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
+		Personagem::Personagem(sf::Vector2f pos, sf::Vector2f tam):
 			Entidade(), corpo(tam), vidas(1)
 		{
 			corpo.setOrigin(corpo.getSize() / 2.f);

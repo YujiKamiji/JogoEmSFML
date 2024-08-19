@@ -12,7 +12,7 @@ namespace Listas {
 			TE* info;
 
 		public:
-			Elemento():
+			Elemento() :
 				pProx(NULL), info(NULL) {}
 			~Elemento() {
 				if (info)
@@ -20,7 +20,7 @@ namespace Listas {
 				info = NULL;
 			}
 			TE* getInfo() { return info; }
-			Elemento<TE>*  getProx() { return pProx; }
+			Elemento<TE>* getProx() { return pProx; }
 			void setInfo(TE* i) { info = i; }
 			void setProx(Elemento<TE>* p) { pProx = p; }
 		};
@@ -31,16 +31,16 @@ namespace Listas {
 			Elemento<TE>* atual;
 
 		public:
-			Iterador(Elemento<TE>* a = nullptr):
-			atual(a) {}
+			Iterador(Elemento<TE>* a = nullptr) :
+				atual(a) {}
 			~Iterador() {}
 
 			Iterador& operator++() {
-				pAtual = atual->getProx();
+				atual = atual->getProx();
 				return *this;
 			}
 			Iterador operator++(int) {
-				Iterator temp = *this;
+				Iterador<TE> temp = *this;
 				++(*this);
 				return temp;
 			}
@@ -56,8 +56,8 @@ namespace Listas {
 		Elemento<TL>* pUltimo;
 
 	public:
-		Lista():
-		pPrimeiro(NULL), pUltimo(NULL) {}
+		Lista() :
+			pPrimeiro(NULL), pUltimo(NULL) {}
 		~Lista() {
 			Elemento<TL>* aux = NULL;
 			while (pPrimeiro) {
@@ -80,7 +80,52 @@ namespace Listas {
 			}
 		}
 
-		Iterador<TL> inicio() { return Iterador<TL>(pPrimeiro) };
-		Iterador<TL> fim() { return Iterador<TL>(NULL) }
+		void remover(TL* e) {
+			if (!e || !pPrimeiro) return;
+
+			Elemento<TL>* atual = pPrimeiro;
+			Elemento<TL>* anterior = nullptr;
+
+			while (atual) {
+				if (atual->getInfo() == e) {
+					if (anterior) {
+						anterior->setProx(atual->getProx());
+					}
+					else {
+						pPrimeiro = atual->getProx();
+					}
+
+					if (atual == pUltimo) {
+						pUltimo = anterior;
+					}
+
+					delete atual;
+					return;
+				}
+
+				anterior = atual;
+				atual = atual->getProx();
+			}
+		}
+
+		void inserirNoFinal(TL* e) {
+			if (e) {
+				Elemento<TL>* aux = new Elemento<TL>();
+				aux->setInfo(e);
+				aux->setProx(NULL);
+
+				if (pUltimo) {
+					pUltimo->setProx(aux);
+				}
+				else {
+					pPrimeiro = aux;
+				}
+
+				pUltimo = aux;
+			}
+		}
+
+		Iterador<TL> inicio() { return Iterador<TL>(pPrimeiro); }
+		Iterador<TL> fim() { return Iterador<TL>(NULL); }
 	};
 }
