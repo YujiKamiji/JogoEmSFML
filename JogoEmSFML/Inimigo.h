@@ -9,7 +9,7 @@ namespace Entidades {
 		protected:
 			int dano;
 		public:
-			Inimigo();
+			Inimigo(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
 			virtual ~Inimigo();
 			virtual void executar();
 			virtual void mover() = 0;

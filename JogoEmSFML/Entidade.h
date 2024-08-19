@@ -22,6 +22,8 @@ namespace Entidades {
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
 
+		void setPosicao(sf::Vector2f pos);
+
 		virtual sf::Vector2f getPosicao() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;
 		virtual float getMassa() = 0;

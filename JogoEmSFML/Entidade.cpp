@@ -8,5 +8,9 @@ namespace Entidades {
 	Entidade::~Entidade() {}
 
 	void Entidade::setNoAr(bool b) { noAr = b; }
+
+	void Entidade::setPosicao(sf::Vector2f pos) {
+		posicao = pos;
+	}
 }
 
