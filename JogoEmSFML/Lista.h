@@ -81,6 +81,6 @@ namespace Listas {
 		}
 
 		Iterador<TL> inicio() { return Iterador<TL>(pPrimeiro) };
-		Iterador<TL> fim() { return Iterador<TL>(pUltimo->getProx) }
+		Iterador<TL> fim() { return Iterador<TL>(NULL) }
 	};
 }

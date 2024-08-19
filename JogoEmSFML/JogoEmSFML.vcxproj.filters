@@ -45,6 +45,9 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListaEntidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lista.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEntidades.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
