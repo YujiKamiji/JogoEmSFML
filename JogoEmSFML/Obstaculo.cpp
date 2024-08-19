@@ -3,7 +3,7 @@
 namespace Entidades {
 	namespace Obstaculos {
 		Obstaculo::Obstaculo(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
-			Entidade(pos), corpo(pos), danoso(false)
+			Entidade(), corpo(pos), danoso(false)
 		{
 			corpo.setOrigin(corpo.getSize() / 2.f);
 			corpo.setPosition(pos);

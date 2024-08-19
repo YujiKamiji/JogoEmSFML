@@ -2,8 +2,8 @@
 #include "Entidade.h"
 
 namespace Entidades {
-	Entidade::Entidade(sf::Vector2f pos = sf::Vector2f(0, 0)):
-		Ente(), posicao(pos), velocidades(0, 0), noAr(true) {}
+	Entidade::Entidade():
+		Ente(), velocidades(0, 0), noAr(true) {}
 
 	Entidade::~Entidade() {}
 
@@ -15,9 +15,5 @@ namespace Entidades {
 	}
 
 	void Entidade::setNoAr(bool b) { noAr = b; }
-
-	void Entidade::setPosicao(sf::Vector2f pos) {
-		posicao = pos;
-	}
 }
 

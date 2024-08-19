@@ -8,12 +8,11 @@
 namespace Entidades {
 	class Entidade: public Ente {
 	protected:
-		sf::Vector2f posicao;
 		sf::Vector2f velocidades;
 		bool noAr;
 
 	public:
-		Entidade(sf::Vector2f pos = sf::Vector2f(0, 0));
+		Entidade();
 		virtual ~Entidade();
 
 		virtual void mover();
@@ -22,8 +21,6 @@ namespace Entidades {
 		virtual void executar() = 0;
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
-
-		void setPosicao(sf::Vector2f pos);
 
 		virtual sf::Vector2f getPosicao() = 0;
 	};
