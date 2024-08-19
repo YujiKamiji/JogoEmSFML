@@ -14,10 +14,14 @@ namespace Entidades {
 			bool danoso;
 
 		public:
-			Obstaculo();
+			Obstaculo(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
 			~Obstaculo();
+
+			sf::Vector2f getPosicao();
+			sf::Vector2f getTamanho();
+
 			virtual void executar() = 0;
-			virtual void mover() = 0;
+			virtual void mover();
 			virtual void obstacular(Jogador* p) = 0;
 		};
 	}

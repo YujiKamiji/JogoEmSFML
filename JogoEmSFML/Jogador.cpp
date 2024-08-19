@@ -5,7 +5,7 @@ namespace Entidades {
 		int Jogador::cont = 1;
 
 		Jogador::Jogador(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
-			Personagem(tam, pos), pontuacao(0), dano(10), intervaloAtaque(500), jogadorId(cont++),
+			Personagem(pos, tam), pontuacao(0), dano(10), intervaloAtaque(500), jogadorId(cont++),
 			olhandoDireita(true), atacando(false), velocidadeMax(10), aceleracao(1),
 			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 
 		{
@@ -101,26 +101,21 @@ namespace Entidades {
 			}
 
 			//Queda
-			if (noAr) {
-				if (velocidades.y >= -16) {
-					velocidades.y -= GRAVIDADE;
-				}
-				else
-					velocidades.y = VEL_TERMINAL;
-			}
+			if (!noAr)
+				velocidades.y -= GRAVIDADE;
 			//Pulo
 			else {
 				velocidades.y = 0;
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-						velocidades.y = 6;
+						velocidades.y -= 6;
 				}
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-						velocidades.y = 6;
+						velocidades.y -= 6;
 				}
 			}
-			corpo.move(velocidades.x, velocidades.y);
+			corpo.move(velocidades);
 		}
 
 		void Jogador::atacar() {

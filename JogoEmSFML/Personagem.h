@@ -27,7 +27,6 @@ namespace Entidades {
 			virtual void salvar() = 0;
 
 			virtual sf::Vector2f getVelocidade() = 0;
-			//virtual float getMassa() = 0;
 		};
 	}
 }

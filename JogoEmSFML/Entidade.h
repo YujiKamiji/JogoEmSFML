@@ -2,8 +2,8 @@
 #include "stdafx.h"
 #include "Ente.h"
 
-#define GRAVIDADE 2;
-#define VEL_TERMINAL -16;
+#define GRAVIDADE 2
+#define VEL_TERMINAL 16
 
 namespace Entidades {
 	class Entidade: public Ente {
@@ -13,9 +13,10 @@ namespace Entidades {
 		bool noAr;
 
 	public:
-		Entidade();
+		Entidade(sf::Vector2f pos = sf::Vector2f(0, 0));
 		virtual ~Entidade();
 
+		virtual void mover();
 		void setNoAr(bool b);
 
 		virtual void executar() = 0;
