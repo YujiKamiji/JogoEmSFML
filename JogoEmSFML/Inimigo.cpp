@@ -3,7 +3,7 @@
 namespace Entidades {
 	namespace Personagens {
 		Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam):
-			Personagem(pos, tam), dano(0) {}
+			Personagem(pos, tam) {}
 
 		Inimigo::~Inimigo() {}
 
@@ -12,8 +12,6 @@ namespace Entidades {
 			if (vidas <= 0)
 				vivo = false;
 		}
-
-		int Inimigo::getDano() { return dano; }
 
 		void Inimigo::colidir(Entidade* e, sf::Vector2f intersecao)
 		{
