@@ -8,7 +8,7 @@ namespace Listas {
 
 	void ListaEntidades::executar() {
 		Lista<Entidade>::Iterador<Entidade> i = lista.inicio();
-		while (i != NULL) {
+		while (i != lista.fim()) {
 			(*i)->executar();
 			i++;
 		}
@@ -16,7 +16,7 @@ namespace Listas {
 
 	void ListaEntidades::draw() {
 		Lista<Entidade>::Iterador<Entidade> i = lista.inicio();
-		while (i != NULL) {
+		while (i != lista.fim()) {
 			(*i)->desenhar();
 			i++;
 		}

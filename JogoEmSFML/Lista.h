@@ -128,6 +128,6 @@ namespace Listas {
 		}
 
 		Iterador<TL> inicio() { return Iterador<TL>(pPrimeiro); }
-		Iterador<TL> fim() { return Iterador<TL>(NULL); }
+		Iterador<TL> fim() { return Iterador<TL>(pUltimo); }
 	};
 }
