@@ -45,7 +45,9 @@ namespace Listas {
 				return temp;
 			}
 			bool operator==(const Elemento<TE>* e) const { return atual == e; }
+			bool operator==(const Iterador<TE>& i) const { return atual == i.atual; }
 			bool operator!=(const Elemento<TE>* e) const { return !(atual == e); }
+			bool operator!=(const Iterador<TE>& i) const { return !(atual == i.atual); }	
 			void operator=(const Elemento<TE>* e) { atual = e; }
 			TE* operator*() { return atual->getInfo(); }
 			const Elemento<TE>* getAtual() const { return atual; }
