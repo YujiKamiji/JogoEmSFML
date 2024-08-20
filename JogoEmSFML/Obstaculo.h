@@ -21,6 +21,9 @@ namespace Entidades {
 			sf::Vector2f getTamanho();
 
 			virtual void executar() = 0;
+			virtual void desenhar() = 0;
+			virtual void salvar() = 0;
+
 			virtual void mover();
 			virtual void obstacular(Jogador* p) = 0;
 		};

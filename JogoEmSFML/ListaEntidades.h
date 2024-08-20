@@ -15,7 +15,6 @@ namespace Listas {
 		~ListaEntidades();
 
 		void executar();
-		void draw();
 		void adicionar(Entidade* e);
 	};
 }

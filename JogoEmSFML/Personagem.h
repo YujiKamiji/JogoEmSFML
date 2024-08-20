@@ -16,8 +16,9 @@ namespace Entidades {
 
 			sf::Vector2f getPosicao();
 			sf::Vector2f getTamanho();
-
+			virtual sf::Vector2f getVelocidade() = 0;
 			int getVidas();
+
 			void receberDano(int dano);
 			virtual void mover() = 0;
 			virtual void atacar() = 0;
@@ -25,8 +26,6 @@ namespace Entidades {
 			virtual void executar() = 0;
 			virtual void desenhar() = 0;
 			virtual void salvar() = 0;
-
-			virtual sf::Vector2f getVelocidade() = 0;
 
 			virtual void colidir(Entidade* e, sf::Vector2f intersecao) = 0;
 		};
