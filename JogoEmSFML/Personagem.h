@@ -27,6 +27,8 @@ namespace Entidades {
 			virtual void salvar() = 0;
 
 			virtual sf::Vector2f getVelocidade() = 0;
+
+			virtual void colidir(Entidade* e, sf::Vector2f intersecao) = 0;
 		};
 	}
 }

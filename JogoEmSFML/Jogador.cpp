@@ -160,5 +160,9 @@ namespace Entidades {
 		void Jogador::salvar() {}
 
 		sf::Vector2f Jogador::getVelocidade() { return velocidades; }
+
+		void Jogador::colidir(Entidade* e, sf::Vector2f intersecao)
+		{
+		}
 	}
 }

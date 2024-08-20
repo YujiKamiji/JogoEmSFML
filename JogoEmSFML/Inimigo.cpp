@@ -14,5 +14,9 @@ namespace Entidades {
 		}
 
 		int Inimigo::getDano() { return dano; }
+
+		void Inimigo::colidir(Entidade* e, sf::Vector2f intersecao)
+		{
+		}
 	}
 }

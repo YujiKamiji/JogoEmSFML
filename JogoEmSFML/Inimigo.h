@@ -16,6 +16,7 @@ namespace Entidades {
 			virtual void atacar(Jogador* p) = 0;
 
 			int getDano();
+			void colidir(Entidade* e, sf::Vector2f intersecao);
 		};
 	}
 }
