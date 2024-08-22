@@ -15,6 +15,9 @@ namespace Listas {
 		~ListaEntidades();
 
 		void executar();
+		void desenhar();
 		void adicionar(Entidade* e);
+
+		Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> getPrimeiro();
 	};
 }
