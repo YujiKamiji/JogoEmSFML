@@ -7,13 +7,8 @@ namespace Entidades {
 		class Jogador : public Personagem {
 		private:
 			int pontuacao;
-			int dano;
 			int intervaloAtaque;
 			bool olhandoDireita;
-			bool atacando;
-
-			float velocidadeMax;
-			float aceleracao;
 
 			int jogadorId;
 

@@ -5,11 +5,14 @@ namespace Entidades {
 		int Jogador::cont = 1;
 
 		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
-			Personagem(pos, tam), pontuacao(0), dano(10), intervaloAtaque(500), jogadorId(cont++),
-			olhandoDireita(true), atacando(false), velocidadeMax(10), aceleracao(1),
+			Personagem(pos, tam), pontuacao(0), intervaloAtaque(500), 
+			jogadorId(cont++), olhandoDireita(true),
 			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 
 		{
-			vivo = true;
+			vidas = 100;
+			dano = 10;
+			velocidadeMax = 10;
+			aceleracao = 1;
 			ataque.setOrigin(ataque.getSize() / 2.f);
 		}
 		Jogador::~Jogador() {}
@@ -85,19 +88,20 @@ namespace Entidades {
 				}
 				else {
 					if (olhandoDireita) {
-						if (velocidades.x >= 0)
+						if (velocidades.x > 0) {
 							velocidades.x -= aceleracao * 2;
-						else
-							velocidades.x = 0;
+							if (velocidades.x < 0)
+								velocidades.x = 0;
+						}	
 					}
 					else {
-						if (velocidades.x <= 0)
+						if (velocidades.x < 0) {
 							velocidades.x += aceleracao * 2;
-						else
-							velocidades.x = 0;
+							if (velocidades.x > 0)
+								velocidades.x = 0;
+						}
 					}
 				}
-
 			}
 
 			//Queda
@@ -154,7 +158,6 @@ namespace Entidades {
 			if (vivo) {
 				if (atacando)
 					pGG->desenhar(&ataque);
-				pGG->desenhar(&corpo);
 			}
 		}
 		void Jogador::salvar() {}

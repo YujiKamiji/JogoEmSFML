@@ -14,7 +14,7 @@ namespace Listas {
 		}
 	}
 
-	void ListaEntidades::draw() {
+	void ListaEntidades::desenhar() {
 		Lista<Entidade>::Iterador<Entidade> i = lista.inicio();
 		while (i != lista.fim()) {
 			(*i)->desenhar();
@@ -25,4 +25,7 @@ namespace Listas {
 	void ListaEntidades::adicionar(Entidade* e) {
 		lista.inserir(e);
 	}
+
+	Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> 
+		ListaEntidades::getPrimeiro() { return lista.inicio(); }
 }
