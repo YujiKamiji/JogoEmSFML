@@ -17,7 +17,7 @@ namespace Entidades {
 			static int cont;
 
 		public:
-			Jogador(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
+			Jogador(sf::Vector2f pos, sf::Vector2f tam);
 			~Jogador();
 
 			void executar();

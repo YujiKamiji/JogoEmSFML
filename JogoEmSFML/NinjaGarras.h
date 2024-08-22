@@ -11,8 +11,7 @@ namespace Entidades {
 			Listas::ListaEntidades* jogadores;
 
 		public:
-			NinjaGarras(sf::Vector2f pos = sf::Vector2f(0, 0), 
-				sf::Vector2f tam = sf::Vector2f(0, 0), Listas::ListaEntidades* j = nullptr);
+			NinjaGarras(sf::Vector2f pos, sf::Vector2f tam, Listas::ListaEntidades* j = nullptr);
 			~NinjaGarras();
 
 			void executar();

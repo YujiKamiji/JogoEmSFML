@@ -21,7 +21,7 @@ namespace Entidades {
 				mover();
 				break;
 			case 1:
-				atacar(p);
+				atacar();
 				break;
 			}
 		}

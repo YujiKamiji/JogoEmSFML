@@ -57,6 +57,12 @@
     <ClCompile Include="NinjaShuriken.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shuriken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projetil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -102,6 +108,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NinjaShuriken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shuriken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projetil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

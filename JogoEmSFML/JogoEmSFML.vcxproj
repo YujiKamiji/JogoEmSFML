@@ -153,6 +153,8 @@
     <ClCompile Include="NinjaShuriken.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Personagem.cpp" />
+    <ClCompile Include="Projetil.cpp" />
+    <ClCompile Include="Shuriken.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h" />
@@ -169,6 +171,8 @@
     <ClInclude Include="NinjaShuriken.h" />
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Personagem.h" />
+    <ClInclude Include="Projetil.h" />
+    <ClInclude Include="Shuriken.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
