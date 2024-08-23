@@ -7,7 +7,7 @@ namespace Entidades {
 	namespace Personagens {
 		class Inimigo : public Personagem {
 		public:
-			Inimigo(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
+			Inimigo(sf::Vector2f pos, sf::Vector2f tam);
 			virtual ~Inimigo();
 
 			virtual void executar();
