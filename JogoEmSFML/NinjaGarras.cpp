@@ -74,7 +74,10 @@ namespace Entidades {
 			corpo.move(velocidades);
 		}
 
-		void NinjaGarras::desenhar() {}
+		void NinjaGarras::desenhar() {
+			if (vivo)
+				pGG->desenhar(&corpo);
+		}
 
 		void NinjaGarras::salvar() {}
 

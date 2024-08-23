@@ -166,6 +166,7 @@ namespace Entidades {
 
 		void Jogador::colidir(Entidade* e, sf::Vector2f intersecao)
 		{
+
 		}
 	}
 }

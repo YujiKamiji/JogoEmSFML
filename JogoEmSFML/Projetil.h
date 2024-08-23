@@ -8,7 +8,9 @@ namespace Entidades {
 		int dano;
 		int duracao;
 		sf::RectangleShape corpo;
+
 		bool ativo;
+		bool amigavel;
 
 	public:
 		Projetil(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
@@ -23,6 +25,9 @@ namespace Entidades {
 
 		void Posicionar(sf::Vector2f pos);
 		void setAtivo(bool b);
+		void setAmigavel(bool b);
+
 		bool getAtivo();
+		bool getAmigavel();
 	};
 }

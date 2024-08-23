@@ -8,7 +8,7 @@ namespace Entidades {
 		sf::Vector2f alvo;
 
 	public:
-		Shuriken(sf::Vector2f pos, sf::Vector2f tam, sf::Vector2f j);
+		Shuriken(sf::Vector2f pos, sf::Vector2f tam);
 		~Shuriken();
 
 		void mover();
@@ -16,6 +16,7 @@ namespace Entidades {
 		void desenhar();
 		void salvar();
 
+		void setAlvo(sf::Vector2f a);
 		void colidir(Entidade* e, sf::Vector2f intersecao);
 	};
 }
