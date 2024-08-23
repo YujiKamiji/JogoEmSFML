@@ -7,13 +7,12 @@ namespace Entidades {
 		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
 			Personagem(pos, tam), pontuacao(0), intervaloAtaque(500), 
 			jogadorId(cont++), olhandoDireita(true),
-			ataque(sf::Vector2f((corpo.getSize().x * 1.5f), corpo.getSize().y)) 
+			ataque()
 		{
 			vidas = 100;
-			dano = 10;
+			dano = 5;
 			velocidadeMax = 10;
 			aceleracao = 1;
-			ataque.setOrigin(ataque.getSize() / 2.f);
 		}
 		Jogador::~Jogador() {}
 
@@ -104,7 +103,7 @@ namespace Entidades {
 				}
 			}
 
-			//Queda
+			//Força normal
 			if (!noAr)
 				velocidades.y -= GRAVIDADE;
 			//Pulo
@@ -129,26 +128,40 @@ namespace Entidades {
 
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-						if (olhandoDireita)
-							ataque.setPosition(sf::Vector2f
-							(corpo.getPosition().x + ataque.getSize().x,
-								corpo.getPosition().y));
+						if (olhandoDireita) {
+							atacando = true;
+							ataque->Posicionar(sf::Vector2f
+							(corpo.getPosition().x + 4, corpo.getPosition().y));
+							ataque->setAmigavel(true);
+							ataque->setAtivo(true);
+							ataque->executar();
+						}
 						else
-							ataque.setPosition(sf::Vector2f
-							(-(corpo.getPosition().x + ataque.getSize().x),
-								corpo.getPosition().y));
+							atacando = true;
+							ataque->Posicionar(sf::Vector2f
+							(corpo.getPosition().x - 4, corpo.getPosition().y));
+							ataque->setAmigavel(true);
+							ataque->setAtivo(true);
+							ataque->executar();
 					}
 				}
 				if (jogadorId == 2) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
-						if (olhandoDireita)
-							ataque.setPosition(sf::Vector2f
-							(corpo.getPosition().x + ataque.getSize().x,
-								corpo.getPosition().y));
+						if (olhandoDireita) {
+							atacando = true;
+							ataque->Posicionar(sf::Vector2f
+							(corpo.getPosition().x + 4, corpo.getPosition().y));
+							ataque->setAmigavel(true);
+							ataque->setAtivo(true);
+							ataque->executar();
+						}
 						else
-							ataque.setPosition(sf::Vector2f
-							(-(corpo.getPosition().x + ataque.getSize().x),
-								corpo.getPosition().y));
+							atacando = true;
+							ataque->Posicionar(sf::Vector2f
+							(corpo.getPosition().x - 4, corpo.getPosition().y));
+							ataque->setAmigavel(true);
+							ataque->setAtivo(true);
+							ataque->executar();
 					}
 				}
 			}
@@ -157,7 +170,7 @@ namespace Entidades {
 		void Jogador::desenhar() {
 			if (vivo) {
 				if (atacando)
-					pGG->desenhar(&ataque);
+					ataque->desenhar();
 			}
 		}
 		void Jogador::salvar() {}

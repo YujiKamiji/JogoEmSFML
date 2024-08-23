@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Personagem.h"
+#include "AtaqueCorte.h"
 
 namespace Entidades {
 	namespace Personagens {
@@ -12,7 +13,7 @@ namespace Entidades {
 
 			int jogadorId;
 
-			sf::RectangleShape ataque;
+			AtaqueCorte* ataque;
 
 			static int cont;
 

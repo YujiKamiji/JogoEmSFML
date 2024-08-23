@@ -27,6 +27,9 @@ namespace Entidades {
 		void setAtivo(bool b);
 		void setAmigavel(bool b);
 
+		virtual sf::Vector2f getPosicao();
+		virtual sf::Vector2f getVelocidades();
+
 		bool getAtivo();
 		bool getAmigavel();
 	};

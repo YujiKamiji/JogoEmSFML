@@ -13,6 +13,10 @@ namespace Entidades {
 	void Projetil::Posicionar(sf::Vector2f pos) { corpo.setPosition(pos); }
 	void Projetil::setAtivo(bool b) { ativo = b; }
 	void Projetil::setAmigavel(bool b) { amigavel = b; }
+
+	sf::Vector2f Projetil::getPosicao() { return corpo.getPosition(); }
+	sf::Vector2f Projetil::getVelocidades() { return velocidades; }
+
 	bool Projetil::getAtivo() { return ativo; }
 	bool Projetil::getAmigavel() { return amigavel; }
 }

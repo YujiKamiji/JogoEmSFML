@@ -23,11 +23,14 @@ namespace Entidades {
 			disP2 = getPosicao().x - p2->getPosicao().x;
 			disP2 = sqrt(disP2 * disP2);
 
+			if (s->getAtivo() == false)
+				atacando = false;
+
 			if (disP1 <= distanciaPerigo || disP2 <= distanciaPerigo)
 				fugir();
-			else if (disP2 <= distanciaAtaque)
+			else if (disP2 <= distanciaAtaque && atacando == false)
 				atacar(p2);
-			else if (disP1 <= distanciaAtaque)
+			else if (disP1 <= distanciaAtaque && atacando == false)
 				atacar(p1);
 			else
 				mover();
@@ -54,10 +57,11 @@ namespace Entidades {
 		}
 
 		void NinjaShuriken::atacar(Jogador* j) {
-			s->setAtivo(true);
-			s->setAmigavel(false);
+			atacando = true;
 			s->Posicionar(getPosicao());
 			s->setAlvo(j->getPosicao());
+			s->setAmigavel(false);
+			s->setAtivo(true);
 			s->executar();
 		}
 

@@ -63,6 +63,9 @@
     <ClCompile Include="Projetil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AtaqueCorte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -114,6 +117,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Projetil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtaqueCorte.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -27,15 +27,19 @@ namespace Entidades {
 				disP2 = getPosicao().x - p2->getPosicao().x;
 				disP2 = sqrt(disP2 * disP2);
 
-				if (disP1 <= disP2)
-					atacar(p1);
-				else
-					atacar(p2);
+				if (atacando == false) {
+					if (disP1 <= disP2)
+						atacar(p1);
+					else
+						atacar(p2);
+				}
 				break;
 			}
 
-			if (!noAr && velocidades.x == velocidadeMax)
+			if (!noAr && velocidades.x == velocidadeMax) {
 				velocidades.x = 0;
+				atacando = false;
+			}
 		}
 
 		void NinjaGarras::mover() {
@@ -60,6 +64,7 @@ namespace Entidades {
 		}
 
 		void NinjaGarras::atacar(Jogador* j) {
+			atacando = true;
 			if (j->getPosicao().x <= distanciaAtaque) {
 				velocidades.y = 5;
 				if (j->getPosicao().x > getPosicao().x)
