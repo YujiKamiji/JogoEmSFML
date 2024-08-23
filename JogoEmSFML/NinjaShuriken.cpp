@@ -4,8 +4,8 @@ namespace Entidades {
 	namespace Personagens {
 		NinjaShuriken::NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam,
 			Jogador* a, Jogador* b) :
-			Inimigo(pos, tam), distanciaAtaque(40), disP1(100), disP2(100), 
-			p1(a), p2(b), fuga(true), s()
+			Inimigo(pos, tam), distanciaAtaque(40), distanciaPerigo(20), 
+			disP1(100), disP2(100), p1(a), p2(b), fuga(true), s()
 		{
 			srand(time(NULL));
 			vidas = 20;
@@ -13,7 +13,9 @@ namespace Entidades {
 			velocidadeMax = 6;
 			aceleracao = 1;
 		}
-		NinjaShuriken::~NinjaShuriken() {}
+		NinjaShuriken::~NinjaShuriken() {
+			delete s;
+		}
 
 		void NinjaShuriken::executar() {
 			disP1 = getPosicao().x - p1->getPosicao().x;
@@ -31,13 +33,21 @@ namespace Entidades {
 				mover();
 		}
 		void NinjaShuriken::mover() {
+			if (!noAr)
+				velocidades.y -= GRAVIDADE;
 			int rng = rand() % 2;
 			switch (rng) {
 			case 0:
-				velocidades.x += aceleracao;
+				if (velocidades.x <= velocidadeMax)
+					velocidades.x += aceleracao;
+				else
+					velocidades.x = velocidadeMax;
 				break;
 			case 1:
-				velocidades.x -= aceleracao / 2;
+				if (velocidades.x >= velocidadeMax)
+					velocidades.x -= aceleracao / 2;
+				else
+					velocidades.x = -velocidadeMax;
 				break;
 			}
 			corpo.move(velocidades);

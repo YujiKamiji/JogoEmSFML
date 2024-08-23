@@ -2,7 +2,7 @@
 
 namespace Entidades {
 	Shuriken::Shuriken(sf::Vector2f pos, sf::Vector2f tam):
-		Projetil(pos, tam)
+		Projetil(pos, sf::Vector2f(5, 5))
 	{
 		dano = 8;
 		duracao = 30;

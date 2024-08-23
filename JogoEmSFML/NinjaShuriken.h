@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "Inimigo.h"
-#include "ListaEntidades.h"
 #include "Shuriken.h"
 
 namespace Entidades {
