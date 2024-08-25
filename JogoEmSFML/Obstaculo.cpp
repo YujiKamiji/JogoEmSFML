@@ -15,7 +15,12 @@ namespace Entidades {
 		sf::Vector2f Obstaculo::getPosicao() { return corpo.getPosition(); }
 		sf::Vector2f Obstaculo::getTamanho() { return corpo.getSize(); }
 
-		void Obstaculo::mover() {
+		sf::Vector2f Obstaculo::getVelocidade()
+		{
+			return velocidades;
+		}
+
+		void Obstaculo::mover(sf::Time deltaTime) {
 			if (!noAr)
 				velocidades.y -= GRAVIDADE;
 			corpo.move(velocidades);

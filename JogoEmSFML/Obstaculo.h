@@ -19,12 +19,13 @@ namespace Entidades {
 
 			sf::Vector2f getPosicao();
 			sf::Vector2f getTamanho();
+			sf::Vector2f getVelocidade();
 
-			virtual void executar() = 0;
+			virtual void executar(sf::Time deltaTime) = 0;
 			virtual void desenhar() = 0;
 			virtual void salvar() = 0;
 
-			virtual void mover();
+			virtual void mover(sf::Time deltaTime);
 			virtual void obstacular(Jogador* p) = 0;
 		};
 	}

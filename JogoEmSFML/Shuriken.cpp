@@ -1,7 +1,7 @@
 #include "Shuriken.h"
 
 namespace Entidades {
-	Shuriken::Shuriken(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
+	Shuriken::Shuriken(sf::Vector2f pos, sf::Vector2f tam):
 		Projetil(pos, tam), alvo(getPosicao())
 	{
 		dano = 8;
@@ -33,7 +33,7 @@ namespace Entidades {
 
 	void Shuriken::salvar() {}
 
-	sf::Vector2f Shuriken::getPosicao() {}
+	sf::Vector2f Shuriken::getPosicao() { return corpo.getPosition(); }
 	sf::Vector2f Shuriken::getVelocidades() { return velocidades; }
 
 	void Shuriken::setAlvo(sf::Vector2f a) { alvo = a; }

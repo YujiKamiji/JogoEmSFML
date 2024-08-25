@@ -3,6 +3,7 @@
 #include "ListaEntidades.h"
 #include "Gerenciador_Grafico.h"
 #include "GerenciadorDeColisoes.h"
+#include "Chao.h"
 
 using namespace Entidades;
 using namespace Personagens;
@@ -14,6 +15,9 @@ class Jogo {
 private:
 	Jogador p1;
 	Jogador p2;
+	
+	Chao chao;
+
 	Gerenciador_Grafico* pGG;
 	GerenciadorDeColisoes* pGC;
 	Lista<Entidades::Personagens::Personagem> personagens;

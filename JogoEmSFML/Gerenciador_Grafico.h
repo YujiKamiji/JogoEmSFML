@@ -28,6 +28,7 @@ namespace Gerenciadores {
 		void camera_segue(sf::Vector2f posicao1);
 		void camera_segue(sf::Vector2f posicao1, sf::Vector2f posicao);
 
+		sf::RenderWindow* getJanela();
 		static Gerenciador_Grafico* getInstancia();
 	};
 }

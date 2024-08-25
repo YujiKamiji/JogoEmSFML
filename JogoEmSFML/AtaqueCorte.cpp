@@ -1,8 +1,7 @@
 #include "AtaqueCorte.h"
 
 namespace Entidades {
-	AtaqueCorte::AtaqueCorte(sf::Vector2f pos = sf::Vector2f(0, 0), 
-		sf::Vector2f tam = sf::Vector2f(4, 8)) :
+	AtaqueCorte::AtaqueCorte(sf::Vector2f pos, sf::Vector2f tam) :
 		Projetil(pos, tam)
 	{
 		dano = 10;

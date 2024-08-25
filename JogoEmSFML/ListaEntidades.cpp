@@ -9,7 +9,7 @@ namespace Listas {
 	void ListaEntidades::executar() {
 		Lista<Entidade>::Iterador<Entidade> i = lista.inicio();
 		while (i != lista.fim()) {
-			(*i)->executar();
+			//(*i)->executar();
 			i++;
 		}
 	}

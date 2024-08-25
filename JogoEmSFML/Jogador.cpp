@@ -12,35 +12,36 @@ namespace Entidades {
 			vidas = 100;
 			dano = 5;
 			velocidadeMax = 10;
-			aceleracao = 1;
+			aceleracao = 50;
 		}
 		Jogador::~Jogador() {}
 
-		void Jogador::executar() {
+		void Jogador::executar(sf::Time deltaTime) {
 			if (vidas <= 0)
 				vivo = false;
-			mover();
-			atacar();
+			mover(deltaTime);
+			atacar(deltaTime);
 			desenhar();
 		}
 
-		void Jogador::mover() {
+		void Jogador::mover(sf::Time deltaTime) {
 			//Andar
 			if (jogadorId == 1) {
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 				{
 					if (velocidades.x <= velocidadeMax)
-						velocidades.x += aceleracao;
+						velocidades.x += (aceleracao * deltaTime.asSeconds());
 					if (!olhandoDireita)
 					{
 						//corpo.setTexture(pGG->load_textures(""));
 						olhandoDireita = true;
 					}
+					
 				}
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 				{
 					if (velocidades.x >= -velocidadeMax)
-						velocidades.x -= aceleracao;
+						velocidades.x -= (aceleracao * deltaTime.asSeconds());
 					if (olhandoDireita)
 					{
 						//corpo.setTexture(pGG->load_textures(""));
@@ -49,14 +50,14 @@ namespace Entidades {
 				}
 				else {
 					if (olhandoDireita) {
-						if (velocidades.x >= 0)
-							velocidades.x -= aceleracao * 2;
+						if (velocidades.x > 0)
+							velocidades.x -= ((aceleracao * 2.5) * deltaTime.asSeconds());
 						else
 							velocidades.x = 0;
 					}
 					else {
-						if (velocidades.x <= 0)
-							velocidades.x += aceleracao * 2;
+						if (velocidades.x < 0)
+							velocidades.x += ((aceleracao * 2.5) * deltaTime.asSeconds());
 						else
 							velocidades.x = 0;
 					}
@@ -68,7 +69,7 @@ namespace Entidades {
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 				{
 					if (velocidades.x <= velocidadeMax)
-						velocidades.x += aceleracao;
+						velocidades.x += aceleracao * deltaTime.asSeconds();
 					if (!olhandoDireita)
 					{
 						//corpo.setTexture(pGG->load_textures(""));
@@ -78,7 +79,7 @@ namespace Entidades {
 				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 				{
 					if (velocidades.x >= -velocidadeMax)
-						velocidades.x -= aceleracao;
+						velocidades.x -= aceleracao * deltaTime.asSeconds();
 					if (olhandoDireita)
 					{
 						//corpo.setTexture(pGG->load_textures(""));
@@ -88,14 +89,14 @@ namespace Entidades {
 				else {
 					if (olhandoDireita) {
 						if (velocidades.x > 0) {
-							velocidades.x -= aceleracao * 2;
+							velocidades.x -= ((aceleracao * 2) * deltaTime.asSeconds());
 							if (velocidades.x < 0)
 								velocidades.x = 0;
 						}	
 					}
 					else {
 						if (velocidades.x < 0) {
-							velocidades.x += aceleracao * 2;
+							velocidades.x += ((aceleracao * 2) * deltaTime.asSeconds());
 							if (velocidades.x > 0)
 								velocidades.x = 0;
 						}
@@ -105,7 +106,7 @@ namespace Entidades {
 
 			//Força normal
 			if (!noAr)
-				velocidades.y -= GRAVIDADE;
+				velocidades.y -= GRAVIDADE * deltaTime.asSeconds();
 			//Pulo
 			else {
 				velocidades.y = 0;
@@ -118,10 +119,12 @@ namespace Entidades {
 						velocidades.y -= 6;
 				}
 			}
+			
 			corpo.move(velocidades);
+			
 		}
 
-		void Jogador::atacar() {
+		void Jogador::atacar(sf::Time deltaTime) {
 			if (intervaloAtaque <= 0) {
 				atacando = true;
 				intervaloAtaque = 500;
@@ -172,6 +175,7 @@ namespace Entidades {
 				if (atacando)
 					ataque->desenhar();
 			}
+			pGG->desenhar(&corpo);
 		}
 		void Jogador::salvar() {}
 

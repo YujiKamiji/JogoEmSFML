@@ -1,7 +1,7 @@
 #include "Projetil.h"
 
 namespace Entidades {
-	Projetil::Projetil(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0)):
+	Projetil::Projetil(sf::Vector2f pos, sf::Vector2f tam):
 		dano(0), duracao(0), corpo(tam), ativo(false) 
 	{
 		corpo.setOrigin(corpo.getSize() / 2.f);

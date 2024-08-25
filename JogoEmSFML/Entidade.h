@@ -15,10 +15,10 @@ namespace Entidades {
 		Entidade();
 		virtual ~Entidade();
 
-		virtual void mover();
+		virtual void mover(sf::Time deltaTime);
 		void setNoAr(bool b);
 
-		virtual void executar() = 0;
+		virtual void executar(sf::Time deltaTime) = 0;
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
 
