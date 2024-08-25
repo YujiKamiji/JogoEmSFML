@@ -26,6 +26,11 @@ namespace Listas {
 		lista.inserir(e);
 	}
 
+	void ListaEntidades::remover(Entidade* e)
+	{
+		lista.remover(e);
+	}
+
 	Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> 
 		ListaEntidades::getPrimeiro() { return lista.inicio(); }
 }
