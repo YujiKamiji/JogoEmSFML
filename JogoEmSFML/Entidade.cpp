@@ -6,16 +6,15 @@ namespace Entidades {
 		Ente(), velocidades(0, 0), noAr(true) {}
 
 	Entidade::~Entidade() {}
+	
+	void Entidade::setNoAr(bool b) { noAr = b; }
 
-	void Entidade::mover(sf::Time deltaTime) {
-		//todas as entidades sofrem efeito da gravidade
+	void Entidade::gravidade(sf::Time deltaTime)
+	{
 		if (velocidades.y <= VEL_TERMINAL)
-			velocidades.y += GRAVIDADE;
+			velocidades.y += GRAVIDADE * deltaTime.asSeconds();
 		else
 			velocidades.y = VEL_TERMINAL;
-		velocidades.y *= deltaTime.asSeconds();
 	}
-
-	void Entidade::setNoAr(bool b) { noAr = b; }
 }
 

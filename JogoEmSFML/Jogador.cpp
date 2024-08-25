@@ -104,11 +104,8 @@ namespace Entidades {
 				}
 			}
 
-			//Força normal
-			if (!noAr)
-				velocidades.y -= GRAVIDADE * deltaTime.asSeconds();
 			//Pulo
-			else {
+			if(!noAr) {
 				velocidades.y = 0;
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -118,8 +115,10 @@ namespace Entidades {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 						velocidades.y -= 6;
 				}
+				noAr = true;
 			}
 			
+			gravidade(deltaTime);
 			corpo.move(velocidades);
 			
 		}
@@ -183,6 +182,27 @@ namespace Entidades {
 
 		void Jogador::colidir(Entidade* e, sf::Vector2f intersecao)
 		{
+			sf::Vector2f posOutro = e->getPosicao();
+
+			//colisao em x
+			if (intersecao.x > intersecao.y)
+			{
+				if (getPosicao().x < posOutro.x)
+					corpo.move(intersecao.x, 0);
+				else
+					corpo.move(-intersecao.x, 0);
+				velocidades.x = 0;
+			}
+			//colisao em y
+			else
+			{
+				if (getPosicao().y < posOutro.y) 
+					corpo.move(0, intersecao.y); 
+				else 
+					corpo.move(0, -intersecao.y); 
+				velocidades.y = 0; 
+				noAr = false;
+			}
 
 		}
 	}

@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Ente.h"
 
-#define GRAVIDADE 2
+#define GRAVIDADE 10
 #define VEL_TERMINAL 16
 
 namespace Entidades {
@@ -15,12 +15,14 @@ namespace Entidades {
 		Entidade();
 		virtual ~Entidade();
 
-		virtual void mover(sf::Time deltaTime);
+		virtual void mover(sf::Time deltaTime) = 0;
 		void setNoAr(bool b);
 
 		virtual void executar(sf::Time deltaTime) = 0;
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
+
+		void gravidade(sf::Time deltaTime);
 
 		virtual sf::Vector2f getPosicao() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;

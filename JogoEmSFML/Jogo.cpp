@@ -3,11 +3,11 @@
 Jogo::Jogo():
 	p1(sf::Vector2f(100, 100), sf::Vector2f(50.0, 100.0)),
 	p2(sf::Vector2f(200, 100), sf::Vector2f(50.0, 100.0)),
-	chao(sf::Vector2f(0, 500), sf::Vector2f(800, 100)),
+	chao(sf::Vector2f(1280/2, 500), sf::Vector2f(1200, 30)),
 	personagens(),
 	obstaculos(),
 	pGG(pGG->getInstancia()),
-	pGC(new GerenciadorDeColisoes(&obstaculos, &personagens))
+	pGC()
 {
 	std::cerr << "Inicializando Jogo" << std::endl;
 	inicializar();
@@ -28,9 +28,12 @@ void Jogo::inicializar()
 
 	obstaculos.inserir(&chao);
 
-	
+	pGC = new GerenciadorDeColisoes(&obstaculos, &personagens);
 	std::cout << "Personagens inseridos: " << personagens.getTamanho() << std::endl;
 	std::cout << "Obstaculos inseridos: " << obstaculos.getTamanho() << std::endl;
+	std::cerr << "Chao Pos: " << chao.getPosicao().x << ", " << chao.getPosicao().y << std::endl;
+	std::cerr << "Chao Tam: " << chao.getTamanho().x << ", " << chao.getTamanho().y << std::endl;
+
 
 }
 
@@ -41,8 +44,8 @@ void Jogo::executar()
 	sf::Time dt;
 	sf::RenderWindow* janela = pGG->getJanela();
 
-	Lista<Personagem>::Iterador<Personagem> itPers = NULL;
-	Lista<Obstaculo>::Iterador<Obstaculo> itObs = NULL;
+	Lista<Personagem>::Iterador<Personagem> itPers = nullptr;
+	Lista<Obstaculo>::Iterador<Obstaculo> itObs = nullptr;
 
 	if (!janela) {
 		std::cerr << "Erro: Janela não foi inicializada corretamente." << std::endl;
@@ -80,7 +83,7 @@ void Jogo::executar()
 			itObs++;
 		}
 
-		//pGC->colidir();
+		pGC->colidir();
 		
 		janela->clear();
 		desenhar();
@@ -101,6 +104,7 @@ void Jogo::desenhar()
 
 	while (itObs != obstaculos.fim()) 
 	{
+		
 		(*itObs)->desenhar();
 		itObs++;
 	}

@@ -3,7 +3,7 @@
 namespace Entidades {
 	namespace Obstaculos {
 		Obstaculo::Obstaculo(sf::Vector2f pos, sf::Vector2f tam):
-			Entidade(), corpo(pos), danoso(false)
+			Entidade(), corpo(tam), danoso(false)
 		{
 			corpo.setOrigin(corpo.getSize() / 2.f);
 			corpo.setPosition(pos);
@@ -22,7 +22,7 @@ namespace Entidades {
 
 		void Obstaculo::mover(sf::Time deltaTime) {
 			if (!noAr)
-				velocidades.y -= GRAVIDADE;
+				//velocidades.y -= GRAVIDADE;
 			corpo.move(velocidades);
 		}
 	}
