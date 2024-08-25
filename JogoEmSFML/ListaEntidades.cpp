@@ -9,7 +9,7 @@ namespace Listas {
 	void ListaEntidades::executar() {
 		Lista<Entidade>::Iterador<Entidade> i = lista.inicio();
 		while (i != lista.fim()) {
-			(*i)->executar();
+			//(*i)->executar();
 			i++;
 		}
 	}
@@ -24,6 +24,11 @@ namespace Listas {
 
 	void ListaEntidades::adicionar(Entidade* e) {
 		lista.inserir(e);
+	}
+
+	void ListaEntidades::remover(Entidade* e)
+	{
+		lista.remover(e);
 	}
 
 	Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> 

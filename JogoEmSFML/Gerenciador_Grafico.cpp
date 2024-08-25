@@ -50,6 +50,15 @@ namespace Gerenciadores {
 
 	}
 
+	
+	sf::RenderWindow* Gerenciador_Grafico::getJanela()
+	{
+		if (janela_aberta())
+			return janela;
+		else
+			return nullptr;
+	}
+
 	Gerenciador_Grafico* Gerenciador_Grafico::instancia = nullptr;
 	Gerenciador_Grafico* Gerenciador_Grafico::getInstancia() {
 		if (instancia == nullptr)

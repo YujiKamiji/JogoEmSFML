@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AtaqueCorte.cpp" />
+    <ClCompile Include="Chao.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="GerenciadorDeColisoes.cpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AtaqueCorte.h" />
+    <ClInclude Include="Chao.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="GerenciadorDeColisoes.h" />

@@ -26,10 +26,10 @@ namespace Entidades {
 			int getDano();
 
 			void receberDano(int dano);
-			virtual void mover() = 0;
-			virtual void atacar() = 0;
+			virtual void mover(sf::Time deltaTime) = 0;
+			virtual void atacar(sf::Time deltaTime) = 0;
 
-			virtual void executar() = 0;
+			virtual void executar(sf::Time deltaTime) = 0;
 			virtual void desenhar();
 			virtual void salvar() = 0;
 

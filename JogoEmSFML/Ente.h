@@ -14,7 +14,7 @@ protected:
 public:
 	Ente();
 	virtual ~Ente();
-	virtual void executar() = 0;
+	virtual void executar(sf::Time deltaTime) = 0;
 	virtual void desenhar() = 0;
 	const int getId();
 };

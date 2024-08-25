@@ -11,6 +11,8 @@ namespace Entidades {
 			int intervaloAtaque;
 			bool olhandoDireita;
 
+			float aceleracao;
+
 			int jogadorId;
 
 			AtaqueCorte* ataque;
@@ -21,9 +23,9 @@ namespace Entidades {
 			Jogador(sf::Vector2f pos, sf::Vector2f tam);
 			~Jogador();
 
-			void executar();
-			void mover();
-			void atacar();
+			void executar(sf::Time deltaTime);
+			void mover(sf::Time deltaTime);
+			void atacar(sf::Time deltaTime);
 
 			void desenhar();
 			void salvar();
