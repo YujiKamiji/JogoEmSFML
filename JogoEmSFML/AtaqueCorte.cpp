@@ -18,6 +18,8 @@ namespace Entidades {
 			if (duracao <= 0)
 				ativo = false;
 		}
+		cout << "AtaqueCorte::executar()" << endl;
+		desenhar();
 	}
 
 	void AtaqueCorte::desenhar() {

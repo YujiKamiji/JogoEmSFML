@@ -15,11 +15,11 @@ namespace Entidades {
 
 		NinjaGarras::~NinjaGarras() {}
 
-		void NinjaGarras::executar() {
+		void NinjaGarras::executar(sf::Time deltaTime) {
 			int rng = rand() % 2;
 			switch (rng) {
 			case 0:
-				mover();
+				mover(deltaTime);
 				break;
 			case 1:
 				disP1 = getPosicao().x - p1->getPosicao().x;
@@ -29,9 +29,9 @@ namespace Entidades {
 
 				if (atacando == false) {
 					if (disP1 <= disP2)
-						atacar(p1);
+						atacar(p1, deltaTime);
 					else
-						atacar(p2);
+						atacar(p2, deltaTime);
 				}
 				break;
 			}
@@ -42,7 +42,7 @@ namespace Entidades {
 			}
 		}
 
-		void NinjaGarras::mover() {
+		void NinjaGarras::mover(sf::Time deltaTime) {
 			int rng = rand() % 2;
 			if (!noAr)
 				velocidades.y -= GRAVIDADE;
@@ -63,7 +63,7 @@ namespace Entidades {
 			corpo.move(velocidades);
 		}
 
-		void NinjaGarras::atacar(Jogador* j) {
+		void NinjaGarras::atacar(Jogador* j, sf::Time deltaTime) {
 			atacando = true;
 			if (j->getPosicao().x <= distanciaAtaque) {
 				velocidades.y = 5;

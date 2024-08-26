@@ -9,10 +9,6 @@ personagens(pers)
 
 Gerenciadores::GerenciadorDeColisoes::~GerenciadorDeColisoes()
 {
-	if(obstaculos)
-		delete obstaculos;
-	if (personagens)
-		delete personagens;
 }
 
 void Gerenciadores::GerenciadorDeColisoes::colidir()

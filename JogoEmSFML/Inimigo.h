@@ -6,17 +6,26 @@
 namespace Entidades {
 	namespace Personagens {
 		class Inimigo : public Personagem {
+		protected:
+			static Jogador* p1;
+			static Jogador* p2;
 		public:
 			Inimigo(sf::Vector2f pos, sf::Vector2f tam);
 			virtual ~Inimigo();
 
-			virtual void executar();
+			virtual void executar(sf::Time deltaTime) = 0;
 			virtual void desenhar() = 0;
 			virtual void salvar() = 0;
 
-			virtual void mover() = 0;
-			virtual void atacar(Jogador* p) = 0;
-			virtual void colidir(Entidade* e, sf::Vector2f intersecao);
+			virtual void mover(sf::Time deltaTime) = 0;
+			virtual void atacar(Jogador* p, sf::Time deltaTime) = 0;
+			virtual void colidir(Entidade* e, sf::Vector2f intersecao) = 0;
+
+			void setP1(Jogador* p);
+			void setP2(Jogador* p);
+
+			Jogador* getP1();
+			Jogador* getP2();
 		};
 	}
 }

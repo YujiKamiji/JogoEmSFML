@@ -9,19 +9,16 @@ Jogo::Jogo():
 	pGG(pGG->getInstancia()),
 	pGC()
 {
-	std::cerr << "Inicializando Jogo" << std::endl;
 	inicializar();
 }
 
 Jogo::~Jogo()
 {
-	std::cerr << "Destruindo Jogo" << std::endl;
 	delete pGC;
 }
 
 void Jogo::inicializar()
 {
-	std::cerr << "Inicializando listas de personagens e obstáculos" << std::endl;
 	//inicializar as listas
 	personagens.inserir(&p1);
 	personagens.inserir(&p2);
@@ -29,17 +26,11 @@ void Jogo::inicializar()
 	obstaculos.inserir(&chao);
 
 	pGC = new GerenciadorDeColisoes(&obstaculos, &personagens);
-	std::cout << "Personagens inseridos: " << personagens.getTamanho() << std::endl;
-	std::cout << "Obstaculos inseridos: " << obstaculos.getTamanho() << std::endl;
-	std::cerr << "Chao Pos: " << chao.getPosicao().x << ", " << chao.getPosicao().y << std::endl;
-	std::cerr << "Chao Tam: " << chao.getTamanho().x << ", " << chao.getTamanho().y << std::endl;
-
-
 }
 
 void Jogo::executar()
 {
-	std::cerr << "Executando Jogo" << std::endl;
+	
 	sf::Clock relogio;
 	sf::Time dt;
 	sf::RenderWindow* janela = pGG->getJanela();
