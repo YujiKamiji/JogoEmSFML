@@ -21,5 +21,6 @@ namespace Listas {
 		void remover(Entidade* e);
 
 		Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> getPrimeiro();
+		Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> getUltimo();
 	};
 }

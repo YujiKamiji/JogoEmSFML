@@ -36,5 +36,8 @@ namespace Listas {
 	}
 
 	Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> 
+
 	ListaEntidades::getPrimeiro() { return lista.inicio(); }
+
+	Lista<Entidades::Entidade>::Iterador<Entidades::Entidade> ListaEntidades::getUltimo(){ return lista.fim(); }
 }

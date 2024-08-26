@@ -13,10 +13,10 @@ using namespace Listas;
 
 class Jogo {
 private:
-	Jogador p1;
-	Jogador p2;
+	Jogador* p1;
+	Jogador* p2;
 	
-	Chao chao;
+	Chao* chao;
 
 	Gerenciador_Grafico* pGG;
 	GerenciadorDeColisoes* pGC;
