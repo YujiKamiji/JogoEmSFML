@@ -6,6 +6,8 @@ namespace Entidades {
 	namespace Personagens {
 		class NinjaGarras : public Inimigo {
 		private:
+			ID id;
+
 			float distanciaAtaque;
 			
 			float disP1;
@@ -29,6 +31,8 @@ namespace Entidades {
 			sf::Vector2f getVelocidade();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
+
+			ID getId();
 		};
 	}
 }

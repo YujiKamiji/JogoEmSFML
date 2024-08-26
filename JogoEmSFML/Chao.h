@@ -8,6 +8,8 @@ namespace Entidades
 	{
 		class Chao : public Obstaculo
 		{
+		private:
+			ID id;
 		public:
 			Chao(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
 			~Chao();
@@ -19,6 +21,8 @@ namespace Entidades
 			void mover(sf::Time deltaTime);
 
 			void obstacular(Jogador* p);
+
+			ID getId();
 		};
 	}
 }

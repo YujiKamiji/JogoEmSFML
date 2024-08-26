@@ -89,5 +89,10 @@ namespace Entidades {
 		void NinjaGarras::colidir(Entidade* e, sf::Vector2f intersecao) {
 
 		}
+
+		ID NinjaGarras::getId()
+		{
+			return ID(id);
+		}
 	}
 }

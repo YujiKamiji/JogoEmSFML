@@ -80,6 +80,11 @@ namespace Entidades {
 
 		sf::Vector2f NinjaShuriken::getVelocidade() { return getVelocidade(); }
 
+		ID NinjaShuriken::getId()
+		{
+			return ID(id);
+		}
+
 		void NinjaShuriken::colidir(Entidade* e, sf::Vector2f intersecao) {}
 	}
 }

@@ -5,6 +5,8 @@
 namespace Entidades {
 	class Projetil : public Entidade {
 	protected:
+		ID id;
+
 		int dano;
 		int duracao;
 		sf::RectangleShape corpo;
@@ -36,5 +38,6 @@ namespace Entidades {
 
 		bool getAtivo();
 		bool getAmigavel();
+		ID getId();
 	};
 }

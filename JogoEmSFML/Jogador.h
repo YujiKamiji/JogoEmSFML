@@ -7,6 +7,8 @@ namespace Entidades {
 	namespace Personagens {
 		class Jogador : public Personagem {
 		private:
+			ID id;
+
 			int pontuacao;
 			int intervaloAtaque;
 			bool olhandoDireita;
@@ -32,6 +34,7 @@ namespace Entidades {
 
 			sf::Vector2f getVelocidade();
 			AtaqueCorte* getAtaque();
+			ID getId();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 		};

@@ -2,7 +2,7 @@
 
 namespace Entidades {
 	Projetil::Projetil(sf::Vector2f pos, sf::Vector2f tam):
-		Entidade(), dano(0), duracao(0), corpo(tam), ativo(false), amigavel(true), olhandoDireita(true)
+		Entidade(), dano(0), duracao(0), corpo(tam), ativo(false), amigavel(true), olhandoDireita(true), id(PROJETIL)
 	{
 		corpo.setOrigin(corpo.getSize() / 2.f);
 		corpo.setPosition(pos);
@@ -38,4 +38,6 @@ namespace Entidades {
 
 	bool Projetil::getAtivo() { return ativo; }
 	bool Projetil::getAmigavel() { return amigavel; }
+
+	ID Projetil::getId(){ return ID(id); }
 }

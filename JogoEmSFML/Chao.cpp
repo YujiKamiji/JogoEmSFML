@@ -29,3 +29,8 @@ void Entidades::Obstaculos::Chao::mover(sf::Time deltaTime)
 void Entidades::Obstaculos::Chao::obstacular(Jogador* p)
 {
 }
+
+ID Entidades::Obstaculos::Chao::getId()
+{
+	return ID(id);
+}

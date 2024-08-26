@@ -5,6 +5,15 @@
 #define GRAVIDADE 10
 #define VEL_TERMINAL 16
 
+enum ID {
+	JOGADOR,
+	PROJETIL,
+	NINJA_GARRAS,
+	NINJA_SHURIKEN,
+	OBSTACULO,
+	ESPINHOS
+};
+
 namespace Entidades {
 	class Entidade: public Ente {
 	protected:
