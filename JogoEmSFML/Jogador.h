@@ -31,6 +31,7 @@ namespace Entidades {
 			void salvar();
 
 			sf::Vector2f getVelocidade();
+			AtaqueCorte* getAtaque();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 		};

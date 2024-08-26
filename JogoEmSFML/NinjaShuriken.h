@@ -16,9 +16,6 @@ namespace Entidades {
 			Shuriken* s;
 			bool fuga;
 
-			Jogador* p1;
-			Jogador* p2;
-
 		public:
 			NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b);
 			~NinjaShuriken();

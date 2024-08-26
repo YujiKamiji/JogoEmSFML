@@ -5,7 +5,7 @@ namespace Entidades {
 		NinjaShuriken::NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam,
 			Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), distanciaAtaque(40), distanciaPerigo(20), 
-			disP1(100), disP2(100), p1(a), p2(b), fuga(true), s()
+			disP1(100), disP2(100), fuga(true), s()
 		{
 			srand(time(NULL));
 			vidas = 20;
@@ -60,8 +60,8 @@ namespace Entidades {
 			atacando = true;
 			s->Posicionar(getPosicao());
 			s->setAlvo(j->getPosicao());
-			s->setAmigavel(false);
-			s->setAtivo(true);
+			//s->setAmigavel(false);
+			//s->setAtivo(true);
 			s->executar();
 		}
 

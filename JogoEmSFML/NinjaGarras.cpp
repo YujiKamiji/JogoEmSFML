@@ -4,7 +4,7 @@ namespace Entidades {
 	namespace Personagens {
 		NinjaGarras::NinjaGarras(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), distanciaAtaque(20), 
-			disP1(100), disP2(100), p1(a), p2(b)
+			disP1(100), disP2(100)
 		{
 			srand(time(NULL));
 			vidas = 40;
@@ -72,7 +72,7 @@ namespace Entidades {
 				else if (j->getPosicao().x < getPosicao().x)
 					velocidades.x -= velocidadeMax;
 				else
-					mover();
+					mover(deltaTime);
 			}
 			corpo.move(velocidades);
 		}

@@ -6,11 +6,11 @@ namespace Entidades {
 	class AtaqueCorte : public Projetil {
 	public:
 		AtaqueCorte(sf::Vector2f pos = sf::Vector2f(0, 0), 
-			sf::Vector2f tam = sf::Vector2f(4, 8));
+			sf::Vector2f tam = sf::Vector2f(25, 50));
 		~AtaqueCorte();
 
-		void mover();
-		void executar();
+		void mover(sf::Time deltaTime);
+		void executar(sf::Time deltaTime);
 		void desenhar();
 		void salvar();
 

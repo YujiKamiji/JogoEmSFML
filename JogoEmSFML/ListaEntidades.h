@@ -14,7 +14,7 @@ namespace Listas {
 		ListaEntidades();
 		~ListaEntidades();
 
-		void executar();
+		void executar(sf::Time deltaTime);
 		void desenhar();
 
 		void adicionar(Entidade* e);

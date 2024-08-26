@@ -5,21 +5,23 @@ namespace Entidades {
 		Projetil(pos, tam)
 	{
 		dano = 10;
-		duracao = 5;
+		duracao = 350;
 	}
 
 	AtaqueCorte::~AtaqueCorte() {}
 
-	void AtaqueCorte::mover() {}
+	void AtaqueCorte::mover(sf::Time deltaTime) 
+	{ }
 
-	void AtaqueCorte::executar() {
+	void AtaqueCorte::executar(sf::Time deltaTime) {
 		if (ativo) {
-			duracao--;
+			duracao -= deltaTime.asMilliseconds();
 			if (duracao <= 0)
+			{
 				ativo = false;
+				duracao = 350;
+			}
 		}
-		cout << "AtaqueCorte::executar()" << endl;
-		desenhar();
 	}
 
 	void AtaqueCorte::desenhar() {
@@ -27,7 +29,7 @@ namespace Entidades {
 			pGG->desenhar(&corpo);
 	}
 
-	void AtaqueCorte::salvar() {}
+	void AtaqueCorte::salvar() { return; }
 
-	void AtaqueCorte::colidir(Entidade* e, sf::Vector2f intersecao) {}
+	void AtaqueCorte::colidir(Entidade* e, sf::Vector2f intersecao) { return; }
 }

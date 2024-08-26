@@ -7,21 +7,37 @@ namespace Entidades {
 		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
 			Personagem(pos, tam), pontuacao(0), intervaloAtaque(500), 
 			jogadorId(cont++), olhandoDireita(true),
-			ataque()
+			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(50,50)))
 		{
 			vidas = 100;
 			dano = 5;
 			velocidadeMax = 10;
 			aceleracao = 50;
+			ataque->setAmigavel(true);
 		}
-		Jogador::~Jogador() {}
+		Jogador::~Jogador() 
+		{ 
+			delete ataque; 
+			ataque = nullptr;
+		}
 
 		void Jogador::executar(sf::Time deltaTime) {
 			if (vidas <= 0)
 				vivo = false;
 			mover(deltaTime);
+
+			if(olhandoDireita)
+				ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));
+			else
+				ataque->Posicionar(sf::Vector2f(corpo.getPosition().x - 50, corpo.getPosition().y));
 			atacar(deltaTime);
-			desenhar();
+			
+			if (intervaloAtaque > 0) //esta no intervalo de ataque
+			{
+				intervaloAtaque -= deltaTime.asMilliseconds();
+				atacando = false;
+			}
+
 		}
 
 		void Jogador::mover(sf::Time deltaTime) {
@@ -125,45 +141,55 @@ namespace Entidades {
 
 		void Jogador::atacar(sf::Time deltaTime) {
 			if (intervaloAtaque <= 0) {
-				atacando = true;
-				intervaloAtaque = 500;
+				
 
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
 						if (olhandoDireita) {
 							atacando = true;
-							ataque->Posicionar(sf::Vector2f
-							(corpo.getPosition().x + 4, corpo.getPosition().y));
-							ataque->setAmigavel(true);
+							cout << "Atacando dir" << endl;
+							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));							
 							ataque->setAtivo(true);
-							ataque->executar();
+							ataque->setOlhandoDireita(true);
+							ataque->executar(deltaTime);
+							
+							intervaloAtaque = 500;
 						}
-						else
+						else {
 							atacando = true;
-							ataque->Posicionar(sf::Vector2f
-							(corpo.getPosition().x - 4, corpo.getPosition().y));
-							ataque->setAmigavel(true);
+							cout << "Atacando esq" << endl;
+							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x -50, corpo.getPosition().y)); 							 
 							ataque->setAtivo(true);
-							ataque->executar();
+							ataque->setOlhandoDireita(false);
+							ataque->executar(deltaTime); 
+							
+							intervaloAtaque = 500;
+						}
 					}
 				}
 				if (jogadorId == 2) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
 						if (olhandoDireita) {
 							atacando = true;
-							ataque->Posicionar(sf::Vector2f
-							(corpo.getPosition().x + 4, corpo.getPosition().y));
-							ataque->setAmigavel(true);
+							cout << "Atacando dir" << endl;
+							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));
 							ataque->setAtivo(true);
-							ataque->executar();
+							ataque->setOlhandoDireita(true);
+							ataque->executar(deltaTime);
+
+							intervaloAtaque = 500;
 						}
-						else
+						else {
 							atacando = true;
-							ataque->Posicionar(sf::Vector2f
-							(corpo.getPosition().x - 4, corpo.getPosition().y));
-							ataque->setAmigavel(true);
+							cout << "Atacando esq" << endl;
+							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x - 50, corpo.getPosition().y));
 							ataque->setAtivo(true);
-							ataque->executar();
+							ataque->setOlhandoDireita(false);
+							ataque->executar(deltaTime);
+
+							intervaloAtaque = 500;
+						}
+
 					}
 				}
 			}
@@ -171,14 +197,21 @@ namespace Entidades {
 
 		void Jogador::desenhar() {
 			if (vivo) {
-				if (atacando)
-					ataque->desenhar();
+				//if (atacando)
+					//ataque->desenhar();
 			}
 			pGG->desenhar(&corpo);
 		}
 		void Jogador::salvar() {}
 
 		sf::Vector2f Jogador::getVelocidade() { return velocidades; }
+
+		AtaqueCorte* Jogador::getAtaque()
+		{
+			if(ataque)
+				return ataque;
+			return nullptr;
+		}
 
 		void Jogador::colidir(Entidade* e, sf::Vector2f intersecao)
 		{

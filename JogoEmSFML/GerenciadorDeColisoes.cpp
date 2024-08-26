@@ -13,6 +13,8 @@ Gerenciadores::GerenciadorDeColisoes::~GerenciadorDeColisoes()
 
 void Gerenciadores::GerenciadorDeColisoes::colidir()
 {
+	//mudar isso aqui, ter uma lista de entidades e somente 1 for aninhado
+
 	sf::Vector2f intersecao;
 	sf::Vector2f DistCentros;
 	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);

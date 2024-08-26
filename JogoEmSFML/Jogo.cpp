@@ -74,6 +74,9 @@ void Jogo::executar()
 			itObs++;
 		}
 
+		p1.getAtaque()->executar(dt);
+		p2.getAtaque()->executar(dt); 
+
 		pGC->colidir();
 		
 		janela->clear();
@@ -99,7 +102,9 @@ void Jogo::desenhar()
 		(*itObs)->desenhar();
 		itObs++;
 	}
-
+	
+	p1.getAtaque()->desenhar();
+	p2.getAtaque()->desenhar(); 
 	
 }
 
