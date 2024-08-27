@@ -8,4 +8,4 @@ id(cont++), textura(NULL) {}
 
 Ente::~Ente() {}
 
-const int Ente::getId() { return id; }
+const int Ente::getIdNumero() const { return id; }

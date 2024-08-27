@@ -15,8 +15,12 @@ namespace Listas {
             Elemento() :
                 pProx(nullptr), info(nullptr) {}
             ~Elemento() {
-                delete info;
+                if (info)
+                {
+                    delete info;                    
+                }
                 info = nullptr;
+                
             }
             TE* getInfo() { return info; }
             Elemento<TE>* getProx() { return pProx; }

@@ -8,7 +8,7 @@ namespace Entidades {
 		{
 			srand(time(NULL));
 			vidas = 40;
-			dano = 12;
+			dano = 4;
 			velocidadeMax = 4;
 			aceleracao = 30;
 
@@ -27,6 +27,9 @@ namespace Entidades {
 		void NinjaGarras::executar(sf::Time deltaTime) {
 			noAr = true;
 			gravidade(deltaTime);
+
+			if(vidas <= 0)
+				vivo = false;
 
 			if (intervaloAcao > 0)
 				intervaloAcao -= deltaTime.asMilliseconds();
@@ -127,25 +130,37 @@ namespace Entidades {
 		void NinjaGarras::colidir(Entidade* e, sf::Vector2f intersecao) {
 			sf::Vector2f posOutro = e->getPosicao();
 
-			//colisao em x
-			if (intersecao.x > intersecao.y)
+			if (e->getId() != PROJETIL)
 			{
-				if (getPosicao().x < posOutro.x)
-					corpo.move(intersecao.x, 0);
+				//colisao em x
+				if (intersecao.x > intersecao.y)
+				{
+					if (getPosicao().x < posOutro.x)
+						corpo.move(intersecao.x, 0);
+					else
+						corpo.move(-intersecao.x, 0);
+					velocidades.x = 0;
+				}
+				//colisao em y
 				else
-					corpo.move(-intersecao.x, 0);
-				velocidades.x = 0;
+				{
+					if (getPosicao().y < posOutro.y)
+						corpo.move(0, intersecao.y);
+					else
+						corpo.move(0, -intersecao.y);
+					velocidades.y = 0;
+					noAr = false;
+				}
 			}
-			//colisao em y
-			else
+
+			//tomar dano do player
+			if (e->getId() == PROJETIL)
 			{
-				if (getPosicao().y < posOutro.y)
-					corpo.move(0, intersecao.y);
-				else
-					corpo.move(0, -intersecao.y);
-				velocidades.y = 0;
-				noAr = false;
+				Projetil* p = static_cast<Projetil*>(e);
+				receberDano(p->getDano());
+				cout << "inimigo tomou dano" << endl;
 			}
+			
 		}
 
 		ID NinjaGarras::getId()

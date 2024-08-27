@@ -18,6 +18,11 @@ namespace Entidades {
 
 		int Personagem::getVidas() { return vidas; }
 
+		bool Personagem::getVivo()
+		{
+			return vivo;
+		}
+
 		int Personagem::getDano() { return dano; }
 
 		void Personagem::receberDano(int dano) { vidas -= dano; }

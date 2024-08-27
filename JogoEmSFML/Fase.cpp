@@ -2,7 +2,7 @@
 
 namespace Fases {
 	Fase::Fase() :
-		entidades(), personagens(), obstaculos(),
+		entidades(), personagens(), obstaculos(), projeteis(),
 		pGG(pGG->getInstancia()), pGC(), corpo() {}
 
 	Fase::~Fase() {}

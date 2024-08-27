@@ -14,6 +14,7 @@ namespace Fases {
 		ListaEntidades entidades;
 		Lista<Personagem> personagens;
 		Lista<Obstaculo> obstaculos;
+		Lista<Projetil> projeteis;
 
 		Gerenciador_Grafico* pGG;
 		GerenciadorDeColisoes* pGC;

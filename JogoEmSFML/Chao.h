@@ -23,6 +23,7 @@ namespace Entidades
 			void obstacular(Jogador* p);
 
 			ID getId();
+			int getDano();
 		};
 	}
 }

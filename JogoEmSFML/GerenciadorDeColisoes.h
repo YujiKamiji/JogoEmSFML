@@ -15,8 +15,9 @@ namespace Gerenciadores {
 	private:
 		Lista<Entidades::Obstaculos::Obstaculo>* obstaculos;
 		Lista<Entidades::Personagens::Personagem>* personagens;
+		Lista<Entidades::Projetil>* projeteis;
 	public:
-		GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs, Lista<Entidades::Personagens::Personagem>* pers);
+		GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs, Lista<Entidades::Personagens::Personagem>* pers, Lista<Entidades::Projetil>* proj);
 		~GerenciadorDeColisoes();
 		void colidir();
 	};

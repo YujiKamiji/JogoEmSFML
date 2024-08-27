@@ -1,7 +1,7 @@
 #include "Chao.h"
 
 Entidades::Obstaculos::Chao::Chao(sf::Vector2f pos, sf::Vector2f tam):
-	Obstaculo(pos, tam)
+	Obstaculo(pos, tam), id(OBSTACULO)
 {
 }
 
@@ -33,4 +33,9 @@ void Entidades::Obstaculos::Chao::obstacular(Jogador* p)
 ID Entidades::Obstaculos::Chao::getId()
 {
 	return ID(id);
+}
+
+int Entidades::Obstaculos::Chao::getDano()
+{
+	return 0;
 }

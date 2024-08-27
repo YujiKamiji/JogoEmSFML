@@ -11,7 +11,7 @@ namespace Entidades {
 			id(JOGADOR)
 		{
 			vidas = 100;
-			dano = 5;
+			dano = 100;
 			velocidadeMax = 10;
 			aceleracao = 50;
 			ataque->setAmigavel(true);
@@ -38,7 +38,7 @@ namespace Entidades {
 				intervaloAtaque -= deltaTime.asMilliseconds();
 				atacando = false;
 			}
-
+			//cout << "vidas: " << vidas << endl;	
 		}
 
 		void Jogador::mover(sf::Time deltaTime) {
@@ -169,7 +169,7 @@ namespace Entidades {
 					}
 				}
 				if (jogadorId == 2) {
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)) {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
 						if (olhandoDireita) {
 							atacando = true;
 							cout << "Atacando dir" << endl;
@@ -198,10 +198,9 @@ namespace Entidades {
 
 		void Jogador::desenhar() {
 			if (vivo) {
-				//if (atacando)
-					//ataque->desenhar();
+				pGG->desenhar(&corpo); 
 			}
-			pGG->desenhar(&corpo);
+			
 		}
 		void Jogador::salvar() {}
 
@@ -211,6 +210,7 @@ namespace Entidades {
 		{
 			if(ataque)
 				return ataque;
+			cout << "ponteiro nulo" << endl;
 			return nullptr;
 		}
 
@@ -223,25 +223,49 @@ namespace Entidades {
 		{
 			sf::Vector2f posOutro = e->getPosicao();
 
-			//colisao em x
-			if (intersecao.x > intersecao.y)
+			
+
+			
+			if (e->getId() != PROJETIL)
 			{
-				if (getPosicao().x < posOutro.x)
-					corpo.move(intersecao.x, 0);
+				//colisao em x
+				if (intersecao.x > intersecao.y)
+				{
+					if (getPosicao().x < posOutro.x)
+						corpo.move(intersecao.x, 0);
+					else
+						corpo.move(-intersecao.x, 0);
+					velocidades.x = 0;
+				}
+				//colisao em y
 				else
-					corpo.move(-intersecao.x, 0);
-				velocidades.x = 0;
+				{
+					if (getPosicao().y < posOutro.y)
+						corpo.move(0, intersecao.y);
+					else
+						corpo.move(0, -intersecao.y);
+					velocidades.y = 0;
+					noAr = false;
+				}
 			}
-			//colisao em y
-			else
+			
+
+			if (e->getId() == NINJA_GARRAS)
 			{
-				if (getPosicao().y < posOutro.y) 
-					corpo.move(0, intersecao.y); 
-				else 
-					corpo.move(0, -intersecao.y); 
-				velocidades.y = 0; 
-				noAr = false;
+				receberDano(e->getDano());
+				cout << "tomou dano" << endl;
 			}
+
+			if (e->getId() == PROJETIL)
+			{
+				if (static_cast<Projetil*>(e)->getAmigavel() == false)
+				{
+					receberDano(e->getDano()); 
+					cout << "tomou dano" << endl; 
+				}
+				
+			}
+				
 
 		}
 	}

@@ -24,6 +24,8 @@ namespace Fases {
 		obstaculos.inserir(chao1);
 		obstaculos.inserir(chao2);
 		obstaculos.inserir(chao3);
+		projeteis.inserir(p1->getAtaque());
+		projeteis.inserir(p2->getAtaque()); 
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
@@ -35,7 +37,40 @@ namespace Fases {
 		entidades.adicionar(chao2);
 		entidades.adicionar(chao3);
 
-		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens);
+		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
+	}
+
+
+	void Floresta::verificarVivos()
+	{
+		if (p1->getVivo() && p2->getVivo())
+		{
+			pGG->camera_segue(p1->getPosicao(), p2->getPosicao()); 
+		}
+		else if (!(p1->getVivo()) && p2->getVivo())
+		{
+			pGG->camera_segue(p2->getPosicao()); 
+		}
+		else if (p1->getVivo() && !(p2->getVivo()))
+		{
+			pGG->camera_segue(p1->getPosicao()); 
+		}
+		else
+		{
+			pGG->fechar_janela(); //TEMPORARIO ENQUANTO NAO TEMOS MENU!!!!!!!!
+		}
+		
+
+		/*
+		Lista<Personagem>::Iterador<Personagem> itPers(nullptr);  
+
+		for(itPers = personagens.inicio(); itPers != personagens.fim(); itPers++)
+		{
+			if (!(*itPers)->getVivo())
+			{
+				personagens.remover(*itPers);  
+			}
+		}*/
 	}
 
 	void Floresta::executar() {
@@ -59,12 +94,13 @@ namespace Fases {
 			}
 			dt = relogio.restart();
 
+			
 			entidades.executar(dt);
 
 			pGC->colidir();
 			janela->clear();
-			pGG->camera_segue(p1->getPosicao(), p2->getPosicao());
-
+			verificarVivos();
+			
 			entidades.desenhar();
 			pGG->mostrar();
 		}

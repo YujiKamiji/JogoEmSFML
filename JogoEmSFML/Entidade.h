@@ -17,6 +17,7 @@ enum ID {
 namespace Entidades {
 	class Entidade: public Ente {
 	protected:
+		ID id;
 		sf::Vector2f velocidades;
 		bool noAr;
 
@@ -35,5 +36,7 @@ namespace Entidades {
 
 		virtual sf::Vector2f getPosicao() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;
+		virtual int getDano() = 0;
+		virtual ID getId() = 0;
 	};
 }

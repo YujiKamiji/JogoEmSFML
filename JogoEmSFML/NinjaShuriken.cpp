@@ -5,7 +5,7 @@ namespace Entidades {
 		NinjaShuriken::NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam,
 			Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), distanciaAtaque(40), distanciaPerigo(20), 
-			disP1(100), disP2(100), fuga(true), s()
+			disP1(100), disP2(100), fuga(true), s(), id(NINJA_SHURIKEN)
 		{
 			srand(time(NULL));
 			vidas = 20;

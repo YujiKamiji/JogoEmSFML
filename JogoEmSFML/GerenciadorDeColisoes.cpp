@@ -1,9 +1,11 @@
 #include "GerenciadorDeColisoes.h"
 
 Gerenciadores::GerenciadorDeColisoes::GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs,
-															Lista<Entidades::Personagens::Personagem>* pers) :
+															Lista<Entidades::Personagens::Personagem>* pers,
+															Lista<Entidades::Projetil>* proj):
 obstaculos(obs), 
-personagens(pers)
+personagens(pers), 
+projeteis(proj)
 {
 }
 
@@ -20,11 +22,13 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL);
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers2(NULL);
+	Listas::Lista<Entidades::Projetil>::Iterador<Entidades::Projetil> itProjetil(NULL);
 
 	//verifica se houve colisao entre personagens e obstaculos
 
 	for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
 	{
+	
 		for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
 		{
 			DistCentros.x = (*itPers1)->getPosicao().x - (*itObs)->getPosicao().x;
@@ -46,8 +50,16 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 
 	for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
 	{
+		if (!(*itPers1)->getVivo())
+		{
+			continue;
+		}
 		for (itPers2 = (personagens->inicio())++; itPers2 != personagens->fim(); itPers2++)
 		{
+			if (!(*itPers2)->getVivo())
+			{
+				continue;
+			}
 			if (itPers1 != itPers2)
 			{
 				DistCentros.x = (*itPers1)->getPosicao().x - (*itPers2)->getPosicao().x;
@@ -65,4 +77,37 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 			}
 		}
 	}
+
+	//verifica se houve colisao entre projeteis e personagens
+
+	for (itProjetil = projeteis->inicio(); itProjetil != projeteis->fim(); itProjetil++) 
+	{
+		if (!(*itProjetil)->getAtivo())
+		{
+			continue;
+		}
+		for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++) 
+		{
+			if (!(*itPers1)->getVivo())
+			{
+				continue;
+			}
+
+			DistCentros.x = (*itPers1)->getPosicao().x - (*itProjetil)->getPosicao().x; 
+			DistCentros.y = (*itPers1)->getPosicao().y - (*itProjetil)->getPosicao().y; 
+
+			//criterio de colisao
+			intersecao.x = abs(DistCentros.x) - ((*itPers1)->getTamanho().x + (*itProjetil)->getTamanho().x) / 2; 
+			intersecao.y = abs(DistCentros.y) - ((*itPers1)->getTamanho().y + (*itProjetil)->getTamanho().y) / 2; 
+
+			if (intersecao.x < 0.0 && intersecao.y < 0.0) 
+			{
+				(*itPers1)->colidir((*itProjetil), intersecao); 
+				(*itProjetil)->colidir((*itPers1), intersecao); 
+			}
+		}
+	}
+
+	//verifica se houve colisao entre projeteis e obstaculos PERGUNTAR PRO SIMAO
+
 }

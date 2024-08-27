@@ -16,5 +16,5 @@ public:
 	virtual ~Ente();
 	virtual void executar(sf::Time deltaTime) = 0;
 	virtual void desenhar() = 0;
-	const int getId();
+	const int getIdNumero() const;
 };

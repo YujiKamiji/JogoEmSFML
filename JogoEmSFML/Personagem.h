@@ -23,7 +23,9 @@ namespace Entidades {
 			sf::Vector2f getTamanho();
 			virtual sf::Vector2f getVelocidade() = 0;
 			int getVidas();
+			bool getVivo();
 			int getDano();
+			virtual ID getId() = 0;
 
 			void receberDano(int dano);
 			virtual void mover(sf::Time deltaTime) = 0;

@@ -35,9 +35,11 @@ namespace Entidades {
 
 		virtual sf::Vector2f getPosicao();
 		virtual sf::Vector2f getVelocidade();
+		sf::Vector2f getTamanho();
 
 		bool getAtivo();
 		bool getAmigavel();
 		ID getId();
+		int getDano();
 	};
 }

@@ -14,6 +14,7 @@ namespace Fases {
 		~Floresta();
 
 		void inicializar();
+		void verificarVivos();
 		void executar();
 		void desenhar();
 		void salvar();

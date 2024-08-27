@@ -36,8 +36,17 @@ namespace Entidades {
 	sf::Vector2f Projetil::getPosicao() { return corpo.getPosition(); }
 	sf::Vector2f Projetil::getVelocidade() { return velocidades; }
 
+	sf::Vector2f Projetil::getTamanho()
+	{
+		return corpo.getSize();
+	}
+
 	bool Projetil::getAtivo() { return ativo; }
 	bool Projetil::getAmigavel() { return amigavel; }
 
 	ID Projetil::getId(){ return ID(id); }
+	int Projetil::getDano()
+	{
+		return dano;
+	}
 }
