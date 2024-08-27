@@ -8,6 +8,7 @@ namespace Fases {
 	private:
 		Jogador* p1;
 		Jogador* p2;
+
 	public:
 		Floresta();
 		~Floresta();

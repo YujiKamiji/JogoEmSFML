@@ -46,7 +46,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 
 	for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
 	{
-		for (itPers2 = itPers1++; itPers2 != personagens->fim(); itPers2++)
+		for (itPers2 = (personagens->inicio())++; itPers2 != personagens->fim(); itPers2++)
 		{
 			if (itPers1 != itPers2)
 			{

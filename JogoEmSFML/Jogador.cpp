@@ -126,11 +126,11 @@ namespace Entidades {
 				velocidades.y = 0;
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-						velocidades.y -= 6;
+						velocidades.y -= 8;
 				}
 				if (jogadorId == 2) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-						velocidades.y -= 6;
+						velocidades.y -= 8;
 				}
 				noAr = true;
 			}

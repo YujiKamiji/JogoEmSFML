@@ -11,16 +11,19 @@ namespace Fases {
 	void Floresta::inicializar() {
 		p1 = new Jogador(sf::Vector2f(100, 100), sf::Vector2f(50.0, 100.0));
 		p2 = new Jogador(sf::Vector2f(200, 100), sf::Vector2f(50.0, 100.0));
-		Chao* chao = new Chao(sf::Vector2f(1280 / 2, 500), sf::Vector2f(1200, 30));
+		Chao* chao = new Chao(sf::Vector2f(1280 / 2, 500), sf::Vector2f(3600, 30));
+		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(600, 100), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		personagens.inserir(p1);
 		personagens.inserir(p2);
+		personagens.inserir(n1);
 		obstaculos.inserir(chao);
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
 		entidades.adicionar(p2);
 		entidades.adicionar(p2->getAtaque());
+		entidades.adicionar(n1);
 		entidades.adicionar(chao);
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens);
