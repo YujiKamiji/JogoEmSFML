@@ -9,22 +9,31 @@ namespace Fases {
 	Floresta::~Floresta() { delete pGC; }
 
 	void Floresta::inicializar() {
-		p1 = new Jogador(sf::Vector2f(100, 100), sf::Vector2f(50.0, 100.0));
-		p2 = new Jogador(sf::Vector2f(200, 100), sf::Vector2f(50.0, 100.0));
-		Chao* chao = new Chao(sf::Vector2f(1280 / 2, 500), sf::Vector2f(3600, 30));
-		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(600, 100), sf::Vector2f(50.0, 100.0), p1, p2);
+		p1 = new Jogador(sf::Vector2f(100, 300), sf::Vector2f(50.0, 100.0));
+		p2 = new Jogador(sf::Vector2f(200, 300), sf::Vector2f(50.0, 100.0));
+		Chao* chao1 = new Chao(sf::Vector2f(1800, 500), sf::Vector2f(3600, 60));
+		Chao* chao2 = new Chao(sf::Vector2f(1400, 380), sf::Vector2f(1200, 180));
+		Chao* chao3 = new Chao(sf::Vector2f(4400, 470), sf::Vector2f(1800, 120));
+		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(2000, 100), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaGarras* n2 = new NinjaGarras(sf::Vector2f(4000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		personagens.inserir(p1);
 		personagens.inserir(p2);
 		personagens.inserir(n1);
-		obstaculos.inserir(chao);
+		personagens.inserir(n2);
+		obstaculos.inserir(chao1);
+		obstaculos.inserir(chao2);
+		obstaculos.inserir(chao3);
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
 		entidades.adicionar(p2);
 		entidades.adicionar(p2->getAtaque());
 		entidades.adicionar(n1);
-		entidades.adicionar(chao);
+		entidades.adicionar(n2);
+		entidades.adicionar(chao1);
+		entidades.adicionar(chao2);
+		entidades.adicionar(chao3);
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens);
 	}
