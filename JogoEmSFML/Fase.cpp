@@ -7,6 +7,8 @@ namespace Fases {
 
 	Fase::~Fase() {}
 
+	void Fase::executar(sf::Time deltaTime) {}
+
 	void Fase::desenhar() {
 		pGG->desenhar(&corpo);
 	}

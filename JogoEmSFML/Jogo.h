@@ -1,35 +1,15 @@
 #pragma once
-#include "Jogador.h"
-#include "ListaEntidades.h"
-#include "Gerenciador_Grafico.h"
-#include "GerenciadorDeColisoes.h"
-#include "Chao.h"
+#include "Floresta.h"
 
-using namespace Entidades;
-using namespace Personagens;
-using namespace Obstaculos;
-using namespace Gerenciadores;
-using namespace Listas;
+using namespace Fases;
 
 class Jogo {
 private:
-	Jogador* p1;
-	Jogador* p2;
-	
-	Chao* chao;
-
-	Gerenciador_Grafico* pGG;
-	GerenciadorDeColisoes* pGC;
-	Lista<Entidades::Personagens::Personagem> personagens;
-	Lista<Entidades::Obstaculos::Obstaculo> obstaculos;
+	Floresta* fase1;
 
 public:
 	Jogo();
 	~Jogo();
 
-	void inicializar();
 	void executar();
-	void desenhar();
-	void salvar();
-
 };

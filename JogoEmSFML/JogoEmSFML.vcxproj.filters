@@ -72,6 +72,9 @@
     <ClCompile Include="Fase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Floresta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Floresta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -24,6 +24,8 @@ namespace Fases {
 		Fase();
 		~Fase();
 
+		void executar(sf::Time deltaTime);
+
 		virtual void inicializar() = 0;
 		virtual void executar() = 0;
 		virtual void desenhar();
