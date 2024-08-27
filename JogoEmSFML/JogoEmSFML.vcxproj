@@ -143,6 +143,7 @@
     <ClCompile Include="Chao.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Fase.cpp" />
     <ClCompile Include="GerenciadorDeColisoes.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Chao.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Fase.h" />
     <ClInclude Include="GerenciadorDeColisoes.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Inimigo.h" />

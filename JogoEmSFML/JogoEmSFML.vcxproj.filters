@@ -66,6 +66,12 @@
     <ClCompile Include="AtaqueCorte.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -120,6 +126,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AtaqueCorte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
