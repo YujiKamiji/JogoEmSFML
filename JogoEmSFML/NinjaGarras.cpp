@@ -4,13 +4,15 @@ namespace Entidades {
 	namespace Personagens {
 		NinjaGarras::NinjaGarras(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), id(NINJA_GARRAS), modo(-1), 
-			intervaloAcao(0), disP1(100), disP2(100), p1(a), p2(b)
+			intervaloAcao(0), disP1(0), disP2(0)
 		{
 			srand(time(NULL));
 			vidas = 40;
-			dano = 4;
+			dano = 10;
 			velocidadeMax = 4;
 			aceleracao = 30;
+			setP1(a);
+			setP2(b);
 
 			corpo.setFillColor(sf::Color::Red);
 		}
@@ -19,7 +21,7 @@ namespace Entidades {
 
 		void NinjaGarras::setModo() {
 			if (modo == -1) {
-				modo = rand() % 4;
+				modo = rand() % 3;
 				intervaloAcao = 1500;
 			}
 		}
@@ -51,16 +53,7 @@ namespace Entidades {
 			case 0:
 				if (atacando == false) {
 					cout << "Ataque inimigo" << endl;
-
-					disP1 = getPosicao().x - p1->getPosicao().x;
-					disP1 = sqrt(disP1 * disP1);
-					disP2 = getPosicao().x - p2->getPosicao().x;
-					disP2 = sqrt(disP2 * disP2);
-
-					if (disP1 <= disP2)
-						atacar(p1, deltaTime);
-					else
-						atacar(p2, deltaTime);
+					atacar(deltaTime);
 				}
 				break;
 
@@ -70,22 +63,6 @@ namespace Entidades {
 
 			case 2:
 				mover(deltaTime);
-				break;
-
-			case 3:
-				if (atacando == false) {
-					cout << "Ataque inimigo" << endl;
-
-					disP1 = getPosicao().x - p1->getPosicao().x;
-					disP1 = sqrt(disP1 * disP1);
-					disP2 = getPosicao().x - p2->getPosicao().x;
-					disP2 = sqrt(disP2 * disP2);
-
-					if (disP1 <= disP2)
-						atacar(p1, deltaTime);
-					else
-						atacar(p2, deltaTime);
-				}
 				break;
 			}
 			corpo.move(velocidades);
@@ -106,17 +83,28 @@ namespace Entidades {
 			}
 		}
 
-		void NinjaGarras::atacar(Jogador* j, sf::Time deltaTime) {
+		void NinjaGarras::atacar(sf::Time deltaTime) {
 			atacando = true;
 			velocidades.y -= 8;
 
-			if (j->getPosicao().x > getPosicao().x)
-				velocidades.x = 6;
-			else if (j->getPosicao().x < getPosicao().x)
-				velocidades.x = -6;
-		}
+			disP1 = getPosicao().x - p1->getPosicao().x;
+			disP1 = sqrt(disP1 * disP1);
+			disP2 = getPosicao().x - p2->getPosicao().x;
+			disP2 = sqrt(disP2 * disP2);
 
-		void NinjaGarras::atacar(sf::Time deltaTime) {}
+			if (disP1 <= disP2) {
+				if (p1->getPosicao().x > getPosicao().x)
+					velocidades.x = 6;
+				else if (p1->getPosicao().x < getPosicao().x)
+					velocidades.x = -6;
+			}	
+			else {
+				if (p2->getPosicao().x > getPosicao().x)
+					velocidades.x = 6;
+				else if (p2->getPosicao().x < getPosicao().x)
+					velocidades.x = -6;
+			}
+		}
 
 		void NinjaGarras::desenhar() {
 			if (vivo)

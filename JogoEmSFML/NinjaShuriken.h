@@ -9,6 +9,9 @@ namespace Entidades {
 		private:
 			ID id;
 
+			int modo;
+			int intervaloAcao;
+
 			float distanciaAtaque;
 			float distanciaPerigo;
 
@@ -22,18 +25,22 @@ namespace Entidades {
 			NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b);
 			~NinjaShuriken();
 
-			void executar();
-			void mover();
-			void atacar(Jogador* j);
-			void fugir();
+			void setModo();
 
+			void executar(sf::Time deltaTime);
+			void mover(sf::Time deltaTime);
+			void atacar(sf::Time deltaTime);
 			void desenhar();
 			void salvar();
+			void fugir();
 
 			sf::Vector2f getVelocidade();
-			ID getId();
+
+			Shuriken* getAtaque();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
+
+			ID getId();
 		};
 	}
 }

@@ -18,7 +18,7 @@ namespace Entidades {
 			virtual void salvar() = 0;
 
 			virtual void mover(sf::Time deltaTime) = 0;
-			virtual void atacar(Jogador* p, sf::Time deltaTime) = 0;
+			virtual void atacar(sf::Time deltaTime) = 0;
 			virtual void colidir(Entidade* e, sf::Vector2f intersecao) = 0;
 
 			void setP1(Jogador* p);

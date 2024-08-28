@@ -2,6 +2,7 @@
 #include "Fase.h"
 #include "Chao.h"
 #include "NinjaGarras.h"
+#include "NinjaShuriken.h"
 
 namespace Fases {
 	class Floresta : public Fase {

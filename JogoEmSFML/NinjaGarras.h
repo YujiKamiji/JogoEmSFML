@@ -14,9 +14,6 @@ namespace Entidades {
 			float disP1;
 			float disP2;
 
-			Jogador* p1;
-			Jogador* p2;
-
 		public:
 			NinjaGarras(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b);
 			~NinjaGarras();
@@ -25,9 +22,7 @@ namespace Entidades {
 
 			void executar(sf::Time deltaTime);
 			void mover(sf::Time deltaTime);
-			void atacar(Jogador* j, sf::Time deltaTime);
 			void atacar(sf::Time deltaTime);
-
 			void desenhar();
 			void salvar();
 

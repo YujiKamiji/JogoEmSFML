@@ -22,7 +22,10 @@ namespace Listas {
                 info = nullptr;
                 
             }
-            TE* getInfo() { return info; }
+            TE* getInfo() { 
+                if (info)
+                    return info; 
+            }
             Elemento<TE>* getProx() { return pProx; }
             void setInfo(TE* i) { info = i; }
             void setProx(Elemento<TE>* p) { pProx = p; }
@@ -110,8 +113,8 @@ namespace Listas {
                     if (atual == pUltimo) {
                         pUltimo = anterior;
                     }
-
-                    delete atual;
+                    
+                    //delete atual;
                     return;
                 }
 

@@ -16,16 +16,19 @@ namespace Fases {
 		Chao* chao3 = new Chao(sf::Vector2f(4400, 470), sf::Vector2f(1800, 120));
 		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(2000, 100), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaGarras* n2 = new NinjaGarras(sf::Vector2f(4000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(400, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		personagens.inserir(p1);
 		personagens.inserir(p2);
 		personagens.inserir(n1);
 		personagens.inserir(n2);
+		personagens.inserir(ns1);
 		obstaculos.inserir(chao1);
 		obstaculos.inserir(chao2);
 		obstaculos.inserir(chao3);
 		projeteis.inserir(p1->getAtaque());
 		projeteis.inserir(p2->getAtaque()); 
+		projeteis.inserir(ns1->getAtaque());
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
@@ -33,6 +36,8 @@ namespace Fases {
 		entidades.adicionar(p2->getAtaque());
 		entidades.adicionar(n1);
 		entidades.adicionar(n2);
+		entidades.adicionar(ns1);
+		entidades.adicionar(ns1->getAtaque());
 		entidades.adicionar(chao1);
 		entidades.adicionar(chao2);
 		entidades.adicionar(chao3);
@@ -61,16 +66,17 @@ namespace Fases {
 		}
 		
 
-		/*
+		
 		Lista<Personagem>::Iterador<Personagem> itPers(nullptr);  
 
 		for(itPers = personagens.inicio(); itPers != personagens.fim(); itPers++)
 		{
 			if (!(*itPers)->getVivo())
 			{
+				entidades.remover(*itPers);
 				personagens.remover(*itPers);  
 			}
-		}*/
+		}
 	}
 
 	void Floresta::executar() {
