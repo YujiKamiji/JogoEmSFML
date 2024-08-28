@@ -20,7 +20,9 @@ namespace Entidades
 
 			void mover(sf::Time deltaTime);
 
-			void obstacular(Jogador* p);
+			void obstacular(sf::Time deltaTime);
+
+			void colidir(Entidade* e, sf::Vector2f intersecao);
 
 			ID getId();
 			int getDano();

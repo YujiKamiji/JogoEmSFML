@@ -83,6 +83,7 @@ namespace Fases {
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();
+		Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL); 
 
 		if (!janela) {
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
@@ -104,6 +105,19 @@ namespace Fases {
 			entidades.executar(dt);
 
 			pGC->colidir();
+			
+			for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
+			{
+				if ((*itObs)->getId() != PLATAFORMA)
+				{
+					continue;
+				}
+				else
+				{
+					pGC->plataformasMoveis((Plataforma*)(*itObs));
+				}
+			}
+
 			janela->clear();
 			verificarVivos();
 			

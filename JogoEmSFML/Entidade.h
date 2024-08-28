@@ -10,7 +10,9 @@ enum ID {
 	PROJETIL,
 	NINJA_GARRAS,
 	NINJA_SHURIKEN,
-	OBSTACULO,
+	CHAO,
+	PLATAFORMA,
+	CAIXOTE,
 	ESPINHOS
 };
 
@@ -35,6 +37,7 @@ namespace Entidades {
 		void gravidade(sf::Time deltaTime);
 
 		virtual sf::Vector2f getPosicao() = 0;
+		virtual sf::Vector2f getTamanho() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;
 		virtual int getDano() = 0;
 		virtual ID getId() = 0;

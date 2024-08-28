@@ -13,13 +13,28 @@ Gerenciadores::GerenciadorDeColisoes::~GerenciadorDeColisoes()
 {
 }
 
+sf::Vector2f Gerenciadores::GerenciadorDeColisoes::criterioDeColisao(Entidades::Entidade* e1, Entidades::Entidade* e2)
+{
+	sf::Vector2f intersecao; 
+	sf::Vector2f DistCentros;
+
+	DistCentros.x = e1->getPosicao().x - e2->getPosicao().x;
+	DistCentros.y = e1->getPosicao().y - e2->getPosicao().y;
+
+	//criterio de colisao
+	intersecao.x = abs(DistCentros.x) - (e1->getTamanho().x + e2->getTamanho().x) / 2;
+	intersecao.y = abs(DistCentros.y) - (e1->getTamanho().y + e2->getTamanho().y) / 2;
+
+	return intersecao;
+}
+
 void Gerenciadores::GerenciadorDeColisoes::colidir()
 {
 	//mudar isso aqui, ter uma lista de entidades e somente 1 for aninhado
 
 	sf::Vector2f intersecao;
 	sf::Vector2f DistCentros;
-	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);
+	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL); 
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL);
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers2(NULL);
 	Listas::Lista<Entidades::Projetil>::Iterador<Entidades::Projetil> itProjetil(NULL);
@@ -31,12 +46,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 	
 		for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
 		{
-			DistCentros.x = (*itPers1)->getPosicao().x - (*itObs)->getPosicao().x;
-			DistCentros.y = (*itPers1)->getPosicao().y - (*itObs)->getPosicao().y;
-
-			//criterio de colisao
-			intersecao.x = abs(DistCentros.x) - ((*itPers1)->getTamanho().x + (*itObs)->getTamanho().x) / 2;
-			intersecao.y = abs(DistCentros.y) - ((*itPers1)->getTamanho().y + (*itObs)->getTamanho().y) / 2;
+			intersecao = criterioDeColisao((*itPers1), (*itObs));
 
 			if (intersecao.x < 0.0 && intersecao.y < 0.0)
 			{
@@ -62,12 +72,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 			}
 			if (itPers1 != itPers2)
 			{
-				DistCentros.x = (*itPers1)->getPosicao().x - (*itPers2)->getPosicao().x;
-				DistCentros.y = (*itPers1)->getPosicao().y - (*itPers2)->getPosicao().y;
-
-				//criterio de colisao
-				intersecao.x = abs(DistCentros.x) - ((*itPers1)->getTamanho().x + (*itPers2)->getTamanho().x) / 2;
-				intersecao.y = abs(DistCentros.y) - ((*itPers1)->getTamanho().y + (*itPers2)->getTamanho().y) / 2;
+				intersecao = criterioDeColisao((*itPers1), (*itPers2)); 
 
 				if (intersecao.x < 0.0 && intersecao.y < 0.0)
 				{
@@ -93,12 +98,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 				continue;
 			}
 
-			DistCentros.x = (*itPers1)->getPosicao().x - (*itProjetil)->getPosicao().x; 
-			DistCentros.y = (*itPers1)->getPosicao().y - (*itProjetil)->getPosicao().y; 
-
-			//criterio de colisao
-			intersecao.x = abs(DistCentros.x) - ((*itPers1)->getTamanho().x + (*itProjetil)->getTamanho().x) / 2; 
-			intersecao.y = abs(DistCentros.y) - ((*itPers1)->getTamanho().y + (*itProjetil)->getTamanho().y) / 2; 
+			intersecao = criterioDeColisao((*itPers1), (*itProjetil));
 
 			if (intersecao.x < 0.0 && intersecao.y < 0.0) 
 			{
@@ -110,4 +110,24 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 
 	//verifica se houve colisao entre projeteis e obstaculos PERGUNTAR PRO SIMAO
 
+}
+
+//Verifica colisao de plataforma movel com outros obstaculos
+void Gerenciadores::GerenciadorDeColisoes::plataformasMoveis(Entidades::Obstaculos::Plataforma* plat)
+{
+	sf::Vector2f intersecao; 
+	sf::Vector2f DistCentros; 
+
+	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);
+	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL); 
+	 
+	for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++) 
+	{
+		intersecao = criterioDeColisao(plat, (*itObs));
+
+		if (intersecao.x < 0.0 && intersecao.y < 0.0)
+		{
+			plat->colidir((*itObs), intersecao); 
+		}
+	}	
 }
