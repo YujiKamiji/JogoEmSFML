@@ -3,13 +3,13 @@
 namespace Entidades {
 	namespace Personagens {
 		Shogun::Shogun(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b) :
-			Inimigo(pos, tam), id(NINJA_GARRAS), modo(-1),
+			Inimigo(pos, tam), id(SHOGUN), modo(-1),
 			intervaloAcao(0), disP1(1000), disP2(1000), enfurecido(false),
 			s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(75, 75)))
 		{
 			srand(time(NULL));
 			vidas = 200;
-			dano = 20;
+			dano = 10;
 			velocidadeMax = 4;
 			aceleracao = 40;
 			setP1(a);
@@ -99,16 +99,16 @@ namespace Entidades {
 
 			rng = rand() % 3;
 			switch (rng) {
-			case 0:
+			case 0: //teletransporte
 				corpo.setPosition(alvoAtual->getPosicao().x,
-					alvoAtual->getPosicao().y - 150);
-			case 1:
-				velocidades.y -= 4;
+					alvoAtual->getPosicao().y - 250);
+			case 1: //pulo
+				velocidades.y -= 10;
 				if (alvoAtual->getPosicao().x > getPosicao().x)
 					velocidades.x = 10;
 				else if (alvoAtual->getPosicao().x < getPosicao().x)
 					velocidades.x = -10;
-			case 2:
+			case 2: //shuriken
 				s->Posicionar(corpo.getPosition());
 				s->setAlvo(alvoAtual->getPosicao());
 				s->setAtivo(true);
@@ -132,7 +132,7 @@ namespace Entidades {
 		void Shogun::colidir(Entidade* e, sf::Vector2f intersecao) {
 			sf::Vector2f posOutro = e->getPosicao();
 
-			if (e->getId() != PROJETIL)
+			if (e->getId() != PROJETIL || e->getId() == ESPINHOS)
 			{
 				//colisao em x
 				if (intersecao.x > intersecao.y)

@@ -21,12 +21,16 @@ namespace Fases {
 		Plataforma* plat1 = new Plataforma(sf::Vector2f(1000, 200), sf::Vector2f(200, 20)); 
 		Caixote* caixa1 = new Caixote(sf::Vector2f(400, 100), sf::Vector2f(70.0, 130.0));
 		Espinhos* espinhos1 = new Espinhos(sf::Vector2f(1300, 100), sf::Vector2f(100, 50));
+		Shogun* shogun1 = new Shogun(sf::Vector2f(2000, 100), sf::Vector2f(70.0, 130.0), p1, p2);
+
 		plat1->setMovel(true);
+
 		personagens.inserir(p1);
 		personagens.inserir(p2);
 		personagens.inserir(n1);
 		personagens.inserir(n2);
 		personagens.inserir(ns1);
+		personagens.inserir(shogun1);
 		obstaculos.inserir(chao1);
 		obstaculos.inserir(chao2);
 		obstaculos.inserir(chao3);
@@ -36,6 +40,7 @@ namespace Fases {
 		projeteis.inserir(p1->getAtaque());
 		projeteis.inserir(p2->getAtaque()); 
 		projeteis.inserir(ns1->getAtaque());
+		projeteis.inserir(shogun1->getAtaque());
 
 
 		entidades.adicionar(p1);
@@ -52,6 +57,8 @@ namespace Fases {
 		entidades.adicionar(plat1);
 		entidades.adicionar(caixa1);
 		entidades.adicionar(espinhos1);
+		entidades.adicionar(shogun1);
+		entidades.adicionar(shogun1->getAtaque());
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
 	}

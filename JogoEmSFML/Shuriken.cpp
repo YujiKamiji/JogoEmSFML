@@ -12,6 +12,7 @@ namespace Entidades {
 	Shuriken::~Shuriken() {}
 
 	void Shuriken::mover(sf::Time deltaTime) {
+		gravidade(deltaTime);
 		corpo.move(velocidades);
 	}
 
@@ -40,20 +41,20 @@ namespace Entidades {
 		alvo = a;
 
 		if (alvo.x > getPosicao().x)
-			velocidades.x = 6;
+			velocidades.x = 10;
 		else if (alvo.x < getPosicao().x)
-			velocidades.x = -6;
+			velocidades.x = -10;
 
 		if (alvo.y > getPosicao().y + 10)
-			velocidades.y = 3;
+			velocidades.y = 0; //pra baixo
 		else if (alvo.y < getPosicao().y - 10)
-			velocidades.y = -3;
+			velocidades.y = -20; //pra cima
 		else
-			velocidades.y = 0;
+			velocidades.y = -10; //reto
 	}
 
 	void Shuriken::colidir(Entidade* e, sf::Vector2f intersecao) {
-		if (e->getId() == JOGADOR)
+		if (e->getId() == JOGADOR || e->getId() == CHAO)
 			ativo = false;
 	}
 }

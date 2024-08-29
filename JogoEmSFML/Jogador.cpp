@@ -10,7 +10,7 @@ namespace Entidades {
 			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(50,50))),
 			id(JOGADOR)
 		{
-			vidas = 100;
+			vidas = 1000;
 			dano = 100;
 			velocidadeMax = 10;
 			aceleracao = 50;
@@ -262,7 +262,7 @@ namespace Entidades {
 				cout << "tomou dano dos espinhos" << endl;
 			}
 
-			if (e->getId() == NINJA_GARRAS)
+			if (e->getId() == NINJA_GARRAS || e->getId() == SHOGUN) 
 			{
 				receberDano(e->getDano());
 				cout << "tomou dano do ninja garras" << endl;

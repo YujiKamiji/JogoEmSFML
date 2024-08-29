@@ -134,7 +134,7 @@ namespace Entidades {
 		void NinjaShuriken::colidir(Entidade* e, sf::Vector2f intersecao) {
 			sf::Vector2f posOutro = e->getPosicao();
 
-			if (e->getId() != PROJETIL)
+			if (e->getId() != PROJETIL || e->getId() == ESPINHOS)
 			{
 				//colisao em x
 				if (intersecao.x > intersecao.y)

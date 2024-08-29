@@ -80,7 +80,7 @@ namespace Entidades {
 
 		void NinjaGarras::atacar(sf::Time deltaTime) {
 			atacando = true;
-			velocidades.y -= 8;
+			velocidades.y -= 15;
 
 			disP1 = getPosicao().x - p1->getPosicao().x;
 			disP1 = sqrt(disP1 * disP1);
@@ -113,7 +113,7 @@ namespace Entidades {
 		void NinjaGarras::colidir(Entidade* e, sf::Vector2f intersecao) {
 			sf::Vector2f posOutro = e->getPosicao();
 
-			if (e->getId() != PROJETIL)
+			if (e->getId() != PROJETIL || e->getId() == ESPINHOS)
 			{
 				//colisao em x
 				if (intersecao.x > intersecao.y)
