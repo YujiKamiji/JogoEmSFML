@@ -119,15 +119,15 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 		}
 		for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)  
 		{
-			if ((*itObs)->getId() != CHAO) 
-			{
-				intersecao = criterioDeColisao((*itProjetil), (*itObs)); 
+			 
+			
+			intersecao = criterioDeColisao((*itProjetil), (*itObs)); 
 
-				if (intersecao.x < 0.0 && intersecao.y < 0.0) 
-				{
-					(*itProjetil)->colidir((*itObs), intersecao);
-				}
+			if (intersecao.x < 0.0 && intersecao.y < 0.0) 
+			{
+				(*itProjetil)->colidir((*itObs), intersecao);
 			}
+			
 			
 		}
 	}

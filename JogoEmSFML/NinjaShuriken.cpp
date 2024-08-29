@@ -5,7 +5,7 @@ namespace Entidades {
 		NinjaShuriken::NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), id(NINJA_SHURIKEN), modo(-1), intervaloAcao(0), 
 			distanciaPerigo(150), disP1(1000), disP2(1000), fuga(true), 
-			s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(50, 50)))
+			s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(50, 50))), intervaloAtaque(1.5f)
 		{
 			srand(time(NULL));
 			vidas = 20;
@@ -48,8 +48,10 @@ namespace Entidades {
 			disP2 = getPosicao().x - p2->getPosicao().x;
 			disP2 = sqrt(disP2 * disP2);
 
-			if (!atacando) {
+			intervaloAtaque -= deltaTime.asSeconds();
+			if (!atacando && intervaloAtaque <= 0.0f) {
 				atacar(deltaTime);
+				intervaloAtaque = 1.5f;
 				cout << "Ataque shuriken" << endl;
 			}
 			else {

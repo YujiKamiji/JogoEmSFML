@@ -13,7 +13,6 @@ void Entidades::Obstaculos::Espinhos::executar(sf::Time deltaTime)
 {
 	obstacular(deltaTime);
 	mover(deltaTime);
-	cout << "afiacao: " << afiacao << endl;
 }
 
 void Entidades::Obstaculos::Espinhos::desenhar()
