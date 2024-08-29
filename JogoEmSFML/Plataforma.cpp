@@ -7,7 +7,6 @@ Entidades::Obstaculos::Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam
 	id(PLATAFORMA), 
 	movel(false), 
 	VelocidadeMaxPlat(1),
-	atrasoMovel(5), 
 	aceleracao(GRAVIDADE),
 	atrasoMovimento(4),
 	direcao(false)

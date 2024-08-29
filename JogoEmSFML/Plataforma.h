@@ -13,7 +13,6 @@ namespace Entidades {
 			ID id;
 			bool movel;
 			float VelocidadeMaxPlat;
-			float atrasoMovel;
 			float atrasoMovimento;
 			float aceleracao;
 			bool direcao;
