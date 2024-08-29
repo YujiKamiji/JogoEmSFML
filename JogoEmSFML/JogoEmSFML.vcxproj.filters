@@ -75,6 +75,9 @@
     <ClCompile Include="Floresta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Shogun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Floresta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shogun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

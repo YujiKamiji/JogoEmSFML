@@ -42,7 +42,12 @@ namespace Entidades {
 				return nullptr;
 		}
 
-		
+		void Inimigo::verificarJogadores() {
+			if (!p1->getVivo())
+				p1 = p2;
+			else if (!p2->getVivo())
+				p2 = p1;
+		}
 
 	}
 }

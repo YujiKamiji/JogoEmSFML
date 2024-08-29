@@ -69,11 +69,9 @@ namespace Entidades {
 			switch (modo) {
 			case -1:
 				break;
-
 			case 0:
 				mover(deltaTime);
 				break;
-
 			case 1:
 				mover(deltaTime);
 				break;
@@ -98,7 +96,7 @@ namespace Entidades {
 
 		void NinjaShuriken::atacar(sf::Time deltaTime) {
 			atacando = true;
-			s->Posicionar(sf::Vector2f(corpo.getPosition()));
+			s->Posicionar(corpo.getPosition());
 
 			if (modo == 0)
 				s->setAlvo(p1->getPosicao());
@@ -115,14 +113,15 @@ namespace Entidades {
 		}
 
 		void NinjaShuriken::desenhar() {
-			if (vivo)
+			if (vivo) {
 				pGG->desenhar(&corpo);
-			s->desenhar();
+				s->desenhar();
+			}	
 		}
 
 		void NinjaShuriken::salvar() {}
 
-		sf::Vector2f NinjaShuriken::getVelocidade() { return getVelocidade(); }
+		sf::Vector2f NinjaShuriken::getVelocidade() { return velocidades; }
 
 		Shuriken* NinjaShuriken::getAtaque()
 		{
@@ -130,11 +129,6 @@ namespace Entidades {
 				return s;
 			cout << "ponteiro nulo" << endl;
 			return nullptr;
-		}
-
-		ID NinjaShuriken::getId()
-		{
-			return ID(id);
 		}
 
 		void NinjaShuriken::colidir(Entidade* e, sf::Vector2f intersecao) {
@@ -173,5 +167,7 @@ namespace Entidades {
 				}
 			}
 		}
+
+		ID NinjaShuriken::getId() { return ID(id); }
 	}
 }
