@@ -20,7 +20,8 @@ namespace Entidades {
 			sf::Vector2f getPosicao();
 			sf::Vector2f getTamanho();
 			sf::Vector2f getVelocidade();
-			virtual int getDano() = 0;	
+			virtual int getDano();
+			bool getDanoso();
 			virtual ID getId() = 0;
 
 			virtual void executar(sf::Time deltaTime) = 0;
