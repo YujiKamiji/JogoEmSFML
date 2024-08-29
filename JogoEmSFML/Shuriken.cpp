@@ -2,19 +2,16 @@
 
 namespace Entidades {
 	Shuriken::Shuriken(sf::Vector2f pos, sf::Vector2f tam):
-		Projetil(pos, tam), alvo(getPosicao()), m(-1), n(-1)
+		Projetil(pos, tam), alvo(getPosicao()) 
 	{
+		setAmigavel(false);
 		dano = 8;
-		duracao = 2000;
+		duracao = 3000;
 	}
 
 	Shuriken::~Shuriken() {}
 
 	void Shuriken::mover(sf::Time deltaTime) {
-		if (alvo.x > getPosicao().x)
-			velocidades.x = 3;
-		else if (alvo.x < getPosicao().x)
-			velocidades.x = -3;
 		corpo.move(velocidades);
 	}
 
@@ -41,9 +38,22 @@ namespace Entidades {
 
 	void Shuriken::setAlvo(sf::Vector2f a) { 
 		alvo = a;
-		m = (alvo.y - getPosicao().y) / (alvo.x - getPosicao().x);
-		n = (alvo.y - (m * alvo.x));
+
+		if (alvo.x > getPosicao().x)
+			velocidades.x = 6;
+		else if (alvo.x < getPosicao().x)
+			velocidades.x = -6;
+
+		if (alvo.y > getPosicao().y + 10)
+			velocidades.y = 3;
+		else if (alvo.y < getPosicao().y - 10)
+			velocidades.y = -3;
+		else
+			velocidades.y = 0;
 	}
 
-	void Shuriken::colidir(Entidade* e, sf::Vector2f intersecao) {}
+	void Shuriken::colidir(Entidade* e, sf::Vector2f intersecao) {
+		if (e->getId() == JOGADOR)
+			ativo = false;
+	}
 }

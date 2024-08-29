@@ -4,13 +4,13 @@ namespace Entidades {
 	namespace Personagens {
 		NinjaShuriken::NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b) :
 			Inimigo(pos, tam), id(NINJA_SHURIKEN), modo(-1), intervaloAcao(0), 
-			distanciaAtaque(600), distanciaPerigo(200), 
-			disP1(1000), disP2(1000), fuga(true), s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(50, 50)))
+			distanciaPerigo(150), disP1(1000), disP2(1000), fuga(true), 
+			s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(50, 50)))
 		{
 			srand(time(NULL));
 			vidas = 20;
 			dano = 5;
-			velocidadeMax = 4;
+			velocidadeMax = 2;
 			aceleracao = 10;
 			setP1(a);
 			setP2(b);
@@ -43,6 +43,11 @@ namespace Entidades {
 			
 			setModo();
 
+			disP1 = getPosicao().x - p1->getPosicao().x;
+			disP1 = sqrt(disP1 * disP1);
+			disP2 = getPosicao().x - p2->getPosicao().x;
+			disP2 = sqrt(disP2 * disP2);
+
 			if (!atacando) {
 				atacar(deltaTime);
 				cout << "Ataque shuriken" << endl;
@@ -50,6 +55,11 @@ namespace Entidades {
 			else {
 				if (!s->getAtivo())
 					atacando = false;
+			}
+
+			if (fuga == true) {
+				if (disP1 <= distanciaPerigo || disP2 <= distanciaPerigo)
+					fugir();
 			}
 				
 
@@ -59,11 +69,9 @@ namespace Entidades {
 			switch (modo) {
 			case -1:
 				break;
-
 			case 0:
 				mover(deltaTime);
 				break;
-
 			case 1:
 				mover(deltaTime);
 				break;
@@ -72,13 +80,13 @@ namespace Entidades {
 		}
 
 		void NinjaShuriken::mover(sf::Time deltaTime) {
-			if (modo == 1) {
+			if (modo == 0) {
 				if (velocidades.x <= velocidadeMax)
 					velocidades.x += (aceleracao * deltaTime.asSeconds());
 				else
 					velocidades.x = velocidadeMax;
 			}
-			else {
+			else if (modo == 1) {
 				if (velocidades.x >= -velocidadeMax)
 					velocidades.x -= (aceleracao * deltaTime.asSeconds());
 				else
@@ -88,37 +96,32 @@ namespace Entidades {
 
 		void NinjaShuriken::atacar(sf::Time deltaTime) {
 			atacando = true;
+			s->Posicionar(corpo.getPosition());
 
-			disP1 = getPosicao().x - p1->getPosicao().x;
-			disP1 = sqrt(disP1 * disP1);
-			disP2 = getPosicao().x - p2->getPosicao().x;
-			disP2 = sqrt(disP2 * disP2);
-
-			s->Posicionar(sf::Vector2f(corpo.getPosition()));
-
-			if (disP1 <= distanciaAtaque)
+			if (modo == 0)
 				s->setAlvo(p1->getPosicao());
-			else if (disP2 <= distanciaAtaque)
-				s->setAlvo(p1->getPosicao());
+			else
+				s->setAlvo(p2->getPosicao());
 
 			s->setAtivo(true);
 			s->executar(deltaTime);
 		}
 
 		void NinjaShuriken::fugir() {
-			corpo.setPosition(getPosicao().x + 50, getPosicao().y);
+			corpo.setPosition(getPosicao().x + 300, getPosicao().y - 100);
 			fuga = false;
 		}
 
 		void NinjaShuriken::desenhar() {
-			if (vivo)
+			if (vivo) {
 				pGG->desenhar(&corpo);
-			s->desenhar();
+				s->desenhar();
+			}	
 		}
 
 		void NinjaShuriken::salvar() {}
 
-		sf::Vector2f NinjaShuriken::getVelocidade() { return getVelocidade(); }
+		sf::Vector2f NinjaShuriken::getVelocidade() { return velocidades; }
 
 		Shuriken* NinjaShuriken::getAtaque()
 		{
@@ -126,11 +129,6 @@ namespace Entidades {
 				return s;
 			cout << "ponteiro nulo" << endl;
 			return nullptr;
-		}
-
-		ID NinjaShuriken::getId()
-		{
-			return ID(id);
 		}
 
 		void NinjaShuriken::colidir(Entidade* e, sf::Vector2f intersecao) {
@@ -158,6 +156,18 @@ namespace Entidades {
 					noAr = false;
 				}
 			}
+
+			//tomar dano do player
+			if (e->getId() == PROJETIL)
+			{
+				Projetil* p = static_cast<Projetil*>(e);
+				if (p->getAmigavel() == true) {
+					receberDano(p->getDano());
+					cout << "inimigo tomou dano" << endl;
+				}
+			}
 		}
+
+		ID NinjaShuriken::getId() { return ID(id); }
 	}
 }

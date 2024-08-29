@@ -2,27 +2,27 @@
 #include "stdafx.h"
 #include "Inimigo.h"
 #include "Shuriken.h"
+#include "ListaEntidades.h"
 
 namespace Entidades {
 	namespace Personagens {
-		class NinjaShuriken : public Inimigo {
+		class Shogun : public Inimigo {
 		private:
 			ID id;
 
 			int modo;
 			int intervaloAcao;
 
-			float distanciaPerigo;
-
 			float disP1;
 			float disP2;
 
 			Shuriken* s;
-			bool fuga;
+			bool enfurecido;
+			Jogador* alvoAtual;
 
 		public:
-			NinjaShuriken(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b);
-			~NinjaShuriken();
+			Shogun(sf::Vector2f pos, sf::Vector2f tam, Jogador* a, Jogador* b);
+			~Shogun();
 
 			void setModo();
 
@@ -31,7 +31,6 @@ namespace Entidades {
 			void atacar(sf::Time deltaTime);
 			void desenhar();
 			void salvar();
-			void fugir();
 
 			sf::Vector2f getVelocidade();
 

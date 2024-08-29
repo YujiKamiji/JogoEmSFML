@@ -21,7 +21,7 @@ namespace Entidades {
 
 		void NinjaGarras::setModo() {
 			if (modo == -1) {
-				modo = rand() % 3;
+				modo = rand() % 2;
 				intervaloAcao = 1500;
 			}
 		}
@@ -49,19 +49,13 @@ namespace Entidades {
 			switch (modo) {
 			case -1:
 				break;
-
 			case 0:
 				if (atacando == false) {
 					//cout << "Ataque inimigo" << endl;
 					atacar(deltaTime);
 				}
 				break;
-
 			case 1:
-				mover(deltaTime);
-				break;
-
-			case 2:
 				mover(deltaTime);
 				break;
 			}
@@ -69,7 +63,8 @@ namespace Entidades {
 		}
 
 		void NinjaGarras::mover(sf::Time deltaTime) {
-			if (modo == 1) {
+			int rng = rand() % 2;
+			if (rng) {
 				if (velocidades.x <= velocidadeMax)
 					velocidades.x += (aceleracao * deltaTime.asSeconds());
 				else
@@ -145,15 +140,15 @@ namespace Entidades {
 			if (e->getId() == PROJETIL)
 			{
 				Projetil* p = static_cast<Projetil*>(e);
-				receberDano(p->getDano());
-				//cout << "inimigo tomou dano" << endl;
+
+				if (p->getAmigavel() == true) {
+					receberDano(p->getDano());
+					cout << "inimigo tomou dano" << endl;
+				}
 			}
 			
 		}
 
-		ID NinjaGarras::getId()
-		{
-			return ID(id);
-		}
+		ID NinjaGarras::getId() { return ID(id); }
 	}
 }

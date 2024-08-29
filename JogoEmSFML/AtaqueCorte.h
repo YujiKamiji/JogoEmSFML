@@ -4,15 +4,19 @@
 
 namespace Entidades {
 	class AtaqueCorte : public Projetil {
+	private:
+		bool danoDado;
 	public:
-		AtaqueCorte(sf::Vector2f pos = sf::Vector2f(0, 0), 
-			sf::Vector2f tam = sf::Vector2f(25, 50));
+		AtaqueCorte(sf::Vector2f pos, sf::Vector2f tam);
 		~AtaqueCorte();
 
 		void mover(sf::Time deltaTime);
 		void executar(sf::Time deltaTime);
 		void desenhar();
 		void salvar();
+
+		void setDanoDado(bool b);
+		bool getDanoDado();
 
 		void colidir(Entidade* e, sf::Vector2f intersecao);
 	};

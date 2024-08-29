@@ -4,7 +4,7 @@ namespace Entidades {
 	AtaqueCorte::AtaqueCorte(sf::Vector2f pos, sf::Vector2f tam) :
 		Projetil(pos, tam)
 	{
-		dano = 100;
+		dano = 10;
 		duracao = 350;
 	}
 
@@ -31,5 +31,11 @@ namespace Entidades {
 
 	void AtaqueCorte::salvar() { return; }
 
-	void AtaqueCorte::colidir(Entidade* e, sf::Vector2f intersecao) { return; }
+	void AtaqueCorte::setDanoDado(bool b) { danoDado = b; }
+	bool AtaqueCorte::getDanoDado() { return danoDado; }
+
+	void AtaqueCorte::colidir(Entidade* e, sf::Vector2f intersecao) { 
+		if (e->getId() == NINJA_GARRAS || e->getId() == NINJA_SHURIKEN)
+			danoDado = true;
+	}
 }

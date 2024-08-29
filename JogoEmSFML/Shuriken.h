@@ -6,8 +6,6 @@ namespace Entidades {
 	class Shuriken : public Projetil {
 	private:
 		sf::Vector2f alvo;
-		float m;
-		float n;
 
 	public:
 		Shuriken(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(5, 5));
