@@ -13,22 +13,28 @@ namespace Fases {
 		p2 = new Jogador(sf::Vector2f(200, 300), sf::Vector2f(50.0, 100.0));
 		Chao* chao1 = new Chao(sf::Vector2f(1800, 500), sf::Vector2f(3600, 60));
 		Chao* chao2 = new Chao(sf::Vector2f(1400, 380), sf::Vector2f(1200, 180));
-		Chao* chao3 = new Chao(sf::Vector2f(4400, 470), sf::Vector2f(1800, 120));
+		Chao* chao3 = new Chao(sf::Vector2f(6200, 470), sf::Vector2f(3600, 120));
 		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(2000, 100), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaGarras* n2 = new NinjaGarras(sf::Vector2f(4000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
-		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(400, 300), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(2000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns2 = new NinjaShuriken(sf::Vector2f(6000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns3 = new NinjaShuriken(sf::Vector2f(5500, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		personagens.inserir(p1);
 		personagens.inserir(p2);
 		personagens.inserir(n1);
 		personagens.inserir(n2);
 		personagens.inserir(ns1);
+		personagens.inserir(ns2);
+		personagens.inserir(ns3);
 		obstaculos.inserir(chao1);
 		obstaculos.inserir(chao2);
 		obstaculos.inserir(chao3);
 		projeteis.inserir(p1->getAtaque());
 		projeteis.inserir(p2->getAtaque()); 
 		projeteis.inserir(ns1->getAtaque());
+		projeteis.inserir(ns2->getAtaque());
+		projeteis.inserir(ns3->getAtaque());
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
@@ -37,7 +43,11 @@ namespace Fases {
 		entidades.adicionar(n1);
 		entidades.adicionar(n2);
 		entidades.adicionar(ns1);
+		entidades.adicionar(ns2);
+		entidades.adicionar(ns3);
 		entidades.adicionar(ns1->getAtaque());
+		entidades.adicionar(ns2->getAtaque());
+		entidades.adicionar(ns3->getAtaque());
 		entidades.adicionar(chao1);
 		entidades.adicionar(chao2);
 		entidades.adicionar(chao3);

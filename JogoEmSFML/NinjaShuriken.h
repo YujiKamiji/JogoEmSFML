@@ -12,7 +12,6 @@ namespace Entidades {
 			int modo;
 			int intervaloAcao;
 
-			float distanciaAtaque;
 			float distanciaPerigo;
 
 			float disP1;

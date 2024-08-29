@@ -145,8 +145,10 @@ namespace Entidades {
 			if (e->getId() == PROJETIL)
 			{
 				Projetil* p = static_cast<Projetil*>(e);
-				receberDano(p->getDano());
-				cout << "inimigo tomou dano" << endl;
+				if (p->getAmigavel() == true) {
+					receberDano(p->getDano());
+					cout << "inimigo tomou dano" << endl;
+				}
 			}
 			
 		}
