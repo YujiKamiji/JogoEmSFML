@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Ente.h"
 
-#define GRAVIDADE 10
+#define GRAVIDADE 30
 #define VEL_TERMINAL 16
 
 enum ID {
@@ -10,7 +10,10 @@ enum ID {
 	PROJETIL,
 	NINJA_GARRAS,
 	NINJA_SHURIKEN,
-	OBSTACULO,
+	SHOGUM,
+	CHAO,
+	PLATAFORMA,
+	CAIXOTE,
 	ESPINHOS
 };
 
@@ -35,6 +38,7 @@ namespace Entidades {
 		void gravidade(sf::Time deltaTime);
 
 		virtual sf::Vector2f getPosicao() = 0;
+		virtual sf::Vector2f getTamanho() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;
 		virtual int getDano() = 0;
 		virtual ID getId() = 0;

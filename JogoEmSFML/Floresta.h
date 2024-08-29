@@ -1,6 +1,9 @@
 #pragma once
 #include "Fase.h"
 #include "Chao.h"
+#include "Plataforma.h"
+#include "Caixote.h"
+#include "Espinhos.h"
 #include "NinjaGarras.h"
 #include "NinjaShuriken.h"
 #include "Shogun.h"

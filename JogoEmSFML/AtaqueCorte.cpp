@@ -10,7 +10,7 @@ namespace Entidades {
 
 	AtaqueCorte::~AtaqueCorte() {}
 
-	void AtaqueCorte::mover(sf::Time deltaTime) 
+	void AtaqueCorte::mover(sf::Time deltaTime)  
 	{ }
 
 	void AtaqueCorte::executar(sf::Time deltaTime) {

@@ -1,7 +1,7 @@
 #include "Chao.h"
 
 Entidades::Obstaculos::Chao::Chao(sf::Vector2f pos, sf::Vector2f tam):
-	Obstaculo(pos, tam), id(OBSTACULO)
+	Obstaculo(pos, tam), id(CHAO)
 {
 }
 
@@ -26,7 +26,11 @@ void Entidades::Obstaculos::Chao::mover(sf::Time deltaTime)
 {
 }
 
-void Entidades::Obstaculos::Chao::obstacular(Jogador* p)
+void Entidades::Obstaculos::Chao::obstacular(sf::Time deltaTime)
+{
+}
+
+void Entidades::Obstaculos::Chao::colidir(Entidade* e, sf::Vector2f intersecao)
 {
 }
 

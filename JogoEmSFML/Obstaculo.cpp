@@ -20,6 +20,16 @@ namespace Entidades {
 			return velocidades;
 		}
 
+		int Obstaculo::getDano()
+		{
+			return -1;
+		}
+
+		bool Obstaculo::getDanoso()
+		{
+			return danoso; 
+		}
+
 		void Obstaculo::mover(sf::Time deltaTime) {
 			if (!noAr)
 				//velocidades.y -= GRAVIDADE;

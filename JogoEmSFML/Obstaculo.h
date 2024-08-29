@@ -20,7 +20,8 @@ namespace Entidades {
 			sf::Vector2f getPosicao();
 			sf::Vector2f getTamanho();
 			sf::Vector2f getVelocidade();
-			virtual int getDano() = 0;	
+			virtual int getDano();
+			bool getDanoso();
 			virtual ID getId() = 0;
 
 			virtual void executar(sf::Time deltaTime) = 0;
@@ -28,7 +29,8 @@ namespace Entidades {
 			virtual void salvar() = 0;
 
 			virtual void mover(sf::Time deltaTime);
-			virtual void obstacular(Jogador* p) = 0;
+			virtual void obstacular(sf::Time deltaTime) = 0;
+			virtual void colidir(Entidade* e, sf::Vector2f intersecao) = 0;
 		};
 	}
 }
