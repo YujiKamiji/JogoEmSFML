@@ -256,11 +256,16 @@ namespace Entidades {
 
 			}
 			
+			if (e->getId() == ESPINHOS)
+			{
+				receberDano(e->getDano());
+				cout << "tomou dano dos espinhos" << endl;
+			}
 
 			if (e->getId() == NINJA_GARRAS)
 			{
 				receberDano(e->getDano());
-				cout << "tomou dano" << endl;
+				cout << "tomou dano do ninja garras" << endl;
 			}
 
 			if (e->getId() == PROJETIL)
@@ -268,7 +273,7 @@ namespace Entidades {
 				if (static_cast<Projetil*>(e)->getAmigavel() == false)
 				{
 					receberDano(e->getDano()); 
-					cout << "tomou dano" << endl; 
+					cout << "tomou dano da shuriken" << endl; 
 				}
 				
 			}

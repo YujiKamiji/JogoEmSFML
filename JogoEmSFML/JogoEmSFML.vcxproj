@@ -145,7 +145,6 @@
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />
-    <ClCompile Include="Espinhos.h.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Floresta.cpp" />
     <ClCompile Include="GerenciadorDeColisoes.cpp" />
@@ -170,6 +169,7 @@
     <ClInclude Include="Chao.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Espinhos.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="Floresta.h" />
     <ClInclude Include="GerenciadorDeColisoes.h" />

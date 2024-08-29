@@ -12,7 +12,6 @@ Entidades::Obstaculos::Caixote::~Caixote()
 void Entidades::Obstaculos::Caixote::executar(sf::Time deltaTime)
 {
 	mover(deltaTime);
-	corpo.move(velocidades);
 }
 
 void Entidades::Obstaculos::Caixote::desenhar()
@@ -28,6 +27,7 @@ void Entidades::Obstaculos::Caixote::salvar()
 void Entidades::Obstaculos::Caixote::mover(sf::Time deltaTime)
 {
 	obstacular(deltaTime);
+	corpo.move(velocidades); 
 }
 
 void Entidades::Obstaculos::Caixote::obstacular(sf::Time deltaTime)

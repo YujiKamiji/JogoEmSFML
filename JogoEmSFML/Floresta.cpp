@@ -19,6 +19,7 @@ namespace Fases {
 		//NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(400, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 		Plataforma* plat1 = new Plataforma(sf::Vector2f(1000, 200), sf::Vector2f(200, 20)); 
 		Caixote* caixa1 = new Caixote(sf::Vector2f(400, 100), sf::Vector2f(70.0, 130.0));
+		Espinhos* espinhos1 = new Espinhos(sf::Vector2f(1300, 100), sf::Vector2f(100, 50));
 
 		plat1->setMovel(true);
 
@@ -32,6 +33,7 @@ namespace Fases {
 		obstaculos.inserir(chao3);
 		obstaculos.inserir(plat1);
 		obstaculos.inserir(caixa1);
+		obstaculos.inserir(espinhos1);
 		projeteis.inserir(p1->getAtaque());
 		projeteis.inserir(p2->getAtaque()); 
 		//projeteis.inserir(ns1->getAtaque());
@@ -49,6 +51,7 @@ namespace Fases {
 		entidades.adicionar(chao3);
 		entidades.adicionar(plat1);
 		entidades.adicionar(caixa1);
+		entidades.adicionar(espinhos1);
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
 	}
