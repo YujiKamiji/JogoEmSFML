@@ -13,6 +13,10 @@ namespace Entidades {
 			ID id;
 			bool movel;
 			float VelocidadeMaxPlat;
+			float atrasoMovel;
+			float atrasoMovimento;
+			float aceleracao;
+			bool direcao;
 		public:
 			Plataforma(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
 			~Plataforma();

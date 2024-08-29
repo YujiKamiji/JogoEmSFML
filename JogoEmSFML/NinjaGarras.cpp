@@ -52,7 +52,7 @@ namespace Entidades {
 
 			case 0:
 				if (atacando == false) {
-					cout << "Ataque inimigo" << endl;
+					//cout << "Ataque inimigo" << endl;
 					atacar(deltaTime);
 				}
 				break;
@@ -146,7 +146,7 @@ namespace Entidades {
 			{
 				Projetil* p = static_cast<Projetil*>(e);
 				receberDano(p->getDano());
-				cout << "inimigo tomou dano" << endl;
+				//cout << "inimigo tomou dano" << endl;
 			}
 			
 		}

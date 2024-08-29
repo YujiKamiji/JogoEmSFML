@@ -35,6 +35,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 	sf::Vector2f intersecao;
 	sf::Vector2f DistCentros;
 	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL); 
+	Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs2(NULL);  
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL);
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers2(NULL);
 	Listas::Lista<Entidades::Projetil>::Iterador<Entidades::Projetil> itProjetil(NULL);
@@ -51,6 +52,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 			if (intersecao.x < 0.0 && intersecao.y < 0.0)
 			{
 				(*itPers1)->colidir((*itObs), intersecao);
+				(*itObs)->colidir((*itPers1), intersecao); 
 			}
 		}
 
@@ -108,7 +110,50 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 		}
 	}
 
-	//verifica se houve colisao entre projeteis e obstaculos PERGUNTAR PRO SIMAO
+	//verifica se houve colisao entre projeteis e chao
+	for (itProjetil = projeteis->inicio(); itProjetil != projeteis->fim(); itProjetil++)
+	{
+		if (!(*itProjetil)->getAtivo()) 
+		{
+			continue;
+		}
+		for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)  
+		{
+			if ((*itObs)->getId() != CHAO) 
+			{
+				intersecao = criterioDeColisao((*itProjetil), (*itObs)); 
+
+				if (intersecao.x < 0.0 && intersecao.y < 0.0) 
+				{
+					(*itProjetil)->colidir((*itObs), intersecao);
+				}
+			}
+			
+		}
+	}
+
+	//verifica se houve colisao entre obstaculos
+	for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
+	{
+		if ((*itObs)->getId() == CHAO)
+		{
+			continue;
+		}
+		for (itObs2 = (obstaculos->inicio())++; itObs2 != obstaculos->fim(); itObs2++) 
+		{
+			if (itObs != itObs2) 
+			{
+				intersecao = criterioDeColisao((*itObs), (*itObs2)); 
+
+				if (intersecao.x < 0.0 && intersecao.y < 0.0)
+				{
+					(*itObs)->colidir((*itObs2), intersecao); 
+					(*itObs2)->colidir((*itObs), intersecao); 
+				}
+			}
+		}
+
+	}
 
 }
 

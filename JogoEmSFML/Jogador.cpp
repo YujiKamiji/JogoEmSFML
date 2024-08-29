@@ -126,11 +126,11 @@ namespace Entidades {
 				velocidades.y = 0;
 				if (jogadorId == 1) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-						velocidades.y -= 8;
+						velocidades.y -= 15;
 				}
 				if (jogadorId == 2) {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-						velocidades.y -= 8;
+						velocidades.y -= 15;
 				}
 				noAr = true;
 			}
@@ -148,7 +148,7 @@ namespace Entidades {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
 						if (olhandoDireita) {
 							atacando = true;
-							cout << "Atacando dir" << endl;
+							
 							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));							
 							ataque->setAtivo(true);
 							ataque->setOlhandoDireita(true);
@@ -158,7 +158,7 @@ namespace Entidades {
 						}
 						else {
 							atacando = true;
-							cout << "Atacando esq" << endl;
+							
 							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x -50, corpo.getPosition().y)); 							 
 							ataque->setAtivo(true);
 							ataque->setOlhandoDireita(false);
@@ -172,7 +172,7 @@ namespace Entidades {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
 						if (olhandoDireita) {
 							atacando = true;
-							cout << "Atacando dir" << endl;
+							
 							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));
 							ataque->setAtivo(true);
 							ataque->setOlhandoDireita(true);
@@ -182,7 +182,7 @@ namespace Entidades {
 						}
 						else {
 							atacando = true;
-							cout << "Atacando esq" << endl;
+							
 							ataque->Posicionar(sf::Vector2f(corpo.getPosition().x - 50, corpo.getPosition().y));
 							ataque->setAtivo(true);
 							ataque->setOlhandoDireita(false);
@@ -238,15 +238,22 @@ namespace Entidades {
 					velocidades.x = 0;
 				}
 				//colisao em y
-				else
+				else 
 				{
-					if (getPosicao().y < posOutro.y)
+					if (getPosicao().y < posOutro.y) 
 						corpo.move(0, intersecao.y);
 					else
-						corpo.move(0, -intersecao.y);
-					velocidades.y = 0;
-					noAr = false;
+						corpo.move(0, -intersecao.y); 
+					velocidades.y = 0; 
+					if (e->getId() == CHAO || e->getId() == PLATAFORMA || e->getId() == CAIXOTE || e->getId() == ESPINHOS)
+					{
+						if (getPosicao().y < posOutro.y)
+							noAr = false;
+					}
+																						
+						
 				}
+
 			}
 			
 

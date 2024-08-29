@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Ente.h"
 
-#define GRAVIDADE 10
+#define GRAVIDADE 30
 #define VEL_TERMINAL 16
 
 enum ID {
@@ -10,6 +10,7 @@ enum ID {
 	PROJETIL,
 	NINJA_GARRAS,
 	NINJA_SHURIKEN,
+	SHOGUM,
 	CHAO,
 	PLATAFORMA,
 	CAIXOTE,

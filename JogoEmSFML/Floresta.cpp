@@ -17,6 +17,9 @@ namespace Fases {
 		NinjaGarras* n1 = new NinjaGarras(sf::Vector2f(2000, 100), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaGarras* n2 = new NinjaGarras(sf::Vector2f(4000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(400, 300), sf::Vector2f(50.0, 100.0), p1, p2);
+		Plataforma* plat1 = new Plataforma(sf::Vector2f(1000, 200), sf::Vector2f(200, 20)); 
+
+		plat1->setMovel(true);
 
 		personagens.inserir(p1);
 		personagens.inserir(p2);
@@ -26,6 +29,7 @@ namespace Fases {
 		obstaculos.inserir(chao1);
 		obstaculos.inserir(chao2);
 		obstaculos.inserir(chao3);
+		obstaculos.inserir(plat1);
 		projeteis.inserir(p1->getAtaque());
 		projeteis.inserir(p2->getAtaque()); 
 		projeteis.inserir(ns1->getAtaque());
@@ -41,6 +45,7 @@ namespace Fases {
 		entidades.adicionar(chao1);
 		entidades.adicionar(chao2);
 		entidades.adicionar(chao3);
+		entidades.adicionar(plat1);
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
 	}
@@ -104,20 +109,7 @@ namespace Fases {
 			
 			entidades.executar(dt);
 
-			pGC->colidir();
-			
-			for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
-			{
-				if ((*itObs)->getId() != PLATAFORMA)
-				{
-					continue;
-				}
-				else
-				{
-					pGC->plataformasMoveis((Plataforma*)(*itObs));
-				}
-			}
-
+			pGC->colidir();						
 			janela->clear();
 			verificarVivos();
 			
