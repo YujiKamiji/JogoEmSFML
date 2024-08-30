@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "ListaEntidades.h"
 #include "GerenciadorDeColisoes.h"
+#include "Chao.h"
+#include "nlohmann/json.hpp"
 
 using namespace Listas;
 using namespace Entidades;
@@ -22,6 +24,7 @@ namespace Fases {
 		GerenciadorDeColisoes* pGC;
 
 		sf::RectangleShape corpo;
+		nlohmann::json mapa;
 
 	public:
 		Fase();
@@ -33,5 +36,11 @@ namespace Fases {
 		virtual void executar() = 0;
 		virtual void desenhar();
 		virtual void salvar() = 0;
+
+		void carregarMapa(std::string mapaJson);
+		void criarChao();
+		//virtual void criarNinjaGarras() = 0;
+		//virtual void criarNinjaShuriken() = 0;
+		//virtual void criarPlataforma() = 0;
 	};
 }

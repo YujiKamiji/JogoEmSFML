@@ -78,6 +78,15 @@
     <ClCompile Include="Shogun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Caixote.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Espinhos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Plataforma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -144,6 +153,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Shogun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Caixote.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Espinhos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plataforma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
