@@ -14,15 +14,19 @@ namespace Fases {
 	}
 
 	void Fase::carregarMapa(std::string mapaJson) {
-		std::ifstream arquivo(mapaJson);
+		try {
+			std::ifstream arquivo(mapaJson);
 
-		if (!arquivo.is_open()) {
-			std::cerr << "Erro ao abrir o mapa (caminho mapa)" << std::endl;
-			return;
+			if (!arquivo.is_open()) {
+				throw std::runtime_error("Erro ao abrir o mapa (caminho mapa)");
+			}
+
+			arquivo >> mapa;
+			arquivo.close();
 		}
-
-		arquivo >> mapa;
-		arquivo.close();
+		catch (const std::exception& excecao) {
+			std::cerr << "Erro durante o carregamento do mapa: " << excecao.what() << std::endl;
+		}
 	}
 
 	void Fase::criarChao() {

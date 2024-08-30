@@ -10,7 +10,7 @@ namespace Fases {
 
 	void Floresta::inicializar() {
 
-		carregarMapa("C:/Users/Enzo/HelloWorld/JogoEmSFML/Floresta.tmj");
+		carregarMapa("Floresta.tmj");
 		criarChao();
 		p1 = new Jogador(sf::Vector2f(100, 1400), sf::Vector2f(50.0, 100.0));
 		personagens.inserir(p1);

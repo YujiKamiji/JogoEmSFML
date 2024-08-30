@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Enzo\HelloWorld\JogoEmSFML\single_include;C:\UTFPR\TerceiroSemestre\TecProg\ProjectsVisualStudio\JogoEmSFML\SFML-2.6.1\include;C:\Users\Enzo\HelloWorld\JogoEmSFML\SFML-2.6.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Enzo\HelloWorld\JogoEmSFML\single_include;C:\UTFPR\TerceiroSemestre\TecProg\ProjectsVisualStudio\JogoEmSFML\SFML-2.6.1\include;C:\Users\Enzo\HelloWorld\JogoEmSFML\SFML-2.6.1\include;C:\UTFPR\TerceiroSemestre\TecProg\ProjectsVisualStudio\JogoEmSFML\single_include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
