@@ -36,14 +36,13 @@ namespace Entidades {
 		alvo = a;
 
 		if (alvo.x > getPosicao().x)
-			velocidades.x = 10;
+			velocidades.x = 12;
 		else if (alvo.x < getPosicao().x)
-			velocidades.x = -10;
+			velocidades.x = -12;
 
-		if (alvo.y > getPosicao().y + 10)
-			velocidades.y = 0; //pra baixo
-		else if (alvo.y < getPosicao().y - 10)
-			velocidades.y = -20; //pra cima
+		
+		if (alvo.y < getPosicao().y - 10)
+			velocidades.y = -15; //pra cima
 		else
 			velocidades.y = -10; //reto
 	}

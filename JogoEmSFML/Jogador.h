@@ -5,7 +5,7 @@
 #include "Cura.h"
 #include "Moeda.h"
 
-#define VIDAMAX 1000
+#define VIDAMAX 200
 
 namespace Entidades {
 	namespace Personagens {

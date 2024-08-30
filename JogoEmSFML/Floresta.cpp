@@ -16,6 +16,7 @@ namespace Fases {
 		criarNinjaGarras();
 		criarNinjaShuriken();
 		criarPlataforma();
+		criarCaixote();
 		criarMoeda();
 		criarCura();
 	}
@@ -92,7 +93,7 @@ namespace Fases {
 		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(2700, 800), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns2 = new NinjaShuriken(sf::Vector2f(6200, 800), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns3 = new NinjaShuriken(sf::Vector2f(9300, 700), sf::Vector2f(50.0, 100.0), p1, p2);
-		NinjaShuriken* ns4 = new NinjaShuriken(sf::Vector2f(11000, 700), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns4 = new NinjaShuriken(sf::Vector2f(11200, 700), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		entidades.adicionar(ns1);
 		entidades.adicionar(ns1->getAtaque());
@@ -133,8 +134,8 @@ namespace Fases {
 		}
 
 		rng = rand() % 3;
-		if (rng < 2) {
-			NinjaShuriken* ns7 = new NinjaShuriken(sf::Vector2f(9700, 700), sf::Vector2f(50.0, 100.0), p1, p2);
+		if (rng) {
+			NinjaShuriken* ns7 = new NinjaShuriken(sf::Vector2f(9500, 700), sf::Vector2f(50.0, 100.0), p1, p2);
 			entidades.adicionar(ns7);
 			entidades.adicionar(ns7->getAtaque());
 			pGC->incluirPersonagem(ns7);
@@ -143,6 +144,48 @@ namespace Fases {
 	}
 
 	void Floresta::criarPlataforma() {}
+
+	void Floresta::criarCaixote() {
+		Caixote* cx1 = new Caixote(sf::Vector2f(3050, 750), sf::Vector2f(200.0, 200.0));
+		Caixote* cx2 = new Caixote(sf::Vector2f(3000, 600), sf::Vector2f(100.0, 100.0));
+		Caixote* cx3 = new Caixote(sf::Vector2f(6000, 800), sf::Vector2f(200.0, 100.0));
+		
+		entidades.adicionar(cx1);
+		entidades.adicionar(cx2);
+		entidades.adicionar(cx3);
+
+		pGC->incluirObstaculo(cx1);
+		pGC->incluirObstaculo(cx2);
+		pGC->incluirObstaculo(cx3);
+		
+
+		int rng = rand() % 3;
+		if (rng == 0) {
+			Caixote* cx4 = new Caixote(sf::Vector2f(5900, 700), sf::Vector2f(100.0, 100.0));
+			entidades.adicionar(cx4);
+			pGC->incluirObstaculo(cx4);
+		}
+
+		rng = rand() % 4;
+		if (rng == 0) {
+			Caixote* cx5 = new Caixote(sf::Vector2f(7550, 950), sf::Vector2f(200.0, 200.0));
+			entidades.adicionar(cx5);
+			pGC->incluirObstaculo(cx5);
+		}
+
+		rng = rand() % 2;
+		if (rng) {
+			Caixote* cx6 = new Caixote(sf::Vector2f(8500, 1100), sf::Vector2f(100.0, 100.0));
+			Caixote* cx7 = new Caixote(sf::Vector2f(9100, 700), sf::Vector2f(100.0, 100.0));
+
+			entidades.adicionar(cx6);
+			entidades.adicionar(cx7);
+
+			pGC->incluirObstaculo(cx6);
+			pGC->incluirObstaculo(cx7);
+		}
+	}
+
 	void Floresta::criarMoeda() {}
 	void Floresta::criarCura() {}
 }

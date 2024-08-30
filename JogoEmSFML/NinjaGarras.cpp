@@ -8,7 +8,7 @@ namespace Entidades {
 		{
 			srand(time(NULL));
 			vidas = 40;
-			dano = 10;
+			dano = 5;
 			velocidadeMax = 4;
 			aceleracao = 30;
 			setP1(a);

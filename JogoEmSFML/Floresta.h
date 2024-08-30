@@ -30,6 +30,7 @@ namespace Fases {
 		void criarNinjaGarras();
 		void criarNinjaShuriken();
 		void criarPlataforma();
+		void criarCaixote();
 		void criarMoeda();
 		void criarCura();
 	};

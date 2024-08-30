@@ -110,7 +110,7 @@ namespace Entidades {
 		}
 
 		void NinjaShuriken::fugir() {
-			corpo.setPosition(getPosicao().x + 300, getPosicao().y - 100);
+			corpo.setPosition(getPosicao().x + 300, getPosicao().y - 300);
 			fuga = false;
 		}
 
