@@ -12,9 +12,7 @@ namespace Entidades
 		Cura::~Cura()
 		{
 		}
-		void Cura::executar(sf::Time deltaTime)
-		{
-		}
+		
 		void Cura::desenhar()
 		{
 			if (ativo)
@@ -35,10 +33,6 @@ namespace Entidades
 		{
 			return velocidades;
 		}
-		int Cura::getDano()
-		{
-			return -1;
-		}
 		ID Cura::getId() const
 		{
 			return ID(id);
@@ -55,20 +49,7 @@ namespace Entidades
 			sf::Vector2f posOutro = e->getPosicao();
 
 			if (e->getId() == JOGADOR)
-			{
-				//colisao em x
-				if (intersecao.x > intersecao.y)
-				{
-					setAtivo(false);
-				}
-				//colisao em y
-				else
-				{
-					setAtivo(false);
-				}
-			}
-
-			
+				setAtivo(false);	
 		}
 	}
 }

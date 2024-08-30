@@ -166,6 +166,14 @@ namespace Entidades {
 				if (p->getAmigavel() == true) {
 					receberDano(p->getDano());
 					//cout << "inimigo tomou dano" << endl;
+					if (getVidas() <= 0) //inimigo morreu
+					{
+						if (p == p1->getAtaque()) //p1 q matou
+							p1->ganharPontos(PONTOS);
+						else if(p == p2->getAtaque()) //p2 q matou
+							p2->ganharPontos(PONTOS);
+					}
+						
 				}
 			}
 		}

@@ -3,6 +3,8 @@
 #include "Inimigo.h"
 #include "Shuriken.h"
 
+#define PONTOS 3 //pontuacao q ele vale
+
 namespace Entidades {
 	namespace Personagens {
 		class NinjaShuriken : public Inimigo {

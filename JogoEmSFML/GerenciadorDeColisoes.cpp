@@ -161,7 +161,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 	//verifica se houve colisao entre jogador consumiveis
 	for (itConsumivel = consumiveis->inicio(); itConsumivel != consumiveis->fim(); itConsumivel++)
 	{
-		if (!(static_cast<Entidades::Consumiveis::Cura*>(*itConsumivel)->getAtivo()))
+		if (!(*itConsumivel)->getAtivo())
 		{
 			continue;
 			//cout << "pulou consu" << endl;
@@ -183,7 +183,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 			if (intersecao.x < 0.0 && intersecao.y < 0.0)
 			{
 				//cout << "colisao consumivel" << endl;
-				static_cast<Entidades::Consumiveis::Cura*>(*itConsumivel)->colidir((*itPers1), intersecao);
+				(*itConsumivel)->colidir((*itPers1), intersecao);
 				(*itPers1)->colidir((*itConsumivel), intersecao);
 			}
 		}

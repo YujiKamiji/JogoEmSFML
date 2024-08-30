@@ -19,11 +19,12 @@ namespace Fases {
 		NinjaGarras* n2 = new NinjaGarras(sf::Vector2f(4000, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(400, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 		Plataforma* plat1 = new Plataforma(sf::Vector2f(1000, 200), sf::Vector2f(200, 20)); 
-		Caixote* caixa1 = new Caixote(sf::Vector2f(400, 100), sf::Vector2f(70.0, 130.0));
+		Caixote* caixa1 = new Caixote(sf::Vector2f(1500, 200), sf::Vector2f(70.0, 130.0));
 		Espinhos* espinhos1 = new Espinhos(sf::Vector2f(1300, 100), sf::Vector2f(100, 50));
 		Shogun* shogun1 = new Shogun(sf::Vector2f(2000, 100), sf::Vector2f(70.0, 130.0), p1, p2);
 
 		Cura* c1 = new Cura(sf::Vector2f(300, 400), sf::Vector2f(50, 50));
+		Moeda* m1 = new Moeda(sf::Vector2f(370, 400), sf::Vector2f(50, 50));
 
 		plat1->setMovel(true);
 
@@ -45,6 +46,7 @@ namespace Fases {
 		projeteis.inserir(shogun1->getAtaque());
 
 		consumiveis.inserir(c1);
+		consumiveis.inserir(m1);
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
@@ -63,6 +65,7 @@ namespace Fases {
 		entidades.adicionar(shogun1);
 		entidades.adicionar(shogun1->getAtaque());
 		entidades.adicionar(c1);
+		entidades.adicionar(m1);
 
 		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis, &consumiveis);
 	}

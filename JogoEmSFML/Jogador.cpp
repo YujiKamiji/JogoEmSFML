@@ -257,11 +257,14 @@ namespace Entidades {
 
 			}
 			
-			if (e->getId() == CURA)
+			if(e->getId() == MOEDA) 
 			{
-				recuperarVida(static_cast<Entidades::Consumiveis::Cura*>(e)->getCura()); 
+				ganharPontos(static_cast<Entidades::Consumiveis::Moeda*>(e)->getPontos());
 			}
 
+			if (e->getId() == CURA)
+				recuperarVida(static_cast<Entidades::Consumiveis::Cura*>(e)->getCura()); 
+						
 			if (e->getId() == ESPINHOS)
 			{
 				receberDano(e->getDano());
@@ -295,6 +298,12 @@ namespace Entidades {
 				vidas = VIDAMAX;
 			//cout << "recuperou vida, vida agr: " << vidas << endl;
 			
+		}
+		void Jogador::ganharPontos(const int Pontos)
+		{
+			cout << "pontos antes:" << pontuacao << endl;
+			pontuacao += Pontos;
+			cout << "ganhou pontos :" << pontuacao << endl;
 		}
 	}
 }

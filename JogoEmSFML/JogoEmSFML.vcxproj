@@ -157,6 +157,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Moeda.cpp" />
     <ClCompile Include="Municao.cpp" />
     <ClCompile Include="NinjaGarras.cpp" />
     <ClCompile Include="NinjaShuriken.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Moeda.h" />
     <ClInclude Include="Municao.h" />
     <ClInclude Include="NinjaGarras.h" />
     <ClInclude Include="NinjaShuriken.h" />

@@ -9,6 +9,7 @@
 #include "Shogun.h"
 #include "Cura.h"
 #include "Municao.h"
+#include "Moeda.h"
 
 namespace Fases {
 	class Floresta : public Fase {

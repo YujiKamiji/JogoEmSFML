@@ -16,14 +16,12 @@ namespace Entidades
 			Consumivel(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f tam = sf::Vector2f(0, 0));
 			~Consumivel();
 
-			virtual void executar(sf::Time deltaTime) = 0;
 			virtual void desenhar() = 0;
 			virtual void salvar() = 0;
 
 			virtual sf::Vector2f getPosicao() = 0;
 			virtual sf::Vector2f getTamanho() = 0;
 			virtual sf::Vector2f getVelocidade() = 0;
-			virtual int getDano() = 0;
 			virtual ID getId() const = 0;
 			bool getAtivo();
 
