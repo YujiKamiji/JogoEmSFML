@@ -23,5 +23,9 @@ namespace Fases {
 		void executar();
 		void desenhar();
 		void salvar();
+
+		//void criarNinjaGarras();
+		//void criarNinjaShuriken();
+		//void criarPlataforma();
 	};
 }
