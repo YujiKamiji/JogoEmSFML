@@ -14,21 +14,23 @@
 namespace Fases {
 	class Floresta : public Fase {
 	private:
-		Jogador* p1;
-		Jogador* p2;
+		float finalFase;
 
 	public:
-		Floresta();
+		Floresta(bool m);
 		~Floresta();
 
 		void inicializar();
-		void verificarVivos();
+		void verificarFinalFase();
+
 		void executar();
 		void desenhar();
 		void salvar();
 
-		//void criarNinjaGarras();
-		//void criarNinjaShuriken();
-		//void criarPlataforma();
+		void criarNinjaGarras();
+		void criarNinjaShuriken();
+		void criarPlataforma();
+		void criarMoeda();
+		void criarCura();
 	};
 }

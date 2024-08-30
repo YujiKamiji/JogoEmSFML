@@ -1,14 +1,8 @@
 #include "GerenciadorDeColisoes.h"
 
 namespace Gerenciadores {
-	GerenciadorDeColisoes::GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs,
-		Lista<Entidades::Personagens::Personagem>* pers,
-		Lista<Entidades::Projetil>* proj,
-		Lista<Entidades::Consumiveis::Consumivel>* consu) :
-		obstaculos(obs),
-		personagens(pers),
-		projeteis(proj),
-		consumiveis(consu)
+	GerenciadorDeColisoes::GerenciadorDeColisoes() :
+		obstaculos(), personagens(), projeteis(), consumiveis()
 	{
 	}
 
@@ -212,6 +206,14 @@ namespace Gerenciadores {
 		}
 	}
 
+	void GerenciadorDeColisoes::verificarVivos() {
+		Listas::Lista<Personagem>::Iterador<Personagem> itPers(NULL);
+		for (itPers = personagens->inicio(); itPers != personagens->fim(); itPers++) {
+			if (!(*itPers)->getVivo())
+				personagens->remover(*itPers);
+		}
+	}
+
 	void GerenciadorDeColisoes::incluirObstaculo(Entidades::Obstaculos::Obstaculo* o) {
 		obstaculos->inserir(o);
 	}
@@ -223,6 +225,13 @@ namespace Gerenciadores {
 	}
 	void GerenciadorDeColisoes::incluirConsumivel(Entidades::Consumiveis::Consumivel* c) {
 		consumiveis->inserir(c);
+	}
+
+	GerenciadorDeColisoes* GerenciadorDeColisoes::instancia = nullptr;
+	GerenciadorDeColisoes* GerenciadorDeColisoes::getInstancia() {
+		if (instancia == nullptr)
+			instancia = new GerenciadorDeColisoes();
+		return instancia;
 	}
 }
 

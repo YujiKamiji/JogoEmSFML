@@ -9,13 +9,13 @@ namespace Gerenciadores {
 	{
 	private:
 		Gerenciador_Grafico();
+		static Gerenciador_Grafico* instancia;
 
 		sf::RenderWindow* janela;
 		sf::View camera;
 
 		std::map<const std::string, sf::Texture*> texturas;
 
-		static Gerenciador_Grafico* instancia;
 	public:
 		~Gerenciador_Grafico();
 

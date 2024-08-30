@@ -17,21 +17,27 @@ using namespace Listas;
 namespace Gerenciadores {
 	class GerenciadorDeColisoes {
 	private:
+		GerenciadorDeColisoes();
+		static GerenciadorDeColisoes* instancia;
+
 		Lista<Entidades::Obstaculos::Obstaculo>* obstaculos;
 		Lista<Entidades::Personagens::Personagem>* personagens;
 		Lista<Entidades::Projetil>* projeteis;
 		Lista<Entidades::Consumiveis::Consumivel>* consumiveis;
+
 	public:
-		GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs, Lista<Entidades::Personagens::Personagem>* pers, Lista<Entidades::Projetil>* proj, Lista<Entidades::Consumiveis::Consumivel>* consu);
 		~GerenciadorDeColisoes();
 
 		sf::Vector2f criterioDeColisao(Entidades::Entidade* e1, Entidades::Entidade* e2);
 		void colidir();
 		void plataformasMoveis(Entidades::Obstaculos::Plataforma * plat);
+		void verificarVivos();
 
 		void incluirObstaculo(Entidades::Obstaculos::Obstaculo* o);
 		void incluirPersonagem(Personagem* p);
 		void incluirProjetil(Entidades::Projetil* p);
 		void incluirConsumivel(Entidades::Consumiveis::Consumivel* c);
+
+		static GerenciadorDeColisoes* getInstancia();
 	};
 }

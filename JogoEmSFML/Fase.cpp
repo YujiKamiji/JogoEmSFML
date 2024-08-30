@@ -1,13 +1,41 @@
 #include "Fase.h"
 
 namespace Fases {
-	Fase::Fase() :
-		entidades(), personagens(), obstaculos(), projeteis(),
-		pGG(pGG->getInstancia()), pGC(), corpo() {}
+	Fase::Fase(bool m) :
+		entidades(), p1(nullptr), p2(nullptr), multijogador(m), corpo(),
+		pGG(pGG->getInstancia()), pGC(pGC->getInstancia()) {}
 
 	Fase::~Fase() {}
 
 	void Fase::executar(sf::Time deltaTime) {}
+
+	void Fase::verificarVivos() {
+		if (multijogador) {
+			if (p1->getVivo() && p2->getVivo())
+			{
+				pGG->camera_segue(p1->getPosicao(), p2->getPosicao());
+			}
+			else if (!(p1->getVivo()) && p2->getVivo())
+			{
+				pGG->camera_segue(p2->getPosicao());
+			}
+			else if (p1->getVivo() && !(p2->getVivo()))
+			{
+				pGG->camera_segue(p1->getPosicao());
+			}
+			else
+			{
+				pGG->fechar_janela(); //TEMPORARIO ENQUANTO NAO TEMOS MENU!!!!!!!!
+			}
+		}
+		else {
+			if (p1->getVivo())
+				pGG->camera_segue(p1->getPosicao());
+			else
+				pGG->fechar_janela();
+		}
+		pGC->verificarVivos();
+	}
 
 	void Fase::desenhar() {
 		pGG->desenhar(&corpo);
@@ -43,10 +71,28 @@ namespace Fases {
 					sf::Vector2f posicao = sf::Vector2f(x * tamanhoBloco, y * tamanhoBloco);
 					sf::Vector2f tamanho = sf::Vector2f(tamanhoBloco, tamanhoBloco);
 					Chao* chao = new Chao(posicao, tamanho);
-					obstaculos.inserir(chao);
+					pGC->incluirObstaculo(chao);
 					entidades.adicionar(chao);
 				}
 			}
+		}
+	}
+
+	void Fase::criarJogadores() {
+		p1 = new Jogador(sf::Vector2f(100, 1400), sf::Vector2f(50.0, 100.0));
+		entidades.adicionar(p1);
+		entidades.adicionar(p1->getAtaque());
+		pGC->incluirPersonagem(p1);
+		pGC->incluirProjetil(p1->getAtaque());
+
+		p2 = p1;
+
+		if (multijogador) {
+			p2 = new Jogador(sf::Vector2f(200, 1400), sf::Vector2f(50.0, 100.0));
+			entidades.adicionar(p2);
+			entidades.adicionar(p2->getAtaque());
+			pGC->incluirPersonagem(p2);
+			pGC->incluirProjetil(p2->getAtaque());
 		}
 	}
 }

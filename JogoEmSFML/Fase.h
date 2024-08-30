@@ -15,10 +15,8 @@ namespace Fases {
 	class Fase: public Ente {
 	protected:
 		ListaEntidades entidades;
-		Lista<Personagem> personagens;
-		Lista<Obstaculo> obstaculos;
-		Lista<Projetil> projeteis;
-		Lista<Consumivel> consumiveis;
+		Jogador* p1;
+		Jogador* p2;
 
 		Gerenciador_Grafico* pGG;
 		GerenciadorDeColisoes* pGC;
@@ -26,11 +24,14 @@ namespace Fases {
 		sf::RectangleShape corpo;
 		nlohmann::json mapa;
 
+		bool multijogador;
+
 	public:
-		Fase();
+		Fase(bool m);
 		~Fase();
 
 		void executar(sf::Time deltaTime);
+		virtual void verificarVivos();
 
 		virtual void inicializar() = 0;
 		virtual void executar() = 0;
@@ -39,8 +40,12 @@ namespace Fases {
 
 		void carregarMapa(std::string mapaJson);
 		void criarChao();
-		//virtual void criarNinjaGarras() = 0;
-		//virtual void criarNinjaShuriken() = 0;
-		//virtual void criarPlataforma() = 0;
+
+		void criarJogadores();
+		virtual void criarNinjaGarras() = 0;
+		virtual void criarNinjaShuriken() = 0;
+		virtual void criarPlataforma() = 0;
+		virtual void criarMoedas() = 0;
+		virtual void criarCura() = 0;
 	};
 }
