@@ -53,10 +53,14 @@ namespace Gerenciadores
 			pilhaDeEstados.push(estado); //adiciona o estado na pilha
 		else
 			cout << "ponteiro nulo" << endl;
+
+		cout << "adicionei estado AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl; 
 	}
 
 	void GerenciadorDeEstados::removerEstado()
 	{
+
+		cout << "removi estado AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
 		if (pilhaDeEstados.top() != nullptr)
 		{
 			delete (pilhaDeEstados.top()); //deleta o estado do topo da pilha

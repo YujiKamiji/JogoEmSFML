@@ -1,7 +1,6 @@
 #include "Ente.h"
 
 Gerenciador_Grafico* Ente::pGG = Gerenciador_Grafico::getInstancia();
-GerenciadorDeEstados* Ente::pGE = GerenciadorDeEstados::getInstancia();
 int Ente::cont = 0;
 
 Ente::Ente():

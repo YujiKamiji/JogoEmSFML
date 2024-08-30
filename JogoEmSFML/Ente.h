@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Gerenciador_Grafico.h"
-#include "GerenciadorDeEstados.h"
+
 
 using namespace Gerenciadores;
 
@@ -10,7 +10,6 @@ protected:
 	const int id;
 	static int cont;
 	static Gerenciador_Grafico* pGG;
-	static GerenciadorDeEstados* pGE;
 	sf::Texture* textura;
 
 public:

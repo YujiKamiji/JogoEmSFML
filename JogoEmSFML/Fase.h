@@ -18,6 +18,7 @@ namespace Fases {
 		Jogador* p1;
 		Jogador* p2;
 
+		
 		Gerenciador_Grafico* pGG;
 		GerenciadorDeColisoes* pGC;
 

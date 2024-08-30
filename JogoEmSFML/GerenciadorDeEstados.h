@@ -4,7 +4,6 @@
 #pragma once
 #include "stdafx.h"
 #include "Estados.h"
-#include "Gerenciador_Grafico.h"
 #include <stack>
 
 

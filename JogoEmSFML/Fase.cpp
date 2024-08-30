@@ -3,7 +3,7 @@
 namespace Fases {
 	Fase::Fase(bool m) :
 		entidades(), p1(nullptr), p2(nullptr), multijogador(m), corpo(),
-		pGG(pGG->getInstancia()), pGC(pGC->getInstancia()) {}
+		pGG(pGG->getInstancia()), pGC(pGC->getInstancia()){}
 
 	Fase::~Fase() {}
 
@@ -30,7 +30,7 @@ namespace Fases {
 			}
 			else
 			{
-				pGE->removerEstado();
+				//pGE->removerEstado();
 			}
 		}
 		else {
