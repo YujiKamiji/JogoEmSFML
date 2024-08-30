@@ -40,10 +40,10 @@ namespace Gerenciadores {
 
 		//verifica se houve colisao entre personagens e obstaculos
 
-		for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
+		for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
 		{
 
-			for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
+			for (itPers1 = personagens.inicio(); itPers1 != personagens.fim(); itPers1++)
 			{
 				intersecao = criterioDeColisao((*itPers1), (*itObs));
 
@@ -58,13 +58,13 @@ namespace Gerenciadores {
 
 		//verifica se houve colisao entre personagens
 
-		for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
+		for (itPers1 = personagens.inicio(); itPers1 != personagens.fim(); itPers1++)
 		{
 			if (!(*itPers1)->getVivo())
 			{
 				continue;
 			}
-			for (itPers2 = (personagens->inicio())++; itPers2 != personagens->fim(); itPers2++)
+			for (itPers2 = (personagens.inicio())++; itPers2 != personagens.fim(); itPers2++)
 			{
 				if (!(*itPers2)->getVivo())
 				{
@@ -85,13 +85,13 @@ namespace Gerenciadores {
 
 		//verifica se houve colisao entre projeteis e personagens
 
-		for (itProjetil = projeteis->inicio(); itProjetil != projeteis->fim(); itProjetil++)
+		for (itProjetil = projeteis.inicio(); itProjetil != projeteis.fim(); itProjetil++)
 		{
 			if (!(*itProjetil)->getAtivo())
 			{
 				continue;
 			}
-			for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
+			for (itPers1 = personagens.inicio(); itPers1 != personagens.fim(); itPers1++)
 			{
 				if (!(*itPers1)->getVivo())
 				{
@@ -109,13 +109,13 @@ namespace Gerenciadores {
 		}
 
 		//verifica se houve colisao entre projeteis e chao
-		for (itProjetil = projeteis->inicio(); itProjetil != projeteis->fim(); itProjetil++)
+		for (itProjetil = projeteis.inicio(); itProjetil != projeteis.fim(); itProjetil++)
 		{
 			if (!(*itProjetil)->getAtivo())
 			{
 				continue;
 			}
-			for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
+			for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
 			{
 
 
@@ -131,13 +131,13 @@ namespace Gerenciadores {
 		}
 
 		//verifica se houve colisao entre obstaculos
-		for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
+		for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
 		{
 			if ((*itObs)->getId() == CHAO)
 			{
 				continue;
 			}
-			for (itObs2 = (obstaculos->inicio())++; itObs2 != obstaculos->fim(); itObs2++)
+			for (itObs2 = (obstaculos.inicio())++; itObs2 != obstaculos.fim(); itObs2++)
 			{
 				if (itObs != itObs2)
 				{
@@ -154,14 +154,14 @@ namespace Gerenciadores {
 		}
 
 		//verifica se houve colisao entre jogador consumiveis
-		for (itConsumivel = consumiveis->inicio(); itConsumivel != consumiveis->fim(); itConsumivel++)
+		for (itConsumivel = consumiveis.inicio(); itConsumivel != consumiveis.fim(); itConsumivel++)
 		{
 			if (!(*itConsumivel)->getAtivo())
 			{
 				continue;
 				//cout << "pulou consu" << endl;
 			}
-			for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
+			for (itPers1 = personagens.inicio(); itPers1 != personagens.fim(); itPers1++)
 			{
 				if (!(*itPers1)->getVivo())
 				{
@@ -195,7 +195,7 @@ namespace Gerenciadores {
 		Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);
 		Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL);
 
-		for (itObs = obstaculos->inicio(); itObs != obstaculos->fim(); itObs++)
+		for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
 		{
 			intersecao = criterioDeColisao(plat, (*itObs));
 
@@ -208,23 +208,27 @@ namespace Gerenciadores {
 
 	void GerenciadorDeColisoes::verificarVivos() {
 		Listas::Lista<Personagem>::Iterador<Personagem> itPers(NULL);
-		for (itPers = personagens->inicio(); itPers != personagens->fim(); itPers++) {
+		for (itPers = personagens.inicio(); itPers != personagens.fim(); itPers++) {
 			if (!(*itPers)->getVivo())
-				personagens->remover(*itPers);
+				personagens.remover(*itPers);
 		}
 	}
 
 	void GerenciadorDeColisoes::incluirObstaculo(Entidades::Obstaculos::Obstaculo* o) {
-		obstaculos->inserir(o);
+		if(o)
+			obstaculos.inserir(o);
 	}
 	void GerenciadorDeColisoes::incluirPersonagem(Personagem* p) {
-		personagens->inserir(p);
+		if(p)
+			personagens.inserir(p);
 	}
 	void GerenciadorDeColisoes::incluirProjetil(Entidades::Projetil* p) {
-		projeteis->inserir(p);
+		if(p)
+			projeteis.inserir(p);
 	}
 	void GerenciadorDeColisoes::incluirConsumivel(Entidades::Consumiveis::Consumivel* c) {
-		consumiveis->inserir(c);
+		if(c)
+			consumiveis.inserir(c);
 	}
 
 	GerenciadorDeColisoes* GerenciadorDeColisoes::instancia = nullptr;

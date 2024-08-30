@@ -45,7 +45,7 @@ namespace Fases {
 		virtual void criarNinjaGarras() = 0;
 		virtual void criarNinjaShuriken() = 0;
 		virtual void criarPlataforma() = 0;
-		virtual void criarMoedas() = 0;
+		virtual void criarMoeda() = 0;
 		virtual void criarCura() = 0;
 	};
 }

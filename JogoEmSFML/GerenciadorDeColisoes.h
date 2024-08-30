@@ -20,10 +20,10 @@ namespace Gerenciadores {
 		GerenciadorDeColisoes();
 		static GerenciadorDeColisoes* instancia;
 
-		Lista<Entidades::Obstaculos::Obstaculo>* obstaculos;
-		Lista<Entidades::Personagens::Personagem>* personagens;
-		Lista<Entidades::Projetil>* projeteis;
-		Lista<Entidades::Consumiveis::Consumivel>* consumiveis;
+		Lista<Entidades::Obstaculos::Obstaculo> obstaculos;
+		Lista<Entidades::Personagens::Personagem> personagens;
+		Lista<Entidades::Projetil> projeteis;
+		Lista<Entidades::Consumiveis::Consumivel> consumiveis;
 
 	public:
 		~GerenciadorDeColisoes();

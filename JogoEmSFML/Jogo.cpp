@@ -1,7 +1,7 @@
 #include "Jogo.h"
 
 Jogo::Jogo() {
-	fase1 = new Floresta();
+	fase1 = new Floresta(false);
 	executar();
 }
 
