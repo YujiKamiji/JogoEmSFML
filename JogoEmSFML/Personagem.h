@@ -25,7 +25,7 @@ namespace Entidades {
 			int getVidas();
 			bool getVivo();
 			int getDano();
-			virtual ID getId() = 0;
+			virtual ID getId() const  = 0;
 
 			void receberDano(int dano);
 			virtual void mover(sf::Time deltaTime) = 0;

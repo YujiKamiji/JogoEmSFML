@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Inimigo.h"
 
+#define PONTOS 2 //pontuacao q ele vale
+
 namespace Entidades {
 	namespace Personagens {
 		class NinjaGarras : public Inimigo {
@@ -30,7 +32,7 @@ namespace Entidades {
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 
-			ID getId();
+			ID getId() const;
 		};
 	}
 }

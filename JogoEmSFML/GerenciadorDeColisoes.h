@@ -6,6 +6,7 @@
 #include "stdafx.h"
 #include "Personagem.h"
 #include "Obstaculo.h"
+#include "Consumiveis.h"
 #include "Lista.h"
 #include "Entidade.h"
 
@@ -20,8 +21,9 @@ namespace Gerenciadores {
 		Lista<Entidades::Obstaculos::Obstaculo>* obstaculos;
 		Lista<Entidades::Personagens::Personagem>* personagens;
 		Lista<Entidades::Projetil>* projeteis;
+		Lista<Entidades::Consumiveis::Consumivel>* consumiveis;
 	public:
-		GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs, Lista<Entidades::Personagens::Personagem>* pers, Lista<Entidades::Projetil>* proj);
+		GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs, Lista<Entidades::Personagens::Personagem>* pers, Lista<Entidades::Projetil>* proj, Lista<Entidades::Consumiveis::Consumivel>* consu);
 		~GerenciadorDeColisoes();
 		sf::Vector2f criterioDeColisao(Entidades::Entidade* e1, Entidades::Entidade* e2);
 		void colidir();

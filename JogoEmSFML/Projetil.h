@@ -39,7 +39,7 @@ namespace Entidades {
 
 		bool getAtivo();
 		bool getAmigavel();
-		ID getId();
+		ID getId() const;
 		int getDano();
 	};
 }

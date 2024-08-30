@@ -22,7 +22,7 @@ namespace Entidades {
 			sf::Vector2f getVelocidade();
 			virtual int getDano();
 			bool getDanoso();
-			virtual ID getId() = 0;
+			virtual ID getId() const = 0;
 
 			virtual void executar(sf::Time deltaTime) = 0;
 			virtual void desenhar() = 0;

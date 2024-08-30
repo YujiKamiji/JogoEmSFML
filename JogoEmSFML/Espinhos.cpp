@@ -66,7 +66,7 @@ void Entidades::Obstaculos::Espinhos::colidir(Entidade* e, sf::Vector2f intersec
 	
 }
 
-ID Entidades::Obstaculos::Espinhos::getId()
+ID Entidades::Obstaculos::Espinhos::getId() const
 {
 	return ID(id);
 }

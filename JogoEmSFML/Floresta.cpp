@@ -9,12 +9,13 @@ namespace Fases {
 	Floresta::~Floresta() { delete pGC; }
 
 	void Floresta::inicializar() {
+
 		carregarMapa("C:/Users/Enzo/HelloWorld/JogoEmSFML/Floresta.tmj");
 		criarChao();
-
 		p1 = new Jogador(sf::Vector2f(100, 1400), sf::Vector2f(50.0, 100.0));
 		personagens.inserir(p1);
 		projeteis.inserir(p1->getAtaque());
+
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
 
@@ -23,8 +24,8 @@ namespace Fases {
 		projeteis.inserir(p2->getAtaque());
 		entidades.adicionar(p2);
 		entidades.adicionar(p2->getAtaque());*/
-
-		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
+    
+		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis, &consumiveis);
 	}
 
 

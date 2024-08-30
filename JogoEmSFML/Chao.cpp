@@ -34,7 +34,7 @@ void Entidades::Obstaculos::Chao::colidir(Entidade* e, sf::Vector2f intersecao)
 {
 }
 
-ID Entidades::Obstaculos::Chao::getId()
+ID Entidades::Obstaculos::Chao::getId() const
 {
 	return ID(id);
 }

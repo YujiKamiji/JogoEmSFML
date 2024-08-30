@@ -2,10 +2,12 @@
 
 Gerenciadores::GerenciadorDeColisoes::GerenciadorDeColisoes(Lista<Entidades::Obstaculos::Obstaculo>* obs,
 															Lista<Entidades::Personagens::Personagem>* pers,
-															Lista<Entidades::Projetil>* proj):
+															Lista<Entidades::Projetil>* proj,
+															Lista<Entidades::Consumiveis::Consumivel>* consu):
 obstaculos(obs), 
 personagens(pers), 
-projeteis(proj)
+projeteis(proj),
+consumiveis(consu)
 {
 }
 
@@ -39,6 +41,7 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers1(NULL);
 	Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers2(NULL);
 	Listas::Lista<Entidades::Projetil>::Iterador<Entidades::Projetil> itProjetil(NULL);
+	Listas::Lista<Entidades::Consumiveis::Consumivel>::Iterador<Entidades::Consumiveis::Consumivel> itConsumivel(NULL);
 
 	//verifica se houve colisao entre personagens e obstaculos
 
@@ -153,6 +156,37 @@ void Gerenciadores::GerenciadorDeColisoes::colidir()
 			}
 		}
 
+	}
+
+	//verifica se houve colisao entre jogador consumiveis
+	for (itConsumivel = consumiveis->inicio(); itConsumivel != consumiveis->fim(); itConsumivel++)
+	{
+		if (!(*itConsumivel)->getAtivo())
+		{
+			continue;
+			//cout << "pulou consu" << endl;
+		}
+		for (itPers1 = personagens->inicio(); itPers1 != personagens->fim(); itPers1++)
+		{
+			if (!(*itPers1)->getVivo())
+			{
+				continue;
+			}
+
+			if ((*itPers1)->getId() != JOGADOR)
+			{
+				continue;
+			}
+
+			intersecao = criterioDeColisao((*itPers1), (*itConsumivel));
+
+			if (intersecao.x < 0.0 && intersecao.y < 0.0)
+			{
+				//cout << "colisao consumivel" << endl;
+				(*itConsumivel)->colidir((*itPers1), intersecao);
+				(*itPers1)->colidir((*itConsumivel), intersecao);
+			}
+		}
 	}
 
 }

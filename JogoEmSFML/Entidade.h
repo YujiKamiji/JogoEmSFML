@@ -10,6 +10,9 @@ enum ID {
 	PROJETIL,
 	NINJA_GARRAS,
 	NINJA_SHURIKEN,
+	CURA,
+	MUNICAO,
+	MOEDA,
 	SHOGUN,
 	CHAO,
 	PLATAFORMA,
@@ -20,7 +23,6 @@ enum ID {
 namespace Entidades {
 	class Entidade: public Ente {
 	protected:
-		ID id;
 		sf::Vector2f velocidades;
 		bool noAr;
 
@@ -28,10 +30,10 @@ namespace Entidades {
 		Entidade();
 		virtual ~Entidade();
 
-		virtual void mover(sf::Time deltaTime) = 0;
+		virtual void mover(sf::Time deltaTime);
 		void setNoAr(bool b);
 
-		virtual void executar(sf::Time deltaTime) = 0;
+		virtual void executar(sf::Time deltaTime);
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
 
@@ -40,7 +42,7 @@ namespace Entidades {
 		virtual sf::Vector2f getPosicao() = 0;
 		virtual sf::Vector2f getTamanho() = 0;
 		virtual sf::Vector2f getVelocidade() = 0;
-		virtual int getDano() = 0;
-		virtual ID getId() = 0;
+		virtual int getDano();
+		virtual ID getId() const = 0;
 	};
 }

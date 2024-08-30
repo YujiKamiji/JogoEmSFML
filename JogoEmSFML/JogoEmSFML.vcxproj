@@ -142,6 +142,8 @@
     <ClCompile Include="AtaqueCorte.cpp" />
     <ClCompile Include="Caixote.cpp" />
     <ClCompile Include="Chao.cpp" />
+    <ClCompile Include="Consumiveis.cpp" />
+    <ClCompile Include="Cura.cpp" />
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />
@@ -155,6 +157,8 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Moeda.cpp" />
+    <ClCompile Include="Municao.cpp" />
     <ClCompile Include="NinjaGarras.cpp" />
     <ClCompile Include="NinjaShuriken.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
@@ -168,6 +172,8 @@
     <ClInclude Include="AtaqueCorte.h" />
     <ClInclude Include="Caixote.h" />
     <ClInclude Include="Chao.h" />
+    <ClInclude Include="Consumiveis.h" />
+    <ClInclude Include="Cura.h" />
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Espinhos.h" />
@@ -181,6 +187,8 @@
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Moeda.h" />
+    <ClInclude Include="Municao.h" />
     <ClInclude Include="NinjaGarras.h" />
     <ClInclude Include="NinjaShuriken.h" />
     <ClInclude Include="Obstaculo.h" />

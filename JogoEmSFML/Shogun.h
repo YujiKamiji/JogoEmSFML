@@ -4,6 +4,8 @@
 #include "Shuriken.h"
 #include "ListaEntidades.h"
 
+#define PONTOS 20 //pontuacao q ele vale
+
 namespace Entidades {
 	namespace Personagens {
 		class Shogun : public Inimigo {
@@ -38,7 +40,7 @@ namespace Entidades {
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 
-			ID getId();
+			ID getId() const;
 		};
 	}
 }
