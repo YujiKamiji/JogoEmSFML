@@ -30,7 +30,7 @@ namespace Fases {
 			}
 			else
 			{
-				pGG->fechar_janela(); //TEMPORARIO ENQUANTO NAO TEMOS MENU!!!!!!!!
+				pGE->removerEstado();
 			}
 		}
 		else {
