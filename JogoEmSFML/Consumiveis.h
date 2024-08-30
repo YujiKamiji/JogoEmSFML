@@ -24,7 +24,7 @@ namespace Entidades
 			virtual sf::Vector2f getTamanho() = 0;
 			virtual sf::Vector2f getVelocidade() = 0;
 			virtual int getDano() = 0;
-			virtual ID getId() = 0;
+			virtual ID getId() const = 0;
 			bool getAtivo();
 
 			void setAtivo(bool b);

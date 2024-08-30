@@ -30,7 +30,7 @@ namespace Entidades {
 			void obstacular(sf::Time deltaTime);
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 
-			ID getId();
+			ID getId() const;
 			int getDano();
 
 			void setMovel(bool Movel);

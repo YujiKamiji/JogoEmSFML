@@ -39,7 +39,7 @@ namespace Entidades
 		{
 			return -1;
 		}
-		ID Cura::getId()
+		ID Cura::getId() const
 		{
 			return ID(id);
 		}

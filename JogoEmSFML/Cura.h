@@ -22,7 +22,7 @@ namespace Entidades
 			sf::Vector2f getTamanho();
 			sf::Vector2f getVelocidade();
 			int getDano();
-			ID getId();
+			ID getId() const;
 			int getCura();
 
 			void mover(sf::Time deltaTime);

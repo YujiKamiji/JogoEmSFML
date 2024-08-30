@@ -44,7 +44,9 @@ namespace Entidades {
 	bool Projetil::getAtivo() { return ativo; }
 	bool Projetil::getAmigavel() { return amigavel; }
 
-	ID Projetil::getId(){ return ID(id); }
+
+
+	ID Projetil::getId() const { return ID(id); }
 	int Projetil::getDano()
 	{
 		return dano;

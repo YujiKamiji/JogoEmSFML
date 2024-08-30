@@ -28,7 +28,7 @@ namespace Entidades {
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 
-			ID getId();
+			ID getId() const;
 			int getDano();
 		};
 

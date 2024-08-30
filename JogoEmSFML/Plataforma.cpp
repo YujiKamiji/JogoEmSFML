@@ -103,7 +103,7 @@ void Entidades::Obstaculos::Plataforma::colidir(Entidade* e, sf::Vector2f inters
 	
 }
 
-ID Entidades::Obstaculos::Plataforma::getId()
+ID Entidades::Obstaculos::Plataforma::getId() const
 {
 	return ID(id);
 }

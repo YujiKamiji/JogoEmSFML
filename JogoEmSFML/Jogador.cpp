@@ -215,7 +215,7 @@ namespace Entidades {
 			return nullptr;
 		}
 
-		ID Jogador::getId()
+		ID Jogador::getId() const
 		{
 			return ID(id);
 		}

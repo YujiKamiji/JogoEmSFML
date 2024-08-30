@@ -27,7 +27,7 @@ namespace Entidades {
 			Jogador* getP1();
 			Jogador* getP2();
 			void verificarJogadores();
-			virtual ID getId() = 0;
+			virtual ID getId() const = 0;
 			virtual sf::Vector2f getVelocidade() = 0;
 		};
 	}

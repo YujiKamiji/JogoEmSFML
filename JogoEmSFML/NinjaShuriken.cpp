@@ -170,6 +170,6 @@ namespace Entidades {
 			}
 		}
 
-		ID NinjaShuriken::getId() { return ID(id); }
+		ID NinjaShuriken::getId() const { return ID(id); }
 	}
 }

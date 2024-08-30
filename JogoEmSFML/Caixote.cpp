@@ -64,7 +64,7 @@ void Entidades::Obstaculos::Caixote::colidir(Entidade* e, sf::Vector2f interseca
 	}
 }
 
-ID Entidades::Obstaculos::Caixote::getId()
+ID Entidades::Obstaculos::Caixote::getId() const
 {
 	return ID(id);
 }

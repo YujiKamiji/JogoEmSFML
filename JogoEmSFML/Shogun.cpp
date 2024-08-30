@@ -166,6 +166,6 @@ namespace Entidades {
 			}
 		}
 
-		ID Shogun::getId() { return ID(id); }
+		ID Shogun::getId() const { return ID(id); }
 	}
 }

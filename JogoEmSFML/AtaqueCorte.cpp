@@ -2,7 +2,7 @@
 
 namespace Entidades {
 	AtaqueCorte::AtaqueCorte(sf::Vector2f pos, sf::Vector2f tam) :
-		Projetil(pos, tam)
+		Projetil(pos, tam), danoDado(false)
 	{
 		dano = 10;
 		duracao = 350;

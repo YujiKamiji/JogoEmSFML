@@ -149,6 +149,6 @@ namespace Entidades {
 			
 		}
 
-		ID NinjaGarras::getId() { return ID(id); }
+		ID NinjaGarras::getId() const { return ID(id); }
 	}
 }
