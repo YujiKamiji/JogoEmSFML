@@ -7,6 +7,11 @@ namespace Fases {
 
 	Fase::~Fase() {}
 
+	void Fase::setMultijogador(bool m)
+	{
+		multijogador = m;  
+	}
+
 	void Fase::executar(sf::Time deltaTime) {}
 
 	void Fase::verificarVivos() {

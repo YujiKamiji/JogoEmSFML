@@ -1,10 +1,16 @@
 #include "Jogo.h"
 
-Jogo::Jogo() {
-	fase1 = new Floresta(false);
-	executar();
+
+Jogo::Jogo():
+	pGE(Gerenciadores::GerenciadorDeEstados::getInstancia())
+{
+	pGE->adicionarEstado(FLORESTA); 
+	executar(); 
 }
 
 Jogo::~Jogo() {}
 
-void Jogo::executar() { fase1->executar(); }
+void Jogo::executar()
+{ 
+	pGE->executar();
+}

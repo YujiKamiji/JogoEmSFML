@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
 #include "Floresta.h"
-#include "EstadoJogo.h"
-#include "EstadoMenu.h"
+
+using namespace Fases;
 
 enum idEstado 
 { 
@@ -18,15 +18,19 @@ enum idEstado
 
 namespace Estados
 {
+	class EstadoJogo;
+	class EstadoMenu;
+
 	class Estado 
 	{
 	protected:
 		idEstado id;
+		Floresta* floresta;
 	public:
-		Estado();
+		Estado(idEstado ID);
 		virtual ~Estado();
-		Estado* criarEstado(idEstado id);
-		virtual void executar(sf::Time deltaTime) = 0;
+		void criarEstado();
+		void executar();
 
 		idEstado getId() const;
 	};

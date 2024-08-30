@@ -1,8 +1,9 @@
 #include "Estados.h"
 
-namespace Estados {
-
-	Estado::Estado()
+namespace Estados
+{
+	Estado::Estado(idEstado ID)
+		: id(ID), floresta(nullptr)
 	{
 	}
 
@@ -10,35 +11,59 @@ namespace Estados {
 	{
 	}
 
-	
-
-	Estado* Estado::criarEstado(idEstado id)
+	void Estado::criarEstado()
 	{
-		//criar um estadoMenu
-		if (id == MENU || id == MENU_OPCOES || id == PAUSE) 
+		switch (id)
 		{
-			EstadoMenu* estadoMenu = new EstadoMenu(id);
-			return estadoMenu;
+		case MENU:  
+			break;
+		case MENU_OPCOES: 
+			break;
+		case FLORESTA:
+			floresta = new Floresta(false);
+			break;
+		case CASTELO: 
+			break;
+		case PAUSE: 
+			break;
+		case GAMEOVER: 
+			break;
+		case VITORIA: 
+			break;
+		default:
+			cout << "idEstado invalido" << endl;
+			break;
 		}
-		//criar um estadoJogo
-		else
-		{
-			EstadoJogo* estadoJogo = new EstadoJogo(id);
-			return estadoJogo;
-		}
-
-		cout << "idEstado invalido" << endl;
-		return nullptr;		 
+		
+		
 	}
 
-	void Estado::executar(sf::Time deltaTime)
+	void Estado::executar()
 	{
+		switch (id)
+		{
+		case MENU:
+			break;
+		case MENU_OPCOES:
+			break;
+		case FLORESTA:
+			floresta->executar();
+			break;
+		case CASTELO:
+			break;
+		case PAUSE:
+			break;
+		case GAMEOVER:
+			break;
+		case VITORIA:
+			break;
+		default:
+			break;
+		}
 	}
 
 	idEstado Estado::getId() const
 	{
 		return idEstado(id);
 	}
-
 }
-

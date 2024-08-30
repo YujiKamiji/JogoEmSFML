@@ -1,11 +1,11 @@
 #pragma once
-#include "Floresta.h"
+#include "GerenciadorDeEstados.h"
 
 using namespace Fases;
 
 class Jogo {
 private:
-	Floresta* fase1;
+	GerenciadorDeEstados* pGE;
 	//vai ter o gerenciador de estados aqui
 
 public:

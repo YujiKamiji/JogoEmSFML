@@ -29,11 +29,13 @@ namespace Gerenciadores
 
 	
 
-	void GerenciadorDeEstados::executar(sf::Time deltaTime)
+	void GerenciadorDeEstados::executar()
 	{
+
+
 		if (!pilhaDeEstados.empty())
 		{
-			pilhaDeEstados.top()->executar(deltaTime); //executa o estado do topo da pilha
+			pilhaDeEstados.top()->executar(); //executa o estado do topo da pilha
 		}
 		else
 		{
@@ -44,12 +46,13 @@ namespace Gerenciadores
 
 	void GerenciadorDeEstados::adicionarEstado(idEstado id)
 	{
-		Estado* estado = estado->criarEstado(id);
+		Estado* estado = new Estado(id); //cria um novo estado de acordo com o id passado
+		estado->criarEstado();
 
 		if (estado != nullptr)
 			pilhaDeEstados.push(estado); //adiciona o estado na pilha
 		else
-			cout << "estado invalido" << endl;
+			cout << "ponteiro nulo" << endl;
 	}
 
 	void GerenciadorDeEstados::removerEstado()

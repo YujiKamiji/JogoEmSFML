@@ -23,7 +23,7 @@ namespace Gerenciadores
 		~GerenciadorDeEstados();
 		static GerenciadorDeEstados* getInstancia();
 
-		void executar(sf::Time deltaTime); //executa o estado no topo da pilha
+		void executar(); //executa o estado no topo da pilha
 		
 		void adicionarEstado(idEstado id); //adiciona um estado na pilha
 		void removerEstado(); //remove o estado do topo da pilha

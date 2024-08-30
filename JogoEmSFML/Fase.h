@@ -30,6 +30,8 @@ namespace Fases {
 		Fase(bool m);
 		~Fase();
 
+		void setMultijogador(bool m);
+
 		void executar(sf::Time deltaTime);
 		virtual void verificarVivos();
 
