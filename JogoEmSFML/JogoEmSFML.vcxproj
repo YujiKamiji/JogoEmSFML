@@ -147,9 +147,13 @@
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />
+    <ClCompile Include="EstadoJogo.cpp" />
+    <ClCompile Include="EstadoMenu.cpp" />
+    <ClCompile Include="Estados.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Floresta.cpp" />
     <ClCompile Include="GerenciadorDeColisoes.cpp" />
+    <ClCompile Include="GerenciadorDeEstados.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Jogador.cpp" />
@@ -177,9 +181,13 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Espinhos.h" />
+    <ClInclude Include="EstadoJogo.h" />
+    <ClInclude Include="EstadoMenu.h" />
+    <ClInclude Include="Estados.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="Floresta.h" />
     <ClInclude Include="GerenciadorDeColisoes.h" />
+    <ClInclude Include="GerenciadorDeEstados.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Jogador.h" />
