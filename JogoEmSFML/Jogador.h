@@ -2,6 +2,9 @@
 #include "stdafx.h"
 #include "Personagem.h"
 #include "AtaqueCorte.h"
+#include "Cura.h"
+
+#define VIDAMAX 1000
 
 namespace Entidades {
 	namespace Personagens {
@@ -37,6 +40,7 @@ namespace Entidades {
 			ID getId();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
+			void recuperarVida(int Cura);
 		};
 	}
 }

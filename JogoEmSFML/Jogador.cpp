@@ -10,7 +10,7 @@ namespace Entidades {
 			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(50,50))),
 			id(JOGADOR)
 		{
-			vidas = 1000;
+			vidas = VIDAMAX;
 			dano = 100;
 			velocidadeMax = 10;
 			aceleracao = 50;
@@ -27,6 +27,7 @@ namespace Entidades {
 				vivo = false;
 			mover(deltaTime);
 
+			//cout << "vidas:" << vidas << endl;
 			if(olhandoDireita)
 				ataque->Posicionar(sf::Vector2f(corpo.getPosition().x + 50, corpo.getPosition().y));
 			else
@@ -256,6 +257,11 @@ namespace Entidades {
 
 			}
 			
+			if (e->getId() == CURA)
+			{
+				recuperarVida(static_cast<Entidades::Consumiveis::Cura*>(e)->getCura()); 
+			}
+
 			if (e->getId() == ESPINHOS)
 			{
 				receberDano(e->getDano());
@@ -279,6 +285,16 @@ namespace Entidades {
 			}
 				
 
+		}
+		void Jogador::recuperarVida(int Cura)
+		{
+			//cout << "vida antes: " << vidas << endl;
+			if (vidas < VIDAMAX)
+				vidas += Cura;
+			else
+				vidas = VIDAMAX;
+			//cout << "recuperou vida, vida agr: " << vidas << endl;
+			
 		}
 	}
 }

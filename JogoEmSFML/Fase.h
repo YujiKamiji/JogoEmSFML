@@ -7,6 +7,7 @@ using namespace Listas;
 using namespace Entidades;
 using namespace Personagens;
 using namespace Obstaculos;
+using namespace Consumiveis;
 
 namespace Fases {
 	class Fase: public Ente {
@@ -15,6 +16,7 @@ namespace Fases {
 		Lista<Personagem> personagens;
 		Lista<Obstaculo> obstaculos;
 		Lista<Projetil> projeteis;
+		Lista<Consumivel> consumiveis;
 
 		Gerenciador_Grafico* pGG;
 		GerenciadorDeColisoes* pGC;

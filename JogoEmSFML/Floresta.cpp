@@ -9,7 +9,7 @@ namespace Fases {
 	Floresta::~Floresta() { delete pGC; }
 
 	void Floresta::inicializar() {
-		p1 = new Jogador(sf::Vector2f(100, 300), sf::Vector2f(50.0, 100.0));
+		p1 = new Jogador(sf::Vector2f(100, 375), sf::Vector2f(50.0, 100.0));
 		p2 = new Jogador(sf::Vector2f(200, 300), sf::Vector2f(50.0, 100.0));
 		Chao* chao1 = new Chao(sf::Vector2f(1800, 500), sf::Vector2f(3600, 60));
 		Chao* chao2 = new Chao(sf::Vector2f(1400, 380), sf::Vector2f(1200, 180));
@@ -22,6 +22,8 @@ namespace Fases {
 		Caixote* caixa1 = new Caixote(sf::Vector2f(400, 100), sf::Vector2f(70.0, 130.0));
 		Espinhos* espinhos1 = new Espinhos(sf::Vector2f(1300, 100), sf::Vector2f(100, 50));
 		Shogun* shogun1 = new Shogun(sf::Vector2f(2000, 100), sf::Vector2f(70.0, 130.0), p1, p2);
+
+		Cura* c1 = new Cura(sf::Vector2f(300, 400), sf::Vector2f(50, 50));
 
 		plat1->setMovel(true);
 
@@ -42,11 +44,12 @@ namespace Fases {
 		projeteis.inserir(ns1->getAtaque());
 		projeteis.inserir(shogun1->getAtaque());
 
+		consumiveis.inserir(c1);
 
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
-		entidades.adicionar(p2);
-		entidades.adicionar(p2->getAtaque());
+		entidades.adicionar(p2); 
+		entidades.adicionar(p2->getAtaque()); 
 		entidades.adicionar(n1);
 		entidades.adicionar(n2);
 		entidades.adicionar(ns1);
@@ -59,8 +62,9 @@ namespace Fases {
 		entidades.adicionar(espinhos1);
 		entidades.adicionar(shogun1);
 		entidades.adicionar(shogun1->getAtaque());
+		entidades.adicionar(c1);
 
-		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis);
+		pGC = new GerenciadorDeColisoes(&obstaculos, &personagens, &projeteis, &consumiveis);
 	}
 
 

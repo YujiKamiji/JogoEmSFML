@@ -52,7 +52,7 @@ namespace Entidades {
 			if (!atacando && intervaloAtaque <= 0.0f) {
 				atacar(deltaTime);
 				intervaloAtaque = 1.5f;
-				cout << "Ataque shuriken" << endl;
+				//cout << "Ataque shuriken" << endl;
 			}
 			else {
 				if (!s->getAtivo())
@@ -165,7 +165,7 @@ namespace Entidades {
 				Projetil* p = static_cast<Projetil*>(e);
 				if (p->getAmigavel() == true) {
 					receberDano(p->getDano());
-					cout << "inimigo tomou dano" << endl;
+					//cout << "inimigo tomou dano" << endl;
 				}
 			}
 		}
