@@ -2,9 +2,9 @@
 
 namespace Estados {
 	EstadoJogo::EstadoJogo(idEstado ID):
-		id(ID)
+		Estado()
 	{
-		
+		id = ID;
 	}
 
 	EstadoJogo::~EstadoJogo()

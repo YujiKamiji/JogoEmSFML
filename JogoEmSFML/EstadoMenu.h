@@ -7,9 +7,11 @@ namespace Estados
 	class EstadoMenu : public Estado
 	{
 	private:
-		idEstado id;
+		
 	public:
 		EstadoMenu(idEstado ID);
 		~EstadoMenu();
+
+		void executar(sf::Time deltaTime);
 	};
 }

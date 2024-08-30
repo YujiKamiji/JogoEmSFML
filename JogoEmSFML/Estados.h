@@ -20,14 +20,14 @@ namespace Estados
 {
 	class Estado 
 	{
-	private:
-		Estado* criarEstadoMenu(idEstado id);
-		Estado* criarEstadoJogo(idEstado id);
-		
-		
+	protected:
+		idEstado id;
 	public:
 		Estado();
-		~Estado();
+		virtual ~Estado();
 		Estado* criarEstado(idEstado id);
+		virtual void executar(sf::Time deltaTime) = 0;
+
+		idEstado getId() const;
 	};
 }

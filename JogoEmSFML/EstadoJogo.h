@@ -7,10 +7,11 @@ namespace Estados
 	class EstadoJogo : public Estado
 	{
 	private:
-		idEstado id;
+		
 	public:
 		EstadoJogo(idEstado ID);
 		~EstadoJogo();
-
+		
+		void executar(sf::Time deltaTime);
 	};
 }

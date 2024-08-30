@@ -3,8 +3,9 @@
 namespace Estados
 {
 	EstadoMenu::EstadoMenu(idEstado ID) :
-		id(ID)
+		Estado()
 	{
+		id = ID;
 	}
 
 	EstadoMenu::~EstadoMenu()

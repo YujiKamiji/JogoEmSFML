@@ -29,15 +29,22 @@ namespace Gerenciadores
 
 	
 
-	void GerenciadorDeEstados::executar()
+	void GerenciadorDeEstados::executar(sf::Time deltaTime)
 	{
-		//TODO
+		if (!pilhaDeEstados.empty())
+		{
+			pilhaDeEstados.top()->executar(deltaTime); //executa o estado do topo da pilha
+		}
+		else
+		{
+			cout << "pilha de estados vazia" << endl;
+		}
+
 	}
 
 	void GerenciadorDeEstados::adicionarEstado(idEstado id)
 	{
-		Estado* estado = new Estado;
-		estado->criarEstado(id);
+		Estado* estado = estado->criarEstado(id);
 
 		if (estado != nullptr)
 			pilhaDeEstados.push(estado); //adiciona o estado na pilha

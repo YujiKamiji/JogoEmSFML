@@ -2,27 +2,17 @@
 
 namespace Estados {
 
-	Estados::Estado::Estado()
+	Estado::Estado()
 	{
 	}
 
-	Estados::Estado::~Estado()
+	Estado::~Estado()
 	{
-	}
-
-	Estado* Estado::criarEstadoMenu(idEstado id)
-	{
-		return nullptr;
-	}
-
-	Estado* Estado::criarEstadoJogo(idEstado id)
-	{
-		return nullptr;
 	}
 
 	
 
-	Estado* Estados::Estado::criarEstado(idEstado id)
+	Estado* Estado::criarEstado(idEstado id)
 	{
 		//criar um estadoMenu
 		if (id == MENU || id == MENU_OPCOES || id == PAUSE) 
@@ -39,6 +29,15 @@ namespace Estados {
 
 		cout << "idEstado invalido" << endl;
 		return nullptr;		 
+	}
+
+	void Estado::executar(sf::Time deltaTime)
+	{
+	}
+
+	idEstado Estado::getId() const
+	{
+		return idEstado(id);
 	}
 
 }
