@@ -42,6 +42,23 @@ namespace Gerenciadores {
 		return (janela->isOpen());
 	}
 
+	sf::Texture* Gerenciador_Grafico::carregarTextura(std::string caminho) {
+		std::map<const std::string, sf::Texture*> ::iterator it = texturas.find(caminho);
+		if (it != texturas.end())
+			return it->second;
+
+		sf::Texture* tex = new sf::Texture();
+
+		if (!tex->loadFromFile(caminho))
+		{
+			std::cout << "Texture missing" << std::endl;
+		}
+
+		texturas[caminho] = tex;
+
+		return tex;
+	}
+
 	void Gerenciador_Grafico::camera_segue(sf::Vector2f posicao1) {
 		if (posicao1.x < LARGURA / 2)
 		{

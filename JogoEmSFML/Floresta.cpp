@@ -5,6 +5,10 @@ namespace Fases {
 		Fase(m), finalFase(11700.f)
 	{
 		inicializar();
+		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
+		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
+		textura = pGG->carregarTextura("Sprites/Floresta.png");
+		corpo.setTexture(textura);
 	}
 	Floresta::~Floresta() { delete pGC; }
 
@@ -56,10 +60,13 @@ namespace Fases {
 			verificarVivos();
 			
 			entidades.desenhar();
+			desenhar();
 			pGG->mostrar();
 		}
 	}
-	void Floresta::desenhar() {}
+	void Floresta::desenhar() {
+		pGG->desenhar(&corpo);
+	}
 	void Floresta::salvar() {}
 
 	void Floresta::criarNinjaGarras() {

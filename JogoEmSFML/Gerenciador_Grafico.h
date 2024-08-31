@@ -25,6 +25,8 @@ namespace Gerenciadores {
 		void fechar_janela();
 		bool janela_aberta();
 
+		sf::Texture* carregarTextura(std::string caminho);
+
 		void camera_segue(sf::Vector2f posicao1);
 		void camera_segue(sf::Vector2f posicao1, sf::Vector2f posicao);
 
