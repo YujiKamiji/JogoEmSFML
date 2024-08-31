@@ -292,9 +292,8 @@ namespace Entidades {
 		void Jogador::recuperarVida(int Cura)
 		{
 			//cout << "vida antes: " << vidas << endl;
-			if (vidas < VIDAMAX)
-				vidas += Cura;
-			else
+			vidas += Cura;
+			if(vidas > VIDAMAX)
 				vidas = VIDAMAX;
 			//cout << "recuperou vida, vida agr: " << vidas << endl;
 			

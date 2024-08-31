@@ -21,6 +21,12 @@ namespace Fases {
 		criarCura();
 	}
 
+	void Floresta::verificarFinalFase() {
+		if (p1->getPosicao().x > finalFase && p2->getPosicao().x > finalFase) {
+			pGG->fechar_janela();
+		}
+	}
+
 	void Floresta::executar() {
 		sf::Clock relogio;
 		sf::Time dt;
@@ -42,7 +48,7 @@ namespace Fases {
 				}
 			}
 			dt = relogio.restart();
-
+			verificarFinalFase();
 			
 			entidades.executar(dt);
 
@@ -61,7 +67,7 @@ namespace Fases {
 		NinjaGarras* ng1 = new NinjaGarras(sf::Vector2f(2200, 900), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaGarras* ng2 = new NinjaGarras(sf::Vector2f(5700, 1000), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaGarras* ng3 = new NinjaGarras(sf::Vector2f(7900, 1000), sf::Vector2f(50.0, 100.0), p1, p2);
-		NinjaGarras* ng4 = new NinjaGarras(sf::Vector2f(8800, 1100), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaGarras* ng4 = new NinjaGarras(sf::Vector2f(9200, 700), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		entidades.adicionar(ng1);
 		entidades.adicionar(ng2);
@@ -75,7 +81,7 @@ namespace Fases {
 
 		int rng = rand() % 2;
 		if (rng) {
-			NinjaGarras* ng5 = new NinjaGarras(sf::Vector2f(4600, 1200), sf::Vector2f(50.0, 100.0), p1, p2);
+			NinjaGarras* ng5 = new NinjaGarras(sf::Vector2f(4600, 900), sf::Vector2f(50.0, 100.0), p1, p2);
 			entidades.adicionar(ng5);
 			pGC->incluirPersonagem(ng5);
 		}
@@ -92,7 +98,7 @@ namespace Fases {
 	void Floresta::criarNinjaShuriken() {
 		NinjaShuriken* ns1 = new NinjaShuriken(sf::Vector2f(2700, 800), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns2 = new NinjaShuriken(sf::Vector2f(6200, 800), sf::Vector2f(50.0, 100.0), p1, p2);
-		NinjaShuriken* ns3 = new NinjaShuriken(sf::Vector2f(9300, 700), sf::Vector2f(50.0, 100.0), p1, p2);
+		NinjaShuriken* ns3 = new NinjaShuriken(sf::Vector2f(9400, 100), sf::Vector2f(50.0, 100.0), p1, p2);
 		NinjaShuriken* ns4 = new NinjaShuriken(sf::Vector2f(11200, 700), sf::Vector2f(50.0, 100.0), p1, p2);
 
 		entidades.adicionar(ns1);
@@ -126,7 +132,7 @@ namespace Fases {
 
 		rng = rand() % 3;
 		if (rng == 0) {
-			NinjaShuriken* ns6 = new NinjaShuriken(sf::Vector2f(5000, 1100), sf::Vector2f(50.0, 100.0), p1, p2);
+			NinjaShuriken* ns6 = new NinjaShuriken(sf::Vector2f(4500, 900), sf::Vector2f(50.0, 100.0), p1, p2);
 			entidades.adicionar(ns6);
 			entidades.adicionar(ns6->getAtaque());
 			pGC->incluirPersonagem(ns6);
@@ -135,7 +141,7 @@ namespace Fases {
 
 		rng = rand() % 3;
 		if (rng) {
-			NinjaShuriken* ns7 = new NinjaShuriken(sf::Vector2f(9500, 700), sf::Vector2f(50.0, 100.0), p1, p2);
+			NinjaShuriken* ns7 = new NinjaShuriken(sf::Vector2f(9600, 300), sf::Vector2f(50.0, 100.0), p1, p2);
 			entidades.adicionar(ns7);
 			entidades.adicionar(ns7->getAtaque());
 			pGC->incluirPersonagem(ns7);
@@ -143,7 +149,43 @@ namespace Fases {
 		}
 	}
 
-	void Floresta::criarPlataforma() {}
+	void Floresta::criarPlataforma() {
+		Plataforma* plat1 = new Plataforma(sf::Vector2f(900, 1200), sf::Vector2f(300.0, 50.0));		
+		Plataforma* plat2 = new Plataforma(sf::Vector2f(4500, 1000), sf::Vector2f(700.0, 50.0));
+		Plataforma* plat3 = new Plataforma(sf::Vector2f(8200, 1000), sf::Vector2f(300.0, 50.0));
+		Plataforma* plat4 = new Plataforma(sf::Vector2f(9700, 600), sf::Vector2f(700.0, 50.0));
+
+		plat1->setMovel(false);		
+		plat2->setMovel(false);		
+		plat3->setMovel(false);
+		plat4->setMovel(true);
+
+		entidades.adicionar(plat1);		
+		entidades.adicionar(plat2);		
+		entidades.adicionar(plat3);
+		entidades.adicionar(plat4);
+
+		pGC->incluirObstaculo(plat1);		
+		pGC->incluirObstaculo(plat2);		
+		pGC->incluirObstaculo(plat3);
+		pGC->incluirObstaculo(plat4);
+
+		int rng = rand() % 2;
+		if (rng) {
+			Plataforma* plat5 = new Plataforma(sf::Vector2f(2400, 600), sf::Vector2f(300.0, 50.0));
+			plat5->setMovel(false);
+			entidades.adicionar(plat5);
+			pGC->incluirObstaculo(plat5);
+		}
+
+		rng = rand() % 2;
+		if (rng) {
+			Plataforma* plat6 = new Plataforma(sf::Vector2f(5400, 900), sf::Vector2f(300.0, 50.0));
+			plat6->setMovel(true);
+			entidades.adicionar(plat6);
+			pGC->incluirObstaculo(plat6);
+		}
+	}
 
 	void Floresta::criarCaixote() {
 		Caixote* cx1 = new Caixote(sf::Vector2f(3050, 750), sf::Vector2f(200.0, 200.0));
@@ -186,6 +228,48 @@ namespace Fases {
 		}
 	}
 
-	void Floresta::criarMoeda() {}
-	void Floresta::criarCura() {}
+	void Floresta::criarMoeda() {
+		Moeda* m1 = new Moeda(sf::Vector2f(800, 1100), sf::Vector2f(33.3, 33.3));
+		Moeda* m2 = new Moeda(sf::Vector2f(1000, 1100), sf::Vector2f(33.3, 33.3));
+		Moeda* m3 = new Moeda(sf::Vector2f(2400, 500), sf::Vector2f(33.3, 33.3));
+		Moeda* m4 = new Moeda(sf::Vector2f(3400, 400), sf::Vector2f(33.3, 33.3));
+		Moeda* m5 = new Moeda(sf::Vector2f(3500, 500), sf::Vector2f(33.3, 33.3));
+		Moeda* m6 = new Moeda(sf::Vector2f(6800, 600), sf::Vector2f(33.3, 33.3));
+		Moeda* m7 = new Moeda(sf::Vector2f(7600, 600), sf::Vector2f(33.3, 33.3));
+		Moeda* m8 = new Moeda(sf::Vector2f(7700, 700), sf::Vector2f(33.3, 33.3));
+		Moeda* m9 = new Moeda(sf::Vector2f(8200, 900), sf::Vector2f(33.3, 33.3));
+		Moeda* m10 = new Moeda(sf::Vector2f(10300, 700), sf::Vector2f(33.3, 33.3));
+		
+		entidades.adicionar(m1);
+		entidades.adicionar(m2);
+		entidades.adicionar(m3);
+		entidades.adicionar(m4);
+		entidades.adicionar(m5);
+		entidades.adicionar(m6);
+		entidades.adicionar(m7);
+		entidades.adicionar(m8);
+		entidades.adicionar(m9);
+		entidades.adicionar(m10);
+
+		pGC->incluirConsumivel(m1);
+		pGC->incluirConsumivel(m2);
+		pGC->incluirConsumivel(m3);
+		pGC->incluirConsumivel(m4);
+		pGC->incluirConsumivel(m5);
+		pGC->incluirConsumivel(m6);
+		pGC->incluirConsumivel(m7);
+		pGC->incluirConsumivel(m8);
+		pGC->incluirConsumivel(m9);
+		pGC->incluirConsumivel(m10);
+	}
+	void Floresta::criarCura() {
+		Cura* c1 = new Cura(sf::Vector2f(4500, 1200), sf::Vector2f(50.0, 50.0));
+		Cura* c2 = new Cura(sf::Vector2f(8400, 1100), sf::Vector2f(50.0, 50.0));
+
+		entidades.adicionar(c1);
+		entidades.adicionar(c2);
+
+		pGC->incluirConsumivel(c1);
+		pGC->incluirConsumivel(c2);
+	}
 }

@@ -25,7 +25,7 @@ namespace Entidades {
 		void NinjaShuriken::setModo() {
 			if (modo == -1) {
 				modo = rand() % 2;
-				intervaloAcao = 1500;
+				intervaloAcao = 1000;
 			}
 		}
 
