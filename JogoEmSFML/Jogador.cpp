@@ -7,7 +7,7 @@ namespace Entidades {
 		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
 			Personagem(pos, tam), pontuacao(0), intervaloAtaque(500), 
 			jogadorId(cont++), olhandoDireita(true),
-			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(50,50))),
+			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(150,75))),
 			id(JOGADOR)
 		{
 			vidas = VIDAMAX;

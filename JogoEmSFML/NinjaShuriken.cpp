@@ -8,7 +8,7 @@ namespace Entidades {
 			s(new Shuriken(sf::Vector2f(0, 0), sf::Vector2f(50, 50))), intervaloAtaque(1.5f)
 		{
 			srand(time(NULL));
-			vidas = 20;
+			vidas = 10;
 			dano = 5;
 			velocidadeMax = 2;
 			aceleracao = 10;

@@ -1,33 +1,30 @@
 #pragma once
 #include "Fase.h"
-#include "Chao.h"
 #include "NinjaGarras.h"
-#include "NinjaShuriken.h"
+#include "Shogun.h"
 #include "Plataforma.h"
-#include "Caixote.h"
+#include "Espinhos.h"
 #include "Moeda.h"
 #include "Cura.h"
 
 namespace Fases {
-	class Floresta : public Fase {
+	class Castelo : public Fase {
 	private:
-		float finalFase;
 
 	public:
-		Floresta(bool m);
-		~Floresta();
+		Castelo(bool m);
+		~Castelo();
 
 		void inicializar();
-		void verificarFinalFase();
 
 		void executar();
 		void desenhar();
 		void salvar();
 
 		void criarNinjaGarras();
-		void criarNinjaShuriken();
+		void criarShogun();
 		void criarPlataforma();
-		void criarCaixote();
+		void criarEspinho();
 		void criarMoeda();
 		void criarCura();
 	};

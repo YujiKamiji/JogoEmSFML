@@ -7,8 +7,8 @@ namespace Entidades {
 			intervaloAcao(0), disP1(0), disP2(0)
 		{
 			srand(time(NULL));
-			vidas = 40;
-			dano = 5;
+			vidas = 30;
+			dano = 3;
 			velocidadeMax = 4;
 			aceleracao = 30;
 			setP1(a);

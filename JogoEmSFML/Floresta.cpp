@@ -9,7 +9,6 @@ namespace Fases {
 	Floresta::~Floresta() { delete pGC; }
 
 	void Floresta::inicializar() {
-
 		carregarMapa("Floresta.tmj");
 		criarChao();
 		criarJogadores();

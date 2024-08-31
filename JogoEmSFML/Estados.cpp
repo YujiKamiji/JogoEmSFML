@@ -3,7 +3,7 @@
 namespace Estados
 {
 	Estado::Estado(idEstado ID)
-		: id(ID), floresta(nullptr)
+		: id(ID), floresta(nullptr), castelo(nullptr)
 	{
 	}
 
@@ -23,6 +23,7 @@ namespace Estados
 			floresta = new Floresta(false);
 			break;
 		case CASTELO: 
+			castelo = new Castelo(false);
 			break;
 		case PAUSE: 
 			break;
@@ -50,6 +51,7 @@ namespace Estados
 			floresta->executar();
 			break;
 		case CASTELO:
+			castelo->executar();
 			break;
 		case PAUSE:
 			break;

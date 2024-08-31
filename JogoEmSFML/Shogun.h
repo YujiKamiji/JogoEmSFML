@@ -34,6 +34,8 @@ namespace Entidades {
 			void desenhar();
 			void salvar();
 
+			void calculaDis();
+
 			sf::Vector2f getVelocidade();
 
 			Shuriken* getAtaque();

@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "Floresta.h"
+#include "Castelo.h"
 
 using namespace Fases;
 
@@ -26,6 +27,7 @@ namespace Estados
 	protected:
 		idEstado id;
 		Floresta* floresta;
+		Castelo* castelo;
 	public:
 		Estado(idEstado ID);
 		virtual ~Estado();
