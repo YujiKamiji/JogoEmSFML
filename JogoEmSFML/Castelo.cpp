@@ -5,6 +5,10 @@ namespace Fases {
 	Fase(m, ID_ESTADO) 
 	{
 		inicializar();
+		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
+		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
+		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		corpo.setTexture(textura);
 	}
 	Castelo::~Castelo() { delete pGC; }
 
@@ -49,11 +53,14 @@ namespace Fases {
 			verificarVivos();
 
 			entidades.desenhar();
+			desenhar();
 			pGG->mostrar();
 		}
 	}
 
-	void Castelo::desenhar() {}
+	void Castelo::desenhar() {
+		pGG->desenhar(&corpo);
+	}
 	void Castelo::salvar() {}
 
 	void Castelo::criarNinjaGarras() {

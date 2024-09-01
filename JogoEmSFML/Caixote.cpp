@@ -3,6 +3,8 @@
 Entidades::Obstaculos::Caixote::Caixote(sf::Vector2f pos, sf::Vector2f tam):
 	id(CAIXOTE), Obstaculo(pos, tam), atrito(1.0f)
 {
+	textura = pGG->carregarTextura("Caixote.png");
+	corpo.setTexture(textura);
 }
 
 Entidades::Obstaculos::Caixote::~Caixote()
