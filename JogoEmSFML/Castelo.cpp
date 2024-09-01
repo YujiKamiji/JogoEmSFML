@@ -12,6 +12,10 @@ namespace Fases {
 	Castelo::~Castelo() { pGC->limparListas(); }
 
 	void Castelo::inicializar() {
+		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
+		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
+		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		corpo.setTexture(textura);
 		carregarMapa("Castelo.tmj");
 		criarChao();
 		criarJogadores();

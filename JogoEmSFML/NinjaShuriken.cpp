@@ -18,7 +18,8 @@ namespace Entidades {
 			corpo.setFillColor(sf::Color::Magenta);
 		}
 
-		NinjaShuriken::~NinjaShuriken() {}
+
+		NinjaShuriken::~NinjaShuriken() {} 
 
 		void NinjaShuriken::setModo() {
 			if (modo == -1) {

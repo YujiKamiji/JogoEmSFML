@@ -15,6 +15,7 @@ namespace Gerenciadores {
 		sf::View camera;
 
 		std::map<const std::string, sf::Texture*> texturas;
+		sf::Font* fonte;
 
 	public:
 		~Gerenciador_Grafico();
@@ -32,5 +33,9 @@ namespace Gerenciadores {
 
 		sf::RenderWindow* getJanela();
 		static Gerenciador_Grafico* getInstancia();
+
+		//para menu e afins:
+		void desenhar(sf::Text* texto);
+		sf::Font* carregarFonte();
 	};
 }

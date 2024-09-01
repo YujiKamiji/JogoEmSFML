@@ -35,6 +35,7 @@ namespace Fases {
 	}
 
 	void Floresta::executarEstado() {
+
 		inicializar();
 		sf::Clock relogio;
 		sf::Time dt;

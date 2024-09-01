@@ -7,7 +7,9 @@
 #include <SFML/Graphics.hpp>
 #include <fstream>
 #include <string>
+#include <list>
 
+#include <functional>
 #include <iostream>
 using namespace std;
 
