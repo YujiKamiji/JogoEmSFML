@@ -113,4 +113,10 @@ namespace Gerenciadores {
 	{
 		return fonte;
 	}
+	void Gerenciador_Grafico::reiniciarJanela()
+	{
+		delete janela;
+		janela = new sf::RenderWindow(sf::VideoMode(LARGURA, ALTURA), "O Jogo");
+		janela->setFramerateLimit(60);
+	}
 }

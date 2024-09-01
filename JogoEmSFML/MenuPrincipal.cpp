@@ -89,6 +89,7 @@ namespace Menus
 		adicionarBotao(new Botao("Fase 1: Floresta - Multiplayer", sf::Vector2f(640, 500), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaFlorestaMulti, this)));
 		adicionarBotao(new Botao("Fase 2: Castelo - Multiplayer", sf::Vector2f(640, 620), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaCasteloMulti, this)));
 		
+		pGG->reiniciarJanela();
 	}
 
 	
@@ -101,9 +102,11 @@ namespace Menus
 	void MenuPrincipal::desenhar() 
 	{
 		pGG->desenhar(&textoPrincipal); 
-		for (auto it = botoes.begin(); it != botoes.end(); it++) 
+		for (int i = 0; i < botoes.size(); i++)
 		{
-			(*it)->desenhar();
+			if (botoes[i])
+				botoes[i]->desenhar();
+
 		}
 	}
 
