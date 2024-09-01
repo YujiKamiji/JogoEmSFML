@@ -4,10 +4,12 @@ namespace Fases {
 	Castelo::Castelo(bool m, idEstado ID_ESTADO):
 	Fase(m, ID_ESTADO) 
 	{
-		
-		
+		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
+		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
+		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		corpo.setTexture(textura);
 	}
-	Castelo::~Castelo() { delete pGC; }
+	Castelo::~Castelo() { pGC->limparListas(); }
 
 	void Castelo::inicializar() {
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
@@ -36,7 +38,7 @@ namespace Fases {
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
 			return;
 		}
-		while (pGG->janela_aberta())
+		while (pGG->janela_aberta() && verificarVivos())
 		{
 			sf::Event evento;
 			while (janela->pollEvent(evento))
@@ -52,7 +54,7 @@ namespace Fases {
 
 			pGC->colidir();
 			janela->clear();
-			verificarVivos();
+			//verificarVivos();
 
 			entidades.desenhar();
 			desenhar();

@@ -5,17 +5,14 @@ namespace Fases {
 	Floresta::Floresta(bool m, idEstado ID_ESTADO):
 		Fase(m, ID_ESTADO), finalFase(1100.f)
 	{
-		
-		
-	}
-	Floresta::~Floresta() { //delete pGC; 
-	}
-
-	void Floresta::inicializar() {
 		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
 		textura = pGG->carregarTextura("Sprites/Floresta.png");
 		corpo.setTexture(textura);
+	}
+	Floresta::~Floresta() { pGC->limparListas(); }
+
+	void Floresta::inicializar() {
 		carregarMapa("Floresta.tmj");
 		criarChao();
 		criarJogadores();
@@ -38,7 +35,8 @@ namespace Fases {
 	}
 
 	void Floresta::executarEstado() {
-		inicializar(); 
+
+		inicializar();
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();

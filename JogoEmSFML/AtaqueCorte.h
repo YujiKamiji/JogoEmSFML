@@ -6,6 +6,7 @@ namespace Entidades {
 	class AtaqueCorte : public Projetil {
 	private:
 		bool danoDado;
+		sf::IntRect corpoAnimado;
 
 	public:
 		AtaqueCorte(sf::Vector2f pos, sf::Vector2f tam);

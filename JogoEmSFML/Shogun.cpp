@@ -129,17 +129,21 @@ namespace Entidades {
 		void Shogun::salvar() {}
 
 		void Shogun::calculaDis() {
-			float x1 = getPosicao().x - p1->getPosicao().x;
-			x1 = x1 * x1;
-			float y1 = getPosicao().y - p1->getPosicao().y;
-			y1 = y1 * y1;
-			disP1 = sqrt(x1 + y1);
+			if (p1) {
+				float x1 = getPosicao().x - p1->getPosicao().x;
+				x1 = x1 * x1;
+				float y1 = getPosicao().y - p1->getPosicao().y;
+				y1 = y1 * y1;
+				disP1 = sqrt(x1 + y1);
+			}
 
-			float x2 = getPosicao().x - p2->getPosicao().x;
-			x2 = x2 * x2;
-			float y2 = getPosicao().y - p2->getPosicao().y;
-			y2 = y2 * y2;
-			disP1 = sqrt(x2 + y2);
+			if (p2) {
+				float x2 = getPosicao().x - p2->getPosicao().x;
+				x2 = x2 * x2;
+				float y2 = getPosicao().y - p2->getPosicao().y;
+				y2 = y2 * y2;
+				disP1 = sqrt(x2 + y2);
+			}
 		}
 
 		sf::Vector2f Shogun::getVelocidade() { return velocidades; }
