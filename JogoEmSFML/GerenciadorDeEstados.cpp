@@ -4,36 +4,38 @@
 namespace Gerenciadores
 {
     GerenciadorDeEstados* GerenciadorDeEstados::instancia = nullptr;
-
     GerenciadorDeEstados* GerenciadorDeEstados::getInstancia()
     {
         if (instancia == nullptr)
+        {
             instancia = new GerenciadorDeEstados();
+			cout << "Instancia criada" << endl;
+        }
+            
         return instancia;
     }
 
     GerenciadorDeEstados::GerenciadorDeEstados():
-		pilhaDeEstados(), estados()
-    {
-		//criar o vetor de estados aqui
+		pilhaDeEstados()
+    {       
     }
 
     GerenciadorDeEstados::~GerenciadorDeEstados()
     {
+        // Liberar todos os estados na pilha
         while (!pilhaDeEstados.empty())
         {
-            if (pilhaDeEstados.top() != nullptr)
-                delete (pilhaDeEstados.top());
-            pilhaDeEstados.top() = nullptr;
+			if (pilhaDeEstados.top() != nullptr)
+                delete pilhaDeEstados.top();
             pilhaDeEstados.pop();
         }
     }
 
-    void GerenciadorDeEstados::executar()
+    void GerenciadorDeEstados::executar() 
     {
-        if (!pilhaDeEstados.empty())
+        if (!pilhaDeEstados.empty()) 
         {
-            pilhaDeEstados.top()->executar(); // Executa o estado do topo da pilha
+            pilhaDeEstados.top()->executarEstado(); // Executa o estado do topo da pilha
         }
         else
         {
@@ -42,21 +44,9 @@ namespace Gerenciadores
     }
 
     void GerenciadorDeEstados::adicionarEstado(idEstado id)
-    {
-        // Aqui você deve criar uma instância de uma subclasse de Estado, não de Estado diretamente
-        // Estado* estado = new Estado(id); // Isso está incorreto
-        // Exemplo de criação de um estado específico:
-        // Estado* estado = new EstadoMenu(id, this); // Supondo que EstadoMenu seja uma subclasse de Estado
-
-        // Para fins de exemplo, vamos apenas usar um ponteiro nulo
-        Estados::Estado* estado = nullptr;
-
-        if (estado != nullptr)
-            pilhaDeEstados.push(estado); // Adiciona o estado na pilha
-        else
-            std::cout << "Ponteiro nulo" << std::endl;
-
-        std::cout << "Adicionei estado" << std::endl;
+    {      
+		cout << "Adicionei estado: " << id << endl;
+		pilhaDeEstados.push(geradorDeEstados.criarEstado(id)); // Adiciona um estado na pilha
     }
 
     void GerenciadorDeEstados::removerEstado()
@@ -64,15 +54,14 @@ namespace Gerenciadores
         std::cout << "Removi estado" << std::endl;
         if (pilhaDeEstados.top() != nullptr)
         {
-            delete (pilhaDeEstados.top()); // Deleta o estado do topo da pilha
+			delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
             pilhaDeEstados.top() = nullptr;
             pilhaDeEstados.pop(); // Remove o estado do topo da pilha 
         }
 
         if (pilhaDeEstados.empty()) // Todos os estados foram fechados
         {
-            // Gerenciador_Grafico* pGG = pGG->getInstancia();
-            // pGG->fechar_janela();
+			std::cout << "Todos os estados foram fechados" << std::endl;
         }
     }
 

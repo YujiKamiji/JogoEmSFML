@@ -20,7 +20,7 @@ namespace Fases {
 		criarCura();
 	}
 
-	void Castelo::executar() {
+	void Castelo::executarEstado() {
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();

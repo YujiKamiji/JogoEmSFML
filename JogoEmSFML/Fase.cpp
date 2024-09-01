@@ -43,6 +43,8 @@ namespace Fases {
 		pGC->verificarVivos();
 	}
 
+	void Fase::executarEstado(){}
+
 	void Fase::desenhar() {
 		pGG->desenhar(&corpo);
 	}

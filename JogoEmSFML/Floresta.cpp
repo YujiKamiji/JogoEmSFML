@@ -30,7 +30,7 @@ namespace Fases {
 		}
 	}
 
-	void Floresta::executar() {
+	void Floresta::executarEstado() {
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();

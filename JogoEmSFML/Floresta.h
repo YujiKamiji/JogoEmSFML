@@ -20,7 +20,7 @@ namespace Fases {
 		void inicializar();
 		void verificarFinalFase();
 
-		void executar();
+		void executarEstado();
 		void desenhar();
 		void salvar();
 

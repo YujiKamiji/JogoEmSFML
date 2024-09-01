@@ -19,7 +19,7 @@ namespace Estados
         virtual ~Estado();
 
         idEstado getIdEstado() const;
-        virtual void executar() = 0; // Método virtual puro para ser implementado nas subclasses
+        virtual void executarEstado(); 
 
     };
 }

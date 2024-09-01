@@ -37,7 +37,7 @@ namespace Fases {
 		virtual void verificarVivos();
 
 		virtual void inicializar() = 0;
-		virtual void executar() = 0;
+		virtual void executarEstado();
 		virtual void desenhar();
 		virtual void salvar() = 0;
 

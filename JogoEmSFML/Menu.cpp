@@ -1,7 +1,9 @@
 #include  "Menu.h"
+#include "GerenciadorDeEstados.h"
 
-Menu::Menu()
+Menu::Menu(idEstado ID_ESTADO)
 {
+	Estados::Estado::id_estado = ID_ESTADO;
 }
 
 Menu::~Menu()

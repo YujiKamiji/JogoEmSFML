@@ -9,7 +9,8 @@ namespace Estados
     }
 
     Estado::Estado()
-    {
+	{
+		pGE = pGE->getInstancia();
     }
 
     
@@ -20,5 +21,8 @@ namespace Estados
     idEstado Estado::getIdEstado() const
     {
         return idEstado(id_estado);
+    }
+    void Estado::executarEstado()
+    {
     }
 }
