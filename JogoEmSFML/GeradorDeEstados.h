@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "Floresta.h"
 #include "Menu.h"
+#include "MenuPrincipal.h"
 #include "MenuOpc.h"
 #include "Castelo.h"
 

@@ -1,3 +1,6 @@
+/*A fonte utilizada é proveniente de um site que disponibiliza o download e uso gratis de diversas fontes*/
+/*Link do site: https://www.dafont.com/pt/last-ninja.font */
+
 #include "Gerenciador_Grafico.h"
 
 namespace Gerenciadores {
@@ -7,6 +10,14 @@ namespace Gerenciadores {
 		texturas()
 	{
 		janela->setFramerateLimit(60);
+
+		fonte = new sf::Font();
+
+		if (!fonte->loadFromFile("Assets/Fonte/lastninja.ttf"))
+		{
+			cout << "nao achou a fonte" << endl;
+		}
+		
 	}
 
 	Gerenciador_Grafico::~Gerenciador_Grafico() {
@@ -93,5 +104,13 @@ namespace Gerenciadores {
 		if (instancia == nullptr)
 			instancia = new Gerenciador_Grafico();
 		return instancia;
+	}
+	void Gerenciador_Grafico::desenhar(sf::Text* texto)
+	{
+		janela->draw(*texto);
+	}
+	sf::Font* Gerenciador_Grafico::carregarFonte()
+	{
+		return fonte;
 	}
 }

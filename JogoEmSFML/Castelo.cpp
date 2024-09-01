@@ -4,15 +4,16 @@ namespace Fases {
 	Castelo::Castelo(bool m, idEstado ID_ESTADO):
 	Fase(m, ID_ESTADO) 
 	{
-		inicializar();
-		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
-		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
-		textura = pGG->carregarTextura("Sprites/Castelo.png");
-		corpo.setTexture(textura);
+		
+		
 	}
 	Castelo::~Castelo() { delete pGC; }
 
 	void Castelo::inicializar() {
+		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
+		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
+		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		corpo.setTexture(textura);
 		carregarMapa("Castelo.tmj");
 		criarChao();
 		criarJogadores();
@@ -25,6 +26,7 @@ namespace Fases {
 	}
 
 	void Castelo::executarEstado() {
+		inicializar();
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();

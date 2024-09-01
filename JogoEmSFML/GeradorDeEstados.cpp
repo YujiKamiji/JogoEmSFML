@@ -13,7 +13,7 @@ Estados::Estado* GeradorDeEstados::criarEstado(idEstado id)
 	switch(id)
 	{
 	case MENU:
-		return new Menu(id); //TODO
+		return new Menus::MenuPrincipal(id); //TODO
 		break;
 	case MENU_OPCOES: //TODO
 		break;

@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AtaqueCorte.cpp" />
+    <ClCompile Include="Botao.cpp" />
     <ClCompile Include="Caixote.cpp" />
     <ClCompile Include="Castelo.cpp" />
     <ClCompile Include="Chao.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuOpc.cpp" />
+    <ClCompile Include="MenuPrincipal.cpp" />
     <ClCompile Include="Moeda.cpp" />
     <ClCompile Include="Municao.cpp" />
     <ClCompile Include="NinjaGarras.cpp" />
@@ -175,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AtaqueCorte.h" />
+    <ClInclude Include="Botao.h" />
     <ClInclude Include="Caixote.h" />
     <ClInclude Include="Castelo.h" />
     <ClInclude Include="Chao.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuOpc.h" />
+    <ClInclude Include="MenuPrincipal.h" />
     <ClInclude Include="Moeda.h" />
     <ClInclude Include="Municao.h" />
     <ClInclude Include="NinjaGarras.h" />

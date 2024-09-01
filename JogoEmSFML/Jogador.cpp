@@ -18,7 +18,7 @@ namespace Entidades {
 		}
 		Jogador::~Jogador() 
 		{ 
-			delete ataque; 
+			//delete ataque; 
 			ataque = nullptr;
 		}
 

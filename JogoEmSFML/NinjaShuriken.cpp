@@ -19,7 +19,6 @@ namespace Entidades {
 		}
 
 		NinjaShuriken::~NinjaShuriken() {
-			delete s;
 		}
 
 		void NinjaShuriken::setModo() {

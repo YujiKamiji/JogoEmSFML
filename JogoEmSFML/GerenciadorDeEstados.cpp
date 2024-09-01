@@ -46,29 +46,69 @@ namespace Gerenciadores
     void GerenciadorDeEstados::adicionarEstado(idEstado id)
     {      
 		cout << "Adicionei estado: " << id << endl;
+        
 		pilhaDeEstados.push(geradorDeEstados.criarEstado(id)); // Adiciona um estado na pilha
+
+		cout << "topo da pilha: " << pilhaDeEstados.top()->getIdEstado() << endl; 
+        std::cout << "Conteúdo da pilha de estados:" << std::endl;
+        std::stack<Estados::Estado*> tempStack = pilhaDeEstados;
+
+        while (!tempStack.empty())
+        {
+            Estados::Estado* estado = tempStack.top();
+            std::cout << estado->getIdEstado() << std::endl;
+            tempStack.pop();
+        }
     }
 
     void GerenciadorDeEstados::removerEstado()
     {
-        std::cout << "Removi estado" << std::endl;
-        if (pilhaDeEstados.top() != nullptr)
+        cout << "topo da pilha ANTES DE REMOVER: " << pilhaDeEstados.top()->getIdEstado() << endl;
+        std::cout << "Conteúdo da pilha de estados ANTES DE REMOVER:" << std::endl;
+        std::stack<Estados::Estado*> tempStack = pilhaDeEstados;
+
+        while (!tempStack.empty())
         {
-			//delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
+            Estados::Estado* estado = tempStack.top();
+            std::cout << estado->getIdEstado() << std::endl;
+            tempStack.pop();
+        }
+
+
+        std::cout << "Removi estado" << std::endl;
+        if (!pilhaDeEstados.empty() && pilhaDeEstados.top() != nullptr)
+        {
+            delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
             pilhaDeEstados.top() = nullptr;
             pilhaDeEstados.pop(); // Remove o estado do topo da pilha 
         }
 
         if (pilhaDeEstados.empty()) // Todos os estados foram fechados
         {
-			std::cout << "Todos os estados foram fechados" << std::endl;
+            std::cout << "Todos os estados foram fechados" << std::endl;
         }
+
+		 
+
+        cout << "topo da pilha DEPOIS DE REMOVER: " << pilhaDeEstados.top()->getIdEstado() << endl;
+        std::cout << "Conteúdo da pilha de estados DEPOIS DE REMOVER:" << std::endl;
+        tempStack = pilhaDeEstados;
+
+        while (!tempStack.empty())
+        {
+            Estados::Estado* estado = tempStack.top();
+            std::cout << estado->getIdEstado() << std::endl;
+            tempStack.pop();
+        }
+
+        pilhaDeEstados.top()->executarEstado();
     }
 
     Estados::Estado* GerenciadorDeEstados::getEstadoAtual()
     {
         if (pilhaDeEstados.top())
         {
+            //cout << "topo da pilha: " << pilhaDeEstados.top() << endl;
             return pilhaDeEstados.top();
         }
         else

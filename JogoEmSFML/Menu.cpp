@@ -1,19 +1,50 @@
 #include  "Menu.h"
 #include "GerenciadorDeEstados.h"
 
-Menu::Menu(idEstado ID_ESTADO)
+namespace Menus
 {
-	Estados::Estado::id_estado = ID_ESTADO;
-}
+	Menu::Menu(idEstado ID_ESTADO) :
+		Estado(ID_ESTADO),
+		Ente(),
+		textoPrincipal(),
+		ativo(true)
+	{
+		textoPrincipal.setFont(*(pGG->carregarFonte()));
+		textoPrincipal.setString("Menu");
+		textoPrincipal.setCharacterSize(50);
+		textoPrincipal.setFillColor(sf::Color::Red);
+		textoPrincipal.setPosition(100, 100);
+	}
 
-Menu::~Menu()
-{
-}
+	Menu::~Menu() {}
 
-void Menu::executar(sf::Time deltaTime)
-{
-}
-
-void Menu::desenhar()
-{
+	void Menu::executar(sf::Time deltaTime)
+	{
+		cout << "Menu::executar()" << endl;
+	}
+	void Menu::desenhar()
+	{
+		cout << "Menu::desenhar()" << endl;
+		pGG->desenhar(&textoPrincipal);
+	}
+	void Menu::setString(std::string s)
+	{
+		textoPrincipal.setString(s);
+	}
+	void Menu::setPosicaoTexto(sf::Vector2f pos)
+	{
+		textoPrincipal.setPosition(pos);
+	}
+	void Menu::setCorTexto(sf::Color cor)
+	{
+		textoPrincipal.setFillColor(cor);
+	}
+	void Menu::setTamanhoTexto(int tam)
+	{
+		textoPrincipal.setCharacterSize(tam);
+	}
+	void Menu::setAtivo(bool b)
+	{
+		ativo = b;
+	}
 }
