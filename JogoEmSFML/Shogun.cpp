@@ -101,7 +101,7 @@ namespace Entidades {
 			switch (rng) {
 			case 0: //teletransporte
 				corpo.setPosition(alvoAtual->getPosicao().x,
-					alvoAtual->getPosicao().y - 300);
+					alvoAtual->getPosicao().y - 400);
 			case 1: //pulo
 				velocidades.y -= 10;
 				if (alvoAtual->getPosicao().x > getPosicao().x)
@@ -115,7 +115,7 @@ namespace Entidades {
 				s->executar(deltaTime);
 			case 3: //teletransporte
 				corpo.setPosition(alvoAtual->getPosicao().x,
-					alvoAtual->getPosicao().y - 300);
+					alvoAtual->getPosicao().y - 400);
 			}
 		}
 

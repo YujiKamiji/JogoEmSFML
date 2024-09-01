@@ -11,6 +11,8 @@ Entidades::Obstaculos::Plataforma::Plataforma(sf::Vector2f pos, sf::Vector2f tam
 	atrasoMovimento(4),
 	direcao(false)
 {
+	textura = pGG->carregarTextura("Plataforma.png");
+	corpo.setTexture(textura);
 }
 
 Entidades::Obstaculos::Plataforma::~Plataforma()

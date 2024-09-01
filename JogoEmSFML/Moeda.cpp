@@ -7,7 +7,8 @@ namespace Entidades
 		Moeda::Moeda(sf::Vector2f pos, sf::Vector2f tam):
 			Consumivel(pos, tam), valor(10), id(MOEDA)
 		{
-			corpo.setFillColor(sf::Color::Yellow);
+			textura = pGG->carregarTextura("Moeda.png");
+			corpo.setTexture(textura);
 		}
 		Moeda::~Moeda()
 		{

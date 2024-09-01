@@ -7,7 +7,8 @@ namespace Entidades
 		Cura::Cura(sf::Vector2f pos, sf::Vector2f tam):
 			Consumivel(pos, tam), cura(35), id(CURA)
 		{
-			corpo.setFillColor(sf::Color::Green);
+			textura = pGG->carregarTextura("Cura.png");
+			corpo.setTexture(textura);
 		}
 		Cura::~Cura()
 		{

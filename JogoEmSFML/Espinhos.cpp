@@ -3,6 +3,8 @@
 Entidades::Obstaculos::Espinhos::Espinhos(sf::Vector2f pos, sf::Vector2f tam) :
 	Obstaculo(pos, tam), id(ESPINHOS), afiacao(15), decrescimo(0.0f)
 {
+	textura = pGG->carregarTextura("Espinhos.png");
+	corpo.setTexture(textura);
 }
 
 Entidades::Obstaculos::Espinhos::~Espinhos()
