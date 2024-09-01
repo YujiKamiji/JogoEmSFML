@@ -38,6 +38,8 @@ namespace Gerenciadores {
 		void incluirProjetil(Entidades::Projetil* p);
 		void incluirConsumivel(Entidades::Consumiveis::Consumivel* c);
 
+		void limparListas();
+
 		static GerenciadorDeColisoes* getInstancia();
 	};
 }

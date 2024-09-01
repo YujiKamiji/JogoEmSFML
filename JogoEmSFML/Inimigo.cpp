@@ -3,12 +3,12 @@
 namespace Entidades {
 	namespace Personagens {
 		Inimigo::Inimigo(sf::Vector2f pos, sf::Vector2f tam):
-			Personagem(pos, tam) {}
+			Personagem(pos, tam), p1(NULL), p2(NULL) {}
 
 		Inimigo::~Inimigo() {}
 
-		Jogador* Inimigo::p1 = nullptr;
-		Jogador* Inimigo::p2 = nullptr;
+		//Jogador* Inimigo::p1 = nullptr;
+		//Jogador* Inimigo::p2 = nullptr;
 
 		void Inimigo::setP1(Jogador* p)
 		{

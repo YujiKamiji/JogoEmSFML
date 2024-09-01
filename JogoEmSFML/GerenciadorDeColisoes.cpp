@@ -4,6 +4,7 @@ namespace Gerenciadores {
 	GerenciadorDeColisoes::GerenciadorDeColisoes() :
 		obstaculos(), personagens(), projeteis(), consumiveis()
 	{
+		
 	}
 
 	GerenciadorDeColisoes::~GerenciadorDeColisoes()
@@ -229,6 +230,22 @@ namespace Gerenciadores {
 	void GerenciadorDeColisoes::incluirConsumivel(Entidades::Consumiveis::Consumivel* c) {
 		if(c)
 			consumiveis.inserir(c);
+	}
+
+	void GerenciadorDeColisoes::limparListas() {
+		Listas::Lista<Entidades::Obstaculos::Obstaculo>::Iterador<Entidades::Obstaculos::Obstaculo> itObs(NULL);
+		Listas::Lista<Entidades::Personagens::Personagem>::Iterador<Entidades::Personagens::Personagem> itPers(NULL);
+		Listas::Lista<Entidades::Projetil>::Iterador<Entidades::Projetil> itProjetil(NULL);
+		Listas::Lista<Entidades::Consumiveis::Consumivel>::Iterador<Entidades::Consumiveis::Consumivel> itConsumivel(NULL);
+
+		for (itObs = obstaculos.inicio(); itObs != obstaculos.fim(); itObs++)
+			obstaculos.remover(*itObs);
+		for (itPers = personagens.inicio(); itPers != personagens.fim(); itPers++)
+			personagens.remover(*itPers);
+		for (itProjetil = projeteis.inicio(); itProjetil != projeteis.fim(); itProjetil++)
+			projeteis.remover(*itProjetil);
+		for (itConsumivel = consumiveis.inicio(); itConsumivel != consumiveis.fim(); itConsumivel++)
+			consumiveis.remover(*itConsumivel);
 	}
 
 	GerenciadorDeColisoes* GerenciadorDeColisoes::instancia = nullptr;

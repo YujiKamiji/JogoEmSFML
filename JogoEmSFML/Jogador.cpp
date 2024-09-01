@@ -2,11 +2,9 @@
 
 namespace Entidades {
 	namespace Personagens {
-		int Jogador::cont = 1;
-
-		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam):
+		Jogador::Jogador(sf::Vector2f pos, sf::Vector2f tam, int jId):
 			Personagem(pos, tam), pontuacao(0), intervaloAtaque(500), 
-			jogadorId(cont++), olhandoDireita(true),
+			jogadorId(jId), olhandoDireita(true),
 			ataque(new AtaqueCorte(sf::Vector2f(0,0), sf::Vector2f(150,75))),
 			id(JOGADOR)
 		{
@@ -18,7 +16,6 @@ namespace Entidades {
 		}
 		Jogador::~Jogador() 
 		{ 
-			delete ataque; 
 			ataque = nullptr;
 		}
 

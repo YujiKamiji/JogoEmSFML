@@ -4,7 +4,7 @@
 namespace Fases {
 	Fase::Fase(bool m, idEstado ID_ESTADO) :
 		entidades(), p1(nullptr), p2(nullptr), multijogador(m), corpo(),
-		pGC(pGC->getInstancia()), Estado(ID_ESTADO){}
+		pGC(pGC->getInstancia()), Estado(ID_ESTADO) {}
 
 	Fase::~Fase() {}
 
@@ -93,16 +93,17 @@ namespace Fases {
 	}
 
 	void Fase::criarJogadores() {
-		p1 = new Jogador(sf::Vector2f(100, 1400), sf::Vector2f(50.0, 100.0));
+		p1 = new Jogador(sf::Vector2f(100, 1400), sf::Vector2f(50.0, 100.0), 1);
 		entidades.adicionar(p1);
 		entidades.adicionar(p1->getAtaque());
 		pGC->incluirPersonagem(p1);
 		pGC->incluirProjetil(p1->getAtaque());
 
-		p2 = p1;
+		if (!p2)
+			p2 = p1;
 
 		if (multijogador) {
-			p2 = new Jogador(sf::Vector2f(200, 1400), sf::Vector2f(50.0, 100.0));
+			p2 = new Jogador(sf::Vector2f(200, 1400), sf::Vector2f(50.0, 100.0), 2);
 			entidades.adicionar(p2);
 			entidades.adicionar(p2->getAtaque());
 			pGC->incluirPersonagem(p2);

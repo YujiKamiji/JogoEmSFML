@@ -23,10 +23,8 @@ namespace Entidades {
 
 			AtaqueCorte* ataque;
 
-			static int cont;
-
 		public:
-			Jogador(sf::Vector2f pos, sf::Vector2f tam);
+			Jogador(sf::Vector2f pos, sf::Vector2f tam, int jId);
 			~Jogador();
 
 			void executar(sf::Time deltaTime);
