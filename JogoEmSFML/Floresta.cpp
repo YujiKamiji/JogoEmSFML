@@ -1,8 +1,8 @@
 #include "Floresta.h"
 
 namespace Fases {
-	Floresta::Floresta(bool m):
-		Fase(m), finalFase(11700.f)
+	Floresta::Floresta(bool m, idEstado ID_ESTADO):
+		Fase(m, ID_ESTADO), finalFase(11700.f)
 	{
 		inicializar();
 		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
@@ -62,6 +62,7 @@ namespace Fases {
 			entidades.desenhar();
 			desenhar();
 			pGG->mostrar();
+		
 		}
 	}
 	void Floresta::desenhar() {

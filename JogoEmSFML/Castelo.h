@@ -12,7 +12,7 @@ namespace Fases {
 	private:
 
 	public:
-		Castelo(bool m);
+		Castelo(bool m, idEstado ID_ESTADO);
 		~Castelo();
 
 		void inicializar();

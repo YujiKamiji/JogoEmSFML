@@ -1,93 +1,91 @@
 #include "GerenciadorDeEstados.h"
-
-using namespace Estados;
+#include "Estado.h"
 
 namespace Gerenciadores
 {
-	GerenciadorDeEstados* GerenciadorDeEstados::instancia = nullptr;
-	GerenciadorDeEstados* GerenciadorDeEstados::getInstancia()
-	{
-		if (instancia == nullptr)
-			instancia = new GerenciadorDeEstados();
-		return instancia;
-	}
+    GerenciadorDeEstados* GerenciadorDeEstados::instancia = nullptr;
 
-	GerenciadorDeEstados::GerenciadorDeEstados()
-	{
-	}
+    GerenciadorDeEstados* GerenciadorDeEstados::getInstancia()
+    {
+        if (instancia == nullptr)
+            instancia = new GerenciadorDeEstados();
+        return instancia;
+    }
 
-	GerenciadorDeEstados::~GerenciadorDeEstados()
-	{
-		while (pilhaDeEstados.empty() == false)
-		{
-			if (pilhaDeEstados.top() != nullptr)
-				delete (pilhaDeEstados.top());
-			pilhaDeEstados.top() = nullptr;
-			pilhaDeEstados.pop();
-		}
-	}
+    GerenciadorDeEstados::GerenciadorDeEstados():
+		pilhaDeEstados(), estados()
+    {
+		//criar o vetor de estados aqui
+    }
 
-	
+    GerenciadorDeEstados::~GerenciadorDeEstados()
+    {
+        while (!pilhaDeEstados.empty())
+        {
+            if (pilhaDeEstados.top() != nullptr)
+                delete (pilhaDeEstados.top());
+            pilhaDeEstados.top() = nullptr;
+            pilhaDeEstados.pop();
+        }
+    }
 
-	void GerenciadorDeEstados::executar()
-	{
+    void GerenciadorDeEstados::executar()
+    {
+        if (!pilhaDeEstados.empty())
+        {
+            pilhaDeEstados.top()->executar(); // Executa o estado do topo da pilha
+        }
+        else
+        {
+            std::cout << "Pilha de estados vazia" << std::endl;
+        }
+    }
 
+    void GerenciadorDeEstados::adicionarEstado(idEstado id)
+    {
+        // Aqui você deve criar uma instância de uma subclasse de Estado, não de Estado diretamente
+        // Estado* estado = new Estado(id); // Isso está incorreto
+        // Exemplo de criação de um estado específico:
+        // Estado* estado = new EstadoMenu(id, this); // Supondo que EstadoMenu seja uma subclasse de Estado
 
-		if (!pilhaDeEstados.empty())
-		{
-			pilhaDeEstados.top()->executar(); //executa o estado do topo da pilha
-		}
-		else
-		{
-			cout << "pilha de estados vazia" << endl;
-		}
+        // Para fins de exemplo, vamos apenas usar um ponteiro nulo
+        Estados::Estado* estado = nullptr;
 
-	}
+        if (estado != nullptr)
+            pilhaDeEstados.push(estado); // Adiciona o estado na pilha
+        else
+            std::cout << "Ponteiro nulo" << std::endl;
 
-	void GerenciadorDeEstados::adicionarEstado(idEstado id)
-	{
-		Estado* estado = new Estado(id); //cria um novo estado de acordo com o id passado
-		estado->criarEstado();
+        std::cout << "Adicionei estado" << std::endl;
+    }
 
-		if (estado != nullptr)
-			pilhaDeEstados.push(estado); //adiciona o estado na pilha
-		else
-			cout << "ponteiro nulo" << endl;
+    void GerenciadorDeEstados::removerEstado()
+    {
+        std::cout << "Removi estado" << std::endl;
+        if (pilhaDeEstados.top() != nullptr)
+        {
+            delete (pilhaDeEstados.top()); // Deleta o estado do topo da pilha
+            pilhaDeEstados.top() = nullptr;
+            pilhaDeEstados.pop(); // Remove o estado do topo da pilha 
+        }
 
-		cout << "adicionei estado AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl; 
-	}
+        if (pilhaDeEstados.empty()) // Todos os estados foram fechados
+        {
+            // Gerenciador_Grafico* pGG = pGG->getInstancia();
+            // pGG->fechar_janela();
+        }
+    }
 
-	void GerenciadorDeEstados::removerEstado()
-	{
-
-		cout << "removi estado AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
-		if (pilhaDeEstados.top() != nullptr)
-		{
-			delete (pilhaDeEstados.top()); //deleta o estado do topo da pilha
-			pilhaDeEstados.top() = nullptr;
-			pilhaDeEstados.pop(); //remove o estado do topo da pilha 
-		}
-
-		if (pilhaDeEstados.empty()) //todos os estados foram fechados
-		{
-			Gerenciador_Grafico* pGG = pGG->getInstancia();
-			pGG->fechar_janela();
-		}
-		
-			
-	}
-
-	Estado* GerenciadorDeEstados::getEstadoAtual()
-	{
-		if (pilhaDeEstados.top())
-		{
-			return pilhaDeEstados.top();
-		}
-		else
-		{
-			cout << "top da pilha vazio" << endl;
-			return nullptr;
-		}
-	}
-
+    Estados::Estado* GerenciadorDeEstados::getEstadoAtual()
+    {
+        if (pilhaDeEstados.top())
+        {
+            return pilhaDeEstados.top();
+        }
+        else
+        {
+            std::cout << "Top da pilha vazio" << std::endl;
+            return nullptr;
+        }
+    }
 }

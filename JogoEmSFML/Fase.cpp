@@ -1,9 +1,10 @@
 #include "Fase.h"
+#include "GerenciadorDeEstados.h"
 
 namespace Fases {
-	Fase::Fase(bool m) :
+	Fase::Fase(bool m, idEstado ID_ESTADO) :
 		entidades(), p1(nullptr), p2(nullptr), multijogador(m), corpo(),
-		pGG(pGG->getInstancia()), pGC(pGC->getInstancia()){}
+		pGC(pGC->getInstancia()), Estado(ID_ESTADO){}
 
 	Fase::~Fase() {}
 
@@ -30,7 +31,7 @@ namespace Fases {
 			}
 			else
 			{
-				//pGE->removerEstado();
+				pGE->removerEstado();
 			}
 		}
 		else {
@@ -99,5 +100,6 @@ namespace Fases {
 			pGC->incluirPersonagem(p2);
 			pGC->incluirProjetil(p2->getAtaque());
 		}
+
 	}
 }

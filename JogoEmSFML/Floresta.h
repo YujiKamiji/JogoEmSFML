@@ -14,7 +14,7 @@ namespace Fases {
 		float finalFase;
 
 	public:
-		Floresta(bool m);
+		Floresta(bool m, idEstado ID_ESTADO);
 		~Floresta();
 
 		void inicializar();

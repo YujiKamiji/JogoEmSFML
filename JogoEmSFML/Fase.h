@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Estado.h"
 #include "ListaEntidades.h"
 #include "GerenciadorDeColisoes.h"
 #include "Chao.h"
@@ -11,15 +12,14 @@ using namespace Personagens;
 using namespace Obstaculos;
 using namespace Consumiveis;
 
+
 namespace Fases {
-	class Fase: public Ente {
+	class Fase: public Ente, public Estados::Estado {
 	protected:
 		ListaEntidades entidades;
 		Jogador* p1;
 		Jogador* p2;
 
-		
-		Gerenciador_Grafico* pGG;
 		GerenciadorDeColisoes* pGC;
 
 		sf::RectangleShape corpo;
@@ -28,7 +28,7 @@ namespace Fases {
 		bool multijogador;
 
 	public:
-		Fase(bool m);
+		Fase(bool m, idEstado ID_ESTADO);
 		~Fase();
 
 		void setMultijogador(bool m);

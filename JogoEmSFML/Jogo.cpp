@@ -4,8 +4,6 @@
 Jogo::Jogo():
 	pGE(Gerenciadores::GerenciadorDeEstados::getInstancia())
 {
-	pGE->adicionarEstado(FLORESTA); 
-
 	executar(); 
 }
 

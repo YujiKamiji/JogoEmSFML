@@ -1,8 +1,8 @@
 #include "Castelo.h"
 
 namespace Fases {
-	Castelo::Castelo(bool m):
-	Fase(m) 
+	Castelo::Castelo(bool m, idEstado ID_ESTADO):
+	Fase(m, ID_ESTADO) 
 	{
 		inicializar();
 	}
