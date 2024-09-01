@@ -61,7 +61,7 @@ namespace Gerenciadores
         }
     }
 
-    void GerenciadorDeEstados::removerEstado()
+    void GerenciadorDeEstados::removerEstado(idEstado ID_SUB)
     {
         cout << "topo da pilha ANTES DE REMOVER: " << pilhaDeEstados.top()->getIdEstado() << endl;
         std::cout << "Conteúdo da pilha de estados ANTES DE REMOVER:" << std::endl;
@@ -74,16 +74,19 @@ namespace Gerenciadores
             tempStack.pop();
         }
 
-
+        
         std::cout << "Removi estado" << std::endl;
         if (!pilhaDeEstados.empty() && pilhaDeEstados.top() != nullptr)
         {
 
-            Estados::Estado* aux = pilhaDeEstados.top();
+			delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
             pilhaDeEstados.top() = nullptr;
             pilhaDeEstados.pop(); // Remove o estado do topo da pilha 
-            delete aux; // Libera a memória do estado no topo da pilha
         }
+        
+
+        adicionarEstado(ID_SUB); // Adiciona um estado na pilha (substitui o estado removido)
+        
 
         if (pilhaDeEstados.empty()) // Todos os estados foram fechados
         {

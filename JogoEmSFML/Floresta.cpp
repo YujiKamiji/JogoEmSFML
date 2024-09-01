@@ -26,8 +26,14 @@ namespace Fases {
 
 	bool Floresta::verificarFinalFase() {
 		if (p1->getPosicao().x > finalFase && p2->getPosicao().x > finalFase) {
-			pGE->removerEstado();
-			//pGE->adicionarEstado(CASTELO_SINGLE);
+			if (multijogador)
+			{
+				pGE->removerEstado(CASTELO_MULTI);
+			}
+			else
+			{
+				pGE->removerEstado(CASTELO_SINGLE);
+			}
 			return false;
 		}
 		else
@@ -57,13 +63,11 @@ namespace Fases {
 				}
 			}
 			dt = relogio.restart();
-			//verificarFinalFase();
 			
 			entidades.executar(dt);
 
 			pGC->colidir();						
 			janela->clear();
-			//verificarVivos();
 			
 			entidades.desenhar();
 			desenhar();

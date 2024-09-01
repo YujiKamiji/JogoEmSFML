@@ -31,7 +31,7 @@ namespace Fases {
 			}
 			else
 			{
-				pGE->removerEstado();
+				//pGE->removerEstado();
 				return false;
 			}
 		}
@@ -40,7 +40,7 @@ namespace Fases {
 				pGG->camera_segue(p1->getPosicao());
 			else
 			{
-				pGE->removerEstado();
+				//pGE->removerEstado();
 				return false;
 			}
 				

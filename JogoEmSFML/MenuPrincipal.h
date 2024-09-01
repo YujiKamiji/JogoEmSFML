@@ -8,7 +8,7 @@ namespace Menus
 	class MenuPrincipal : public Menu
 	{
 	private:
-		std::list<Botao*> botoes; //lista de botoes 
+		std::vector<Botao*> botoes; //lista de botoes 
 
 		
 	public:
@@ -16,6 +16,9 @@ namespace Menus
 		~MenuPrincipal();
 
 		void irParaFlorestaSingle();
+		void irParaFlorestaMulti();
+		void irParaCasteloSingle();
+		void irParaCasteloMulti();
 
 		void executarEstado();
 		void inicializarElementos();

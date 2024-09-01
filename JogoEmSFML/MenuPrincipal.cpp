@@ -4,8 +4,9 @@
 namespace Menus
 {
 	MenuPrincipal::MenuPrincipal(idEstado ID_ESTADO) :
-		Menu(ID_ESTADO)
+		Menu(ID_ESTADO), botoes()
 	{
+		
 	}
 
 	MenuPrincipal::~MenuPrincipal() 
@@ -20,7 +21,26 @@ namespace Menus
 	void MenuPrincipal::irParaFlorestaSingle()
 	{
 		ativo = false;
-		pGE->removerEstado();
+		
+		pGE->removerEstado(FLORESTA_SINGLE);	
+		
+	}
+	void MenuPrincipal::irParaFlorestaMulti()
+	{
+		ativo = false;
+		pGE->removerEstado(FLORESTA_MULTI);
+	}
+
+	void MenuPrincipal::irParaCasteloSingle()
+	{
+		ativo = false;
+		pGE->removerEstado(CASTELO_SINGLE);
+	}
+
+	void MenuPrincipal::irParaCasteloMulti()
+	{
+		ativo = false;
+		pGE->removerEstado(CASTELO_MULTI);
 	}
 
 
@@ -35,7 +55,7 @@ namespace Menus
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
 			return;
 		}
-		while (pGG->janela_aberta() && pGE->getEstadoAtual() == this)
+		while (pGG->janela_aberta() && ativo)
 		{
 			
 			sf::Event evento;
@@ -47,10 +67,12 @@ namespace Menus
 				}
 			}
 			//iterar na lista de botoes e verificar se algum foi clicado
-			for (auto it = botoes.begin(); it != botoes.end(); it++)
+			for (int i = 0; i < botoes.size(); i++)
 			{
-				(*it)->tratarEvento(evento);
-			}	 
+				if(botoes[i])
+					botoes[i]->tratarEvento(evento);
+				
+			}	
 			janela->clear();
 			desenhar();
 			pGG->mostrar();
@@ -62,8 +84,11 @@ namespace Menus
 	void MenuPrincipal::inicializarElementos()
 	{
 		cout << "MenuPrincipal::inicializarElementos()" << endl;
-		adicionarBotao(new Botao("Fase 1: Floresta", sf::Vector2f(640, 360), sf::Vector2f(300, 100), std::bind(&MenuPrincipal::irParaFlorestaSingle, this)));
-
+		adicionarBotao(new Botao("Fase 1: Floresta", sf::Vector2f(640, 260), sf::Vector2f(300, 100), std::bind(&MenuPrincipal::irParaFlorestaSingle, this)));
+		adicionarBotao(new Botao("Fase 2: Castelo", sf::Vector2f(640, 380), sf::Vector2f(300, 100), std::bind(&MenuPrincipal::irParaCasteloSingle, this))); 
+		adicionarBotao(new Botao("Fase 1: Floresta - Multiplayer", sf::Vector2f(640, 500), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaFlorestaMulti, this)));
+		adicionarBotao(new Botao("Fase 2: Castelo - Multiplayer", sf::Vector2f(640, 620), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaCasteloMulti, this)));
+		
 	}
 
 	
@@ -73,10 +98,10 @@ namespace Menus
 		botoes.push_back(botao);
 	}
 
-	void MenuPrincipal::desenhar()
+	void MenuPrincipal::desenhar() 
 	{
-		pGG->desenhar(&textoPrincipal);
-		for (auto it = botoes.begin(); it != botoes.end(); it++)
+		pGG->desenhar(&textoPrincipal); 
+		for (auto it = botoes.begin(); it != botoes.end(); it++) 
 		{
 			(*it)->desenhar();
 		}

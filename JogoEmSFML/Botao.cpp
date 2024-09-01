@@ -31,6 +31,7 @@ void Menus::Botao::desenhar()
 
 void Menus::Botao::executar(sf::Time deltaTime)
 {
+	return;
 }
 
 bool Menus::Botao::mouseEmCima()

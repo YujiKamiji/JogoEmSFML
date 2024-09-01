@@ -20,7 +20,7 @@ namespace Menus
 	public:
 		Botao(std::string s, sf::Vector2f pos, sf::Vector2f tam, std::function<void()> f);
 		~Botao();
-		void desenhar();
+		void desenhar(); 
 		void executar(sf::Time deltaTime);
 		bool mouseEmCima();
 		void tratarEvento(sf::Event& evento);

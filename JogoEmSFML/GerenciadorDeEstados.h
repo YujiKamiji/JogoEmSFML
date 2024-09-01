@@ -31,7 +31,7 @@ namespace Gerenciadores
 
         void executar(); // Executa o estado no topo da pilha
         void adicionarEstado(idEstado id); // Adiciona um estado na pilha
-        void removerEstado(); // Remove o estado do topo da pilha
+        void removerEstado(idEstado ID_SUB); // Remove o estado do topo da pilha
         Estados::Estado* getEstadoAtual(); // Retorna o estado no topo da pilha
     };
 }
