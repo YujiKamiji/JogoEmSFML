@@ -34,7 +34,7 @@ namespace Fases {
 		void setMultijogador(bool m);
 
 		void executar(sf::Time deltaTime);
-		virtual void verificarVivos();
+		virtual bool verificarVivos();
 
 		virtual void inicializar() = 0;
 		virtual void executarEstado();

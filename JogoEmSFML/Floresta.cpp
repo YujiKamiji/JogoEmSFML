@@ -1,4 +1,5 @@
 #include "Floresta.h"
+#include "GerenciadorDeEstados.h"
 
 namespace Fases {
 	Floresta::Floresta(bool m, idEstado ID_ESTADO):
@@ -24,10 +25,14 @@ namespace Fases {
 		criarCura();
 	}
 
-	void Floresta::verificarFinalFase() {
+	bool Floresta::verificarFinalFase() {
 		if (p1->getPosicao().x > finalFase && p2->getPosicao().x > finalFase) {
-			pGG->fechar_janela();
+			pGE->removerEstado();
+			pGE->adicionarEstado(CASTELO_SINGLE);
+			return false;
 		}
+		else
+			return true;
 	}
 
 	void Floresta::executarEstado() {
@@ -40,7 +45,7 @@ namespace Fases {
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
 			return;
 		}
-		while (pGG->janela_aberta())
+		while (pGG->janela_aberta() && verificarFinalFase() && verificarVivos())
 		{
 			sf::Event evento;
 			while (janela->pollEvent(evento))
@@ -51,13 +56,13 @@ namespace Fases {
 				}
 			}
 			dt = relogio.restart();
-			verificarFinalFase();
+			//verificarFinalFase();
 			
 			entidades.executar(dt);
 
 			pGC->colidir();						
 			janela->clear();
-			verificarVivos();
+			//verificarVivos();
 			
 			entidades.desenhar();
 			desenhar();

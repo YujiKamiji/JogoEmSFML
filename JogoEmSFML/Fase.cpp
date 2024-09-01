@@ -15,7 +15,7 @@ namespace Fases {
 
 	void Fase::executar(sf::Time deltaTime) {}
 
-	void Fase::verificarVivos() {
+	bool Fase::verificarVivos() {
 		if (multijogador) {
 			if (p1->getVivo() && p2->getVivo())
 			{
@@ -32,15 +32,21 @@ namespace Fases {
 			else
 			{
 				pGE->removerEstado();
+				return false;
 			}
 		}
 		else {
 			if (p1->getVivo())
 				pGG->camera_segue(p1->getPosicao());
 			else
-				pGG->fechar_janela();
+			{
+				pGE->removerEstado();
+				return false;
+			}
+				
 		}
 		pGC->verificarVivos();
+		return true;
 	}
 
 	void Fase::executarEstado(){}

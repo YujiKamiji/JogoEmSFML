@@ -54,7 +54,7 @@ namespace Gerenciadores
         std::cout << "Removi estado" << std::endl;
         if (pilhaDeEstados.top() != nullptr)
         {
-			delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
+			//delete pilhaDeEstados.top(); // Libera a memória do estado no topo da pilha
             pilhaDeEstados.top() = nullptr;
             pilhaDeEstados.pop(); // Remove o estado do topo da pilha 
         }
