@@ -1,8 +1,9 @@
 #include "Floresta.h"
+#include "GerenciadorDeEstados.h"
 
 namespace Fases {
-	Floresta::Floresta(bool m):
-		Fase(m), finalFase(11700.f)
+	Floresta::Floresta(bool m, idEstado ID_ESTADO):
+		Fase(m, ID_ESTADO), finalFase(11700.f)
 	{
 		inicializar();
 		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
@@ -24,13 +25,17 @@ namespace Fases {
 		criarCura();
 	}
 
-	void Floresta::verificarFinalFase() {
+	bool Floresta::verificarFinalFase() {
 		if (p1->getPosicao().x > finalFase && p2->getPosicao().x > finalFase) {
-			pGG->fechar_janela();
+			pGE->removerEstado();
+			pGE->adicionarEstado(CASTELO_SINGLE);
+			return false;
 		}
+		else
+			return true;
 	}
 
-	void Floresta::executar() {
+	void Floresta::executarEstado() {
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();
@@ -40,7 +45,7 @@ namespace Fases {
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
 			return;
 		}
-		while (pGG->janela_aberta())
+		while (pGG->janela_aberta() && verificarFinalFase() && verificarVivos())
 		{
 			sf::Event evento;
 			while (janela->pollEvent(evento))
@@ -51,17 +56,18 @@ namespace Fases {
 				}
 			}
 			dt = relogio.restart();
-			verificarFinalFase();
+			//verificarFinalFase();
 			
 			entidades.executar(dt);
 
 			pGC->colidir();						
 			janela->clear();
-			verificarVivos();
+			//verificarVivos();
 			
 			entidades.desenhar();
 			desenhar();
 			pGG->mostrar();
+		
 		}
 	}
 	void Floresta::desenhar() {

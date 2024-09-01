@@ -87,6 +87,33 @@
     <ClCompile Include="Plataforma.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Castelo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Consumiveis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cura.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Estado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GerenciadorDeEstados.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Moeda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Municao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuOpc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeradorDeEstados.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -162,6 +189,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Plataforma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Castelo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumiveis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cura.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Estado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GerenciadorDeEstados.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Moeda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Municao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuOpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeradorDeEstados.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
