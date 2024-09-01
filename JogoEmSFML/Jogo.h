@@ -1,11 +1,11 @@
 #pragma once
 #include "GerenciadorDeEstados.h"
 
-using namespace Fases;
+
 
 class Jogo {
 private:
-	GerenciadorDeEstados* pGE;
+	Gerenciadores::GerenciadorDeEstados* pGE;
 	//vai ter o gerenciador de estados aqui
 
 public:

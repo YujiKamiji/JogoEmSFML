@@ -1,8 +1,8 @@
 #include "Castelo.h"
 
 namespace Fases {
-	Castelo::Castelo(bool m):
-	Fase(m) 
+	Castelo::Castelo(bool m, idEstado ID_ESTADO):
+	Fase(m, ID_ESTADO) 
 	{
 		inicializar();
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
@@ -24,7 +24,7 @@ namespace Fases {
 		criarCura();
 	}
 
-	void Castelo::executar() {
+	void Castelo::executarEstado() {
 		sf::Clock relogio;
 		sf::Time dt;
 		sf::RenderWindow* janela = pGG->getJanela();

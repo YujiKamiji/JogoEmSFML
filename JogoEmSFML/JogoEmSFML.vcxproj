@@ -148,9 +148,10 @@
     <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
     <ClCompile Include="Espinhos.cpp" />
-    <ClCompile Include="Estados.cpp" />
+    <ClCompile Include="Estado.cpp" />
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="Floresta.cpp" />
+    <ClCompile Include="GeradorDeEstados.cpp" />
     <ClCompile Include="GerenciadorDeColisoes.cpp" />
     <ClCompile Include="GerenciadorDeEstados.cpp" />
     <ClCompile Include="Gerenciador_Grafico.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="ListaEntidades.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuOpc.cpp" />
     <ClCompile Include="Moeda.cpp" />
     <ClCompile Include="Municao.cpp" />
     <ClCompile Include="NinjaGarras.cpp" />
@@ -181,9 +183,10 @@
     <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
     <ClInclude Include="Espinhos.h" />
-    <ClInclude Include="Estados.h" />
+    <ClInclude Include="Estado.h" />
     <ClInclude Include="Fase.h" />
     <ClInclude Include="Floresta.h" />
+    <ClInclude Include="GeradorDeEstados.h" />
     <ClInclude Include="GerenciadorDeColisoes.h" />
     <ClInclude Include="GerenciadorDeEstados.h" />
     <ClInclude Include="Gerenciador_Grafico.h" />
@@ -193,6 +196,7 @@
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidades.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuOpc.h" />
     <ClInclude Include="Moeda.h" />
     <ClInclude Include="Municao.h" />
     <ClInclude Include="NinjaGarras.h" />

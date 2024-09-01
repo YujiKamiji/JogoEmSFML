@@ -1,9 +1,10 @@
 #include "Fase.h"
+#include "GerenciadorDeEstados.h"
 
 namespace Fases {
-	Fase::Fase(bool m) :
+	Fase::Fase(bool m, idEstado ID_ESTADO) :
 		entidades(), p1(nullptr), p2(nullptr), multijogador(m), corpo(),
-		pGG(pGG->getInstancia()), pGC(pGC->getInstancia()){}
+		pGC(pGC->getInstancia()), Estado(ID_ESTADO){}
 
 	Fase::~Fase() {}
 
@@ -14,7 +15,7 @@ namespace Fases {
 
 	void Fase::executar(sf::Time deltaTime) {}
 
-	void Fase::verificarVivos() {
+	bool Fase::verificarVivos() {
 		if (multijogador) {
 			if (p1->getVivo() && p2->getVivo())
 			{
@@ -30,17 +31,25 @@ namespace Fases {
 			}
 			else
 			{
-				//pGE->removerEstado();
+				pGE->removerEstado();
+				return false;
 			}
 		}
 		else {
 			if (p1->getVivo())
 				pGG->camera_segue(p1->getPosicao());
 			else
-				pGG->fechar_janela();
+			{
+				pGE->removerEstado();
+				return false;
+			}
+				
 		}
 		pGC->verificarVivos();
+		return true;
 	}
+
+	void Fase::executarEstado(){}
 
 	void Fase::desenhar() {
 		pGG->desenhar(&corpo);
@@ -99,5 +108,6 @@ namespace Fases {
 			pGC->incluirPersonagem(p2);
 			pGC->incluirProjetil(p2->getAtaque());
 		}
+
 	}
 }

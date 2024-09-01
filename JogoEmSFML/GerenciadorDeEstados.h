@@ -1,32 +1,38 @@
-/*Ideia inspirada em um video tutorial de montagem de um gerenciador de estados*/
-/*Link do video em questao: https://www.youtube.com/watch?v=v8UgcL97Q-A&list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ&index=11 */
-
+/*Inspirado em video tutorial de montagem de um jogo em SFML*/
+/*Link do referido video: https://www.youtube.com/watch?v=v8UgcL97Q-A&list=PLR17O9xbTbIBBoL3lli44N8LdZVvg-_uZ&index=14*/
 #pragma once
 #include "stdafx.h"
-#include "Estados.h"
+#include "GeradorDeEstados.h"
+#include "Floresta.h"
+#include "Castelo.h"
+#include "Menu.h"
+#include <vector>
 #include <stack>
 
+namespace Estados {
+    class Estado;
+}
 
-using namespace Estados;
 namespace Gerenciadores
 {
-	class GerenciadorDeEstados
-	{
-	private:
-		GerenciadorDeEstados();
-		static GerenciadorDeEstados* instancia;
+    class GerenciadorDeEstados
+    {
+    private:
+        GerenciadorDeEstados();
+        static GerenciadorDeEstados* instancia;
 
-		std::stack<Estados::Estado*> pilhaDeEstados; //pilha de ponteiros para os estados
+        std::stack<Estados::Estado*> pilhaDeEstados; // Pilha de ponteiros para os estados
 
-	public:
-		~GerenciadorDeEstados();
-		static GerenciadorDeEstados* getInstancia();
+		GeradorDeEstados geradorDeEstados;
 
-		void executar(); //executa o estado no topo da pilha
-		
-		void adicionarEstado(idEstado id); //adiciona um estado na pilha
-		void removerEstado(); //remove o estado do topo da pilha
+    public:
+        ~GerenciadorDeEstados();
+        static GerenciadorDeEstados* getInstancia();
 
-		Estado* getEstadoAtual(); //retorna o estado no topo da pilha
-	};
+        void executar(); // Executa o estado no topo da pilha
+        void adicionarEstado(idEstado id); // Adiciona um estado na pilha
+        void removerEstado(); // Remove o estado do topo da pilha
+        Estados::Estado* getEstadoAtual(); // Retorna o estado no topo da pilha
+    };
 }
+
