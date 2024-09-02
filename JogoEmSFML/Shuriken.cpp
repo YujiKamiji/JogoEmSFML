@@ -6,7 +6,9 @@ namespace Entidades {
 	{
 		setAmigavel(false);
 		dano = 8;
-		duracao = 0;
+		duracao = 30;
+		textura = pGG->carregarTextura("Shuriken.png");
+		corpo.setTexture(textura);
 	}
 
 	Shuriken::~Shuriken() {}
@@ -19,6 +21,14 @@ namespace Entidades {
 	void Shuriken::executar(sf::Time deltaTime) {
 		if (ativo) {
 			mover(deltaTime);						
+		}
+
+		if (duracao > 0)
+			duracao -= deltaTime.asMilliseconds();
+		else
+		{
+			corpo.rotate(45);
+			duracao = 30;
 		}
 	}
 

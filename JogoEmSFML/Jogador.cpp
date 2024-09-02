@@ -13,6 +13,16 @@ namespace Entidades {
 			velocidadeMax = 10;
 			aceleracao = 50;
 			ataque->setAmigavel(true);
+
+			if (jId == 1) {
+				textura = pGG->carregarTextura("Jogador1.png");
+				corpo.setTexture(textura);
+			}
+			else {
+				textura = pGG->carregarTextura("Jogador2.png");
+				corpo.setTexture(textura);
+			}
+
 		}
 		Jogador::~Jogador() 
 		{ 
@@ -48,7 +58,7 @@ namespace Entidades {
 						velocidades.x += (aceleracao * deltaTime.asSeconds());
 					if (!olhandoDireita)
 					{
-						//corpo.setTexture(pGG->load_textures(""));
+						corpo.scale(-1, 1);
 						olhandoDireita = true;
 					}
 					
@@ -59,7 +69,7 @@ namespace Entidades {
 						velocidades.x -= (aceleracao * deltaTime.asSeconds());
 					if (olhandoDireita)
 					{
-						//corpo.setTexture(pGG->load_textures(""));
+						corpo.scale(-1, 1);
 						olhandoDireita = false;
 					}
 				}
@@ -87,7 +97,7 @@ namespace Entidades {
 						velocidades.x += aceleracao * deltaTime.asSeconds();
 					if (!olhandoDireita)
 					{
-						//corpo.setTexture(pGG->load_textures(""));
+						corpo.scale(-1, 1);
 						olhandoDireita = true;
 					}
 				}
@@ -97,7 +107,7 @@ namespace Entidades {
 						velocidades.x -= aceleracao * deltaTime.asSeconds();
 					if (olhandoDireita)
 					{
-						//corpo.setTexture(pGG->load_textures(""));
+						corpo.scale(-1, 1);
 						olhandoDireita = false;
 					}
 				}
