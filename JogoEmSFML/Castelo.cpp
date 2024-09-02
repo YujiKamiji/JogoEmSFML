@@ -1,3 +1,6 @@
+
+/*/*Sprites do chao de autoria propria!*/
+
 #include "Castelo.h"
 
 namespace Fases {
@@ -6,15 +9,21 @@ namespace Fases {
 	{
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
-		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		textura = pGG->carregarTextura("Assets/Sprites/Castelo.png");
 		corpo.setTexture(textura);
+
+		texturaFundo = pGG->carregarTextura("Assets/Sprites/FundoCastelo.jpg");
+		fundo.setOrigin(sf::operator*(sf::Vector2f(1280, 720), 0.5f));
+		fundo.setTexture(*texturaFundo);
+		fundo.setPosition(sf::operator*(sf::Vector2f(1280, 720), 0.5f));
+		fundo.setColor(sf::Color(100, 100, 100, 255));
 	}
 	Castelo::~Castelo() { pGC->limparListas(); }
 
 	void Castelo::inicializar() {
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
-		textura = pGG->carregarTextura("Sprites/Castelo.png");
+		textura = pGG->carregarTextura("Assets/Sprites/Castelo.png");
 		corpo.setTexture(textura);
 		carregarMapa("Castelo.tmj");
 		criarChao();
@@ -48,6 +57,12 @@ namespace Fases {
 					janela->close();
 				}
 			}
+
+			if (multijogador)
+				fundoSegue(p1->getPosicao(), p2->getPosicao());
+			else
+				fundoSegue(p1->getPosicao());
+
 			dt = relogio.restart();
 
 			entidades.executar(dt);
@@ -56,6 +71,7 @@ namespace Fases {
 			janela->clear();
 			//verificarVivos();
 
+			pGG->desenhar(&fundo);  
 			entidades.desenhar();
 			desenhar();
 			pGG->mostrar();
@@ -66,6 +82,26 @@ namespace Fases {
 		pGG->desenhar(&corpo);
 	}
 	void Castelo::salvar() {}
+
+	void Castelo::fundoSegue(sf::Vector2f posicao1)
+	{
+		if (posicao1.x < LARGURA / 2)
+		{
+			fundo.setPosition(LARGURA / 2, posicao1.y - 50.f);
+		}
+		else
+			fundo.setPosition(posicao1.x, posicao1.y - 50.f);
+	}
+
+	void Castelo::fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2)
+	{
+		if (((posicao1.x + posicao2.x) / 2) < LARGURA / 2)
+		{
+			fundo.setPosition(LARGURA / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+		}
+		else
+			fundo.setPosition((posicao1.x + posicao2.x) / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+	}
 
 	void Castelo::criarNinjaGarras() {
 		NinjaGarras* ng1 = new NinjaGarras(sf::Vector2f(100, 2200), sf::Vector2f(50.0, 100.0), p1, p2);		

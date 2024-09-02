@@ -10,7 +10,8 @@
 namespace Fases {
 	class Castelo : public Fase {
 	private:
-
+		sf::Sprite fundo; 
+		sf::Texture* texturaFundo; 
 	public:
 		Castelo(bool m, idEstado ID_ESTADO);
 		~Castelo();
@@ -20,6 +21,9 @@ namespace Fases {
 		void executarEstado();
 		void desenhar();
 		void salvar();
+
+		void fundoSegue(sf::Vector2f posicao1);
+		void fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2);
 
 		void criarNinjaGarras();
 		void criarShogun();

@@ -1,14 +1,25 @@
+/*Imagem de fundo retirada de rede social Pinterest*/
+/*Link da imagem: https://www.pinterest.com/pin/pixel-forest-at-night-lucy-linse--305330049748795700/ */
+
+/*Sprites do chao de autoria propria!*/
+
 #include "Floresta.h"
 #include "GerenciadorDeEstados.h"
 
 namespace Fases {
 	Floresta::Floresta(bool m, idEstado ID_ESTADO):
-		Fase(m, ID_ESTADO), finalFase(1100.f)
+		Fase(m, ID_ESTADO), finalFase(11700.f)
 	{
 		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
-		textura = pGG->carregarTextura("Sprites/Floresta.png");
+		textura = pGG->carregarTextura("Assets/Sprites/Floresta.png");
 		corpo.setTexture(textura);
+		
+		texturaFundo = pGG->carregarTextura("Assets/Sprites/FundoFloresta.png");
+		fundo.setOrigin(sf::operator*(sf::Vector2f(1280, 720), 0.5f)); 
+		fundo.setTexture(*texturaFundo); 
+		fundo.setColor(sf::Color(100, 255, 150, 200));
+		fundo.setPosition(sf::operator*(sf::Vector2f(1280, 720), 0.5f)); 
 	}
 	Floresta::~Floresta() { pGC->limparListas(); }
 
@@ -40,6 +51,26 @@ namespace Fases {
 			return true;
 	}
 
+	void Floresta::fundoSegue(sf::Vector2f posicao1)
+	{
+		if (posicao1.x < LARGURA / 2)
+		{
+			fundo.setPosition(LARGURA / 2, posicao1.y - 50.f);
+		}
+		else
+			fundo.setPosition(posicao1.x, posicao1.y - 50.f);
+	}
+
+	void Floresta::fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2)
+	{
+		if (((posicao1.x + posicao2.x) / 2) < LARGURA / 2)
+		{
+			fundo.setPosition(LARGURA / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+		}
+		else
+			fundo.setPosition((posicao1.x + posicao2.x) / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+	}
+
 	void Floresta::executarEstado() {
 
 		inicializar();
@@ -62,6 +93,12 @@ namespace Fases {
 					janela->close();
 				}
 			}
+
+			if (multijogador)
+				fundoSegue(p1->getPosicao(), p2->getPosicao()); 
+			else
+				fundoSegue(p1->getPosicao());
+
 			dt = relogio.restart();
 			
 			entidades.executar(dt);
@@ -69,13 +106,15 @@ namespace Fases {
 			pGC->colidir();						
 			janela->clear();
 			
+			pGG->desenhar(&fundo); 
 			entidades.desenhar();
-			desenhar();
+			desenhar(); 
 			pGG->mostrar();
 		
 		}
 	}
 	void Floresta::desenhar() {
+		
 		pGG->desenhar(&corpo);
 	}
 	void Floresta::salvar() {}

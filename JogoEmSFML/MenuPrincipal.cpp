@@ -1,3 +1,7 @@
+/*Imagem de fundo retirada de um site de hospedagem de wallpapers*/
+/*Link do site: https://4kwallpapers.com/graphics-cgi/samurai-pixel-art-15196.html */
+
+
 #include  "MenuPrincipal.h"
 #include "GerenciadorDeEstados.h"
 
@@ -6,7 +10,12 @@ namespace Menus
 	MenuPrincipal::MenuPrincipal(idEstado ID_ESTADO) :
 		Menu(ID_ESTADO, "Ninja+Invasion"), botoes()
 	{
+		textura = pGG->carregarTextura("Assets/Sprites/Fundo1.jpg");
 		setPosicaoTexto(sf::operator*(sf::Vector2f(640, 100), 1.f));
+		fundo.setOrigin(sf::operator*(sf::Vector2f(1280, 720), 0.5f));
+		fundo.setTexture(textura);
+		fundo.setSize(sf::Vector2f(1280, 720));
+		fundo.setPosition(sf::operator*(sf::Vector2f(1280, 720), 0.5f));
 	}
 
 	MenuPrincipal::~MenuPrincipal() 
@@ -107,6 +116,7 @@ namespace Menus
 
 	void MenuPrincipal::desenhar() 
 	{
+		pGG->desenhar(&fundo);
 		pGG->desenhar(&textoPrincipal); 
 		for (int i = 0; i < botoes.size(); i++)
 		{

@@ -109,6 +109,10 @@ namespace Gerenciadores {
 	{
 		janela->draw(*texto);
 	}
+	void Gerenciador_Grafico::desenhar(sf::Sprite* sprite)
+	{
+		janela->draw(*sprite);
+	}
 	sf::Font* Gerenciador_Grafico::carregarFonte()
 	{
 		return fonte;

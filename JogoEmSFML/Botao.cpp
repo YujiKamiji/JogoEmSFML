@@ -3,8 +3,11 @@
 
 
 Menus::Botao::Botao(std::string s, sf::Vector2f pos, sf::Vector2f tam, std::function<void()> callback):
-	corpo(tam), selecionado(false), clicado(false), clicou(callback), corNormal(sf::Color::Black), corSelecionado(sf::Color::Green), corAtual(corNormal)
+	corpo(tam), selecionado(false), clicado(false), clicou(callback), corNormal(sf::Color::Black), corAtual(corNormal)
 {
+	corSelecionado = sf::Color(44, 26, 66, 255);
+	
+
 	texto.setString(s);
 	texto.setFont(*(pGG->carregarFonte()));
 	texto.setCharacterSize(20);

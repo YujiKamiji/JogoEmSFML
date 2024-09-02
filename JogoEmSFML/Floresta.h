@@ -13,12 +13,16 @@ namespace Fases {
 	private:
 		float finalFase;
 
+		sf::Sprite fundo;
+		sf::Texture* texturaFundo;
 	public:
 		Floresta(bool m, idEstado ID_ESTADO);
 		~Floresta();
 
 		void inicializar();
 		bool verificarFinalFase();
+		void fundoSegue(sf::Vector2f posicao1);
+		void fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2);
 
 		void executarEstado();
 		void desenhar();

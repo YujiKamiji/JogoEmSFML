@@ -36,6 +36,7 @@ namespace Gerenciadores {
 
 		//para menu e afins:
 		void desenhar(sf::Text* texto);
+		void desenhar(sf::Sprite* sprite); 
 		sf::Font* carregarFonte();
 		void reiniciarJanela();
 	};
