@@ -11,7 +11,6 @@ enum ID {
 	NINJA_GARRAS,
 	NINJA_SHURIKEN,
 	CURA,
-	MUNICAO,
 	MOEDA,
 	SHOGUN,
 	CHAO,
@@ -30,10 +29,10 @@ namespace Entidades {
 		Entidade();
 		virtual ~Entidade();
 
-		virtual void mover(sf::Time deltaTime);
+		virtual void mover(sf::Time deltaTime) = 0;
 		void setNoAr(bool b);
 
-		virtual void executar(sf::Time deltaTime);
+		virtual void executar(sf::Time deltaTime) = 0;
 		virtual void desenhar() = 0;
 		virtual void salvar() = 0;
 

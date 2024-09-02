@@ -6,18 +6,8 @@ namespace Entidades {
 		Ente(), velocidades(0, 0), noAr(true) {}
 
 	Entidade::~Entidade() {}
-	
-	void Entidade::mover(sf::Time deltaTime)
-	{
-		cout << "entidade sem metodo mover proprio!!!" << endl;	
-	}
 
 	void Entidade::setNoAr(bool b) { noAr = b; }
-
-	void Entidade::executar(sf::Time deltaTime)
-	{
-		//cout << "entidade sem metodo executar proprio!!!" << endl;
-	}
 
 	void Entidade::gravidade(sf::Time deltaTime)
 	{

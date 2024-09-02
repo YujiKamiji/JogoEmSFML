@@ -29,7 +29,7 @@ namespace Gerenciadores {
 		sf::Texture* carregarTextura(std::string caminho);
 
 		void camera_segue(sf::Vector2f posicao1);
-		void camera_segue(sf::Vector2f posicao1, sf::Vector2f posicao);
+		void camera_segue(sf::Vector2f posicao1, sf::Vector2f posicao2);
 
 		sf::RenderWindow* getJanela();
 		static Gerenciador_Grafico* getInstancia();
