@@ -30,12 +30,6 @@ Estados::Estado* GeradorDeEstados::criarEstado(idEstado id)
 	case CASTELO_MULTI:
 		return new Fases::Castelo(true, id);
 		break;
-	case PAUSE: //TODO
-		break;
-	case GAMEOVER: //TODO
-		break;
-	case VITORIA: //TODO	
-		break;
 	default:
 		break;
 	}
