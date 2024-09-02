@@ -5,7 +5,7 @@
 
 namespace Fases {
 	Castelo::Castelo(bool m, idEstado ID_ESTADO):
-	Fase(m, ID_ESTADO) 
+	Fase(m, ID_ESTADO), fundo(), barraDeVidaP1(sf::Vector2f(200, 20), VIDAMAX), barraDeVidaP2(sf::Vector2f(200, 20), VIDAMAX)
 	{
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
@@ -34,6 +34,17 @@ namespace Fases {
 		criarEspinho();
 		criarMoeda();
 		criarCura();
+
+		if (multijogador)
+		{
+			barraDeVidaP1.setPosicao(sf::Vector2f(300, 20));
+			barraDeVidaP2.setPosicao(sf::Vector2f(300, 50));
+			barraDeVidaP2.setCor(sf::Color::Blue);
+		}
+		else
+		{
+			barraDeVidaP1.setPosicao(sf::Vector2f(300, 20));
+		}
 	}
 
 	void Castelo::executarEstado() {
@@ -58,22 +69,26 @@ namespace Fases {
 				}
 			}
 
-			if (multijogador)
-				fundoSegue(p1->getPosicao(), p2->getPosicao());
-			else
-				fundoSegue(p1->getPosicao());
+			moverFundo();
 
 			dt = relogio.restart();
 
 			entidades.executar(dt);
 
 			pGC->colidir();
-			janela->clear();
-			//verificarVivos();
 
-			pGG->desenhar(&fundo);  
+			ajustarBarraDeVida();
+
+			janela->clear();
+
+			pGG->desenhar(&fundo); 
+
 			entidades.desenhar();
+
 			desenhar();
+
+			desenharBarraDeVida();
+
 			pGG->mostrar();
 		}
 	}
@@ -91,6 +106,9 @@ namespace Fases {
 		}
 		else
 			fundo.setPosition(posicao1.x, posicao1.y - 50.f);
+		barraDeVidaP1.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 50));
+		barraDeVidaP2.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 80));
+
 	}
 
 	void Castelo::fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2)
@@ -101,6 +119,58 @@ namespace Fases {
 		}
 		else
 			fundo.setPosition((posicao1.x + posicao2.x) / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+
+		barraDeVidaP1.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 50));
+		barraDeVidaP2.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 80));
+
+	}
+
+	void Castelo::moverFundo()
+	{
+		if (multijogador)
+		{
+			if (p1->getVivo() && p2->getVivo())
+			{
+				fundoSegue(p1->getPosicao(), p2->getPosicao());
+			}
+			else if (!(p1->getVivo()) && p2->getVivo())
+			{
+				fundoSegue(p2->getPosicao());
+			}
+			else if (p1->getVivo() && !(p2->getVivo()))
+			{
+				fundoSegue(p1->getPosicao());
+			}
+
+		}
+		else
+			fundoSegue(p1->getPosicao());
+	}
+
+	void Castelo::ajustarBarraDeVida()
+	{
+		if (multijogador)
+		{
+			barraDeVidaP1.setVida(p1->getVidas()); 
+			barraDeVidaP2.setVida(p2->getVidas()); 
+		}
+		else
+		{
+			barraDeVidaP1.setVida(p1->getVidas()); 
+		}
+	}
+
+	void Castelo::desenharBarraDeVida()
+	{
+		if (multijogador)
+		{
+			barraDeVidaP1.desenhar();
+			barraDeVidaP2.desenhar();
+		}
+		else
+		{
+			barraDeVidaP1.desenhar();
+		}
 	}
 
 	void Castelo::criarNinjaGarras() {

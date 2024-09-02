@@ -8,7 +8,7 @@
 
 namespace Fases {
 	Floresta::Floresta(bool m, idEstado ID_ESTADO):
-		Fase(m, ID_ESTADO), finalFase(11700.f)
+		Fase(m, ID_ESTADO), finalFase(11700.f), fundo(), texturaFundo(NULL), barraDeVidaP1(sf::Vector2f(200, 20), VIDAMAX), barraDeVidaP2(sf::Vector2f(200, 20), VIDAMAX)
 	{
 		corpo.setSize(sf::Vector2f(12000.f, 2000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
@@ -19,7 +19,8 @@ namespace Fases {
 		fundo.setOrigin(sf::operator*(sf::Vector2f(1280, 720), 0.5f)); 
 		fundo.setTexture(*texturaFundo); 
 		fundo.setColor(sf::Color(100, 255, 150, 200));
-		fundo.setPosition(sf::operator*(sf::Vector2f(1280, 720), 0.5f)); 
+		fundo.setPosition(sf::operator*(sf::Vector2f(1280, 720), 0.5f));
+
 	}
 	Floresta::~Floresta() { pGC->limparListas(); }
 
@@ -33,6 +34,17 @@ namespace Fases {
 		criarCaixote();
 		criarMoeda();
 		criarCura();
+
+		if (multijogador)
+		{
+			barraDeVidaP1.setPosicao(sf::Vector2f(300, 20)); 
+			barraDeVidaP2.setPosicao(sf::Vector2f(300, 50)); 
+			barraDeVidaP2.setCor(sf::Color::Blue);
+		}
+		else
+		{
+			barraDeVidaP1.setPosicao(sf::Vector2f(300, 20)); 
+		}
 	}
 
 	bool Floresta::verificarFinalFase() {
@@ -58,7 +70,13 @@ namespace Fases {
 			fundo.setPosition(LARGURA / 2, posicao1.y - 50.f);
 		}
 		else
-			fundo.setPosition(posicao1.x, posicao1.y - 50.f);
+		{
+			fundo.setPosition(posicao1.x, posicao1.y - 50.f); 
+			 
+		}
+
+	 	barraDeVidaP1.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 50));
+	 	barraDeVidaP2.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 80));
 	}
 
 	void Floresta::fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2)
@@ -69,6 +87,57 @@ namespace Fases {
 		}
 		else
 			fundo.setPosition((posicao1.x + posicao2.x) / 2, (posicao1.y + posicao2.y) / 2 - 50.f);
+
+	 	barraDeVidaP1.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 50));
+	 	barraDeVidaP2.setPosicao(sf::Vector2f(fundo.getPosition().x - LARGURA / 2 + 150, fundo.getPosition().y - ALTURA / 2 + 80));
+	}
+
+	void Floresta::moverFundo()
+	{
+		if (multijogador)
+		{
+			if (p1->getVivo() && p2->getVivo()) 
+			{
+				fundoSegue(p1->getPosicao(), p2->getPosicao()); 
+			}
+			else if (!(p1->getVivo()) && p2->getVivo()) 
+			{
+				fundoSegue(p2->getPosicao()); 
+			}
+			else if (p1->getVivo() && !(p2->getVivo()))
+			{
+				fundoSegue(p1->getPosicao());
+			}
+
+		}
+		else
+			fundoSegue(p1->getPosicao());
+	}
+
+	void Floresta::ajustarBarraDeVida()
+	{
+		if (multijogador)
+		{
+			barraDeVidaP1.setVida(p1->getVidas()); 
+			barraDeVidaP2.setVida(p2->getVidas()); 
+		}
+		else
+		{
+			barraDeVidaP1.setVida(p1->getVidas()); 
+		}
+	}
+
+	void Floresta::desenharBarraDeVida()
+	{
+		if (multijogador)
+		{
+			barraDeVidaP1.desenhar(); 
+			barraDeVidaP2.desenhar(); 
+		}
+		else
+		{
+			barraDeVidaP1.desenhar(); 
+		}
 	}
 
 	void Floresta::executarEstado() {
@@ -94,21 +163,26 @@ namespace Fases {
 				}
 			}
 
-			if (multijogador)
-				fundoSegue(p1->getPosicao(), p2->getPosicao()); 
-			else
-				fundoSegue(p1->getPosicao());
+			moverFundo(); 
 
 			dt = relogio.restart();
 			
 			entidades.executar(dt);
 
-			pGC->colidir();						
+			pGC->colidir();	
+
+			ajustarBarraDeVida();
+
 			janela->clear();
 			
-			pGG->desenhar(&fundo); 
+			pGG->desenhar(&fundo);
+
 			entidades.desenhar();
+
 			desenhar(); 
+
+			desenharBarraDeVida();
+
 			pGG->mostrar();
 		
 		}

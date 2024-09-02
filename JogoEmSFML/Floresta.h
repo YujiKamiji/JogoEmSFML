@@ -7,6 +7,7 @@
 #include "Caixote.h"
 #include "Moeda.h"
 #include "Cura.h"
+#include "BarraDeVida.h"
 
 namespace Fases {
 	class Floresta : public Fase {
@@ -15,6 +16,9 @@ namespace Fases {
 
 		sf::Sprite fundo;
 		sf::Texture* texturaFundo;
+
+		BarraDeVida barraDeVidaP1;
+		BarraDeVida barraDeVidaP2; 
 	public:
 		Floresta(bool m, idEstado ID_ESTADO);
 		~Floresta();
@@ -23,6 +27,10 @@ namespace Fases {
 		bool verificarFinalFase();
 		void fundoSegue(sf::Vector2f posicao1);
 		void fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2);
+		void moverFundo();
+
+		void ajustarBarraDeVida();
+		void desenharBarraDeVida();
 
 		void executarEstado();
 		void desenhar();

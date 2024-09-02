@@ -6,12 +6,16 @@
 #include "Espinhos.h"
 #include "Moeda.h"
 #include "Cura.h"
+#include "BarraDeVida.h"
 
 namespace Fases {
 	class Castelo : public Fase {
 	private:
 		sf::Sprite fundo; 
-		sf::Texture* texturaFundo; 
+		sf::Texture* texturaFundo;
+
+		BarraDeVida barraDeVidaP1;
+		BarraDeVida barraDeVidaP2;
 	public:
 		Castelo(bool m, idEstado ID_ESTADO);
 		~Castelo();
@@ -24,6 +28,10 @@ namespace Fases {
 
 		void fundoSegue(sf::Vector2f posicao1);
 		void fundoSegue(sf::Vector2f posicao1, sf::Vector2f posicao2);
+		void moverFundo();
+
+		void ajustarBarraDeVida();
+		void desenharBarraDeVida();
 
 		void criarNinjaGarras();
 		void criarShogun();
