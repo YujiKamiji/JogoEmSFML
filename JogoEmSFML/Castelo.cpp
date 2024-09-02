@@ -2,10 +2,12 @@
 /*/*Sprites do chao de autoria propria!*/
 
 #include "Castelo.h"
+#include "GerenciadorDeEstados.h"
 
 namespace Fases {
-	Castelo::Castelo(bool m, idEstado ID_ESTADO):
-	Fase(m, ID_ESTADO), fundo(), barraDeVidaP1(sf::Vector2f(200, 20), VIDAMAX), barraDeVidaP2(sf::Vector2f(200, 20), VIDAMAX)
+	Castelo::Castelo(bool m, idEstado ID_ESTADO) :
+		Fase(m, ID_ESTADO), fundo(), barraDeVidaP1(sf::Vector2f(200, 20), VIDAMAX), barraDeVidaP2(sf::Vector2f(200, 20), VIDAMAX),
+		shogunChefe(nullptr)
 	{
 		corpo.setSize(sf::Vector2f(8000.f, 4000.f));
 		corpo.setOrigin(sf::Vector2f(50.f, 50.f));
@@ -47,6 +49,15 @@ namespace Fases {
 		}
 	}
 
+	bool Castelo::chefeFinalDerrotado() {
+		if (!shogunChefe->getVivo()) {
+			pGE->removerEstado(MENU);
+			return false;
+		}	
+		else
+			return true;
+	}
+
 	void Castelo::executarEstado() {
 		inicializar();
 		sf::Clock relogio;
@@ -58,7 +69,7 @@ namespace Fases {
 			std::cerr << "Erro: Janela nao foi inicializada corretamente." << std::endl;
 			return;
 		}
-		while (pGG->janela_aberta() && verificarVivos())
+		while (pGG->janela_aberta() && verificarVivos() && chefeFinalDerrotado())
 		{
 			sf::Event evento;
 			while (janela->pollEvent(evento))
@@ -211,10 +222,10 @@ namespace Fases {
 		}
 	}
 	void Castelo::criarShogun() {
-		Shogun* sho1 = new Shogun(sf::Vector2f(1800, 3400), sf::Vector2f(75.0, 125.0), p1, p2);
-		Shogun* sho2 = new Shogun(sf::Vector2f(3000, 1300), sf::Vector2f(75.0, 125.0), p1, p2);
-		Shogun* sho3 = new Shogun(sf::Vector2f(6800, 1100), sf::Vector2f(75.0, 125.0), p1, p2);
-		Shogun* sho4 = new Shogun(sf::Vector2f(7300, 1100), sf::Vector2f(75.0, 125.0), p1, p2);
+		Shogun* sho1 = new Shogun(sf::Vector2f(1800, 3400), sf::Vector2f(75.0, 150.0), p1, p2);
+		Shogun* sho2 = new Shogun(sf::Vector2f(3000, 1300), sf::Vector2f(75.0, 150.0), p1, p2);
+		Shogun* sho3 = new Shogun(sf::Vector2f(6800, 1100), sf::Vector2f(75.0, 150.0), p1, p2);
+		Shogun* sho4 = new Shogun(sf::Vector2f(7300, 1100), sf::Vector2f(75.0, 150.0), p1, p2);
 
 		entidades.adicionar(sho1);
 		entidades.adicionar(sho1->getAtaque());
@@ -234,6 +245,8 @@ namespace Fases {
 		pGC->incluirProjetil(sho2->getAtaque());
 		pGC->incluirProjetil(sho3->getAtaque());
 		pGC->incluirProjetil(sho4->getAtaque());
+
+		shogunChefe = sho4;
 		
 		int rng = rand() % 10;
 		if (rng == 0) {

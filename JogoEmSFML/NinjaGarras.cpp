@@ -14,7 +14,9 @@ namespace Entidades {
 			setP1(a);
 			setP2(b);
 
-			corpo.setFillColor(sf::Color::Red);
+			textura = pGG->carregarTextura("NinjaGarras.png");
+			corpo.setTexture(textura);
+			corpo.scale(-1, 1);
 		}
 
 		NinjaGarras::~NinjaGarras() {}

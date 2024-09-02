@@ -15,7 +15,8 @@ namespace Entidades {
 			setP1(a);
 			setP2(b);
 
-			corpo.setFillColor(sf::Color::Blue);
+			textura = pGG->carregarTextura("Shogun.png");
+			corpo.setTexture(textura);
 		}
 
 		Shogun::~Shogun() {}
@@ -48,6 +49,8 @@ namespace Entidades {
 			calculaDis();
 
 			if (disP1 <= 300 || disP2 <= 300)
+				enfurecido = true;
+			if (vidas < 50)
 				enfurecido = true;
 
 			if (enfurecido)

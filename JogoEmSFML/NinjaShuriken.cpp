@@ -15,7 +15,9 @@ namespace Entidades {
 			setP1(a);
 			setP2(b);
 
-			corpo.setFillColor(sf::Color::Magenta);
+			textura = pGG->carregarTextura("NinjaShuriken.png");
+			corpo.setTexture(textura);
+			corpo.scale(-1, 1);
 		}
 
 

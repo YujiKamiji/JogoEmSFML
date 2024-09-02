@@ -14,6 +14,8 @@ namespace Fases {
 		sf::Sprite fundo; 
 		sf::Texture* texturaFundo;
 
+		Shogun* shogunChefe;
+
 		BarraDeVida barraDeVidaP1;
 		BarraDeVida barraDeVidaP2;
 	public:
@@ -21,6 +23,7 @@ namespace Fases {
 		~Castelo();
 
 		void inicializar();
+		bool chefeFinalDerrotado();
 
 		void executarEstado();
 		void desenhar();
