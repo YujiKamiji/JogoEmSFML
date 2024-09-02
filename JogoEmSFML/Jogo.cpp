@@ -2,7 +2,8 @@
 
 
 Jogo::Jogo():
-	pGE(Gerenciadores::GerenciadorDeEstados::getInstancia())
+	pGE(Gerenciadores::GerenciadorDeEstados::getInstancia()),
+	pGG(Gerenciadores::Gerenciador_Grafico::getInstancia()) 
 {
 	pGE->adicionarEstado(MENU);
 
@@ -13,6 +14,10 @@ Jogo::~Jogo() {}
 
 void Jogo::executar()
 { 
-	cout << "Jogo::executar()" << endl;
-	pGE->executar();
+	while (pGG->janela_aberta() && pGE->getEstadoAtual())
+	{
+		cout << "Jogo::executar()" << endl;
+		pGE->executar();
+	}
+	
 }

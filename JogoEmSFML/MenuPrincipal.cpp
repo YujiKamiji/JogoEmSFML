@@ -4,9 +4,9 @@
 namespace Menus
 {
 	MenuPrincipal::MenuPrincipal(idEstado ID_ESTADO) :
-		Menu(ID_ESTADO), botoes()
+		Menu(ID_ESTADO, "Ninja+Invasion"), botoes()
 	{
-		
+		setPosicaoTexto(sf::operator*(sf::Vector2f(640, 100), 1.f));
 	}
 
 	MenuPrincipal::~MenuPrincipal() 
@@ -41,6 +41,11 @@ namespace Menus
 	{
 		ativo = false;
 		pGE->removerEstado(CASTELO_MULTI);
+	}
+
+	void MenuPrincipal::sair()
+	{
+		pGG->fechar_janela();
 	}
 
 
@@ -83,11 +88,12 @@ namespace Menus
 
 	void MenuPrincipal::inicializarElementos()
 	{
-		cout << "MenuPrincipal::inicializarElementos()" << endl;
+
 		adicionarBotao(new Botao("Fase 1: Floresta", sf::Vector2f(640, 260), sf::Vector2f(300, 100), std::bind(&MenuPrincipal::irParaFlorestaSingle, this)));
 		adicionarBotao(new Botao("Fase 2: Castelo", sf::Vector2f(640, 380), sf::Vector2f(300, 100), std::bind(&MenuPrincipal::irParaCasteloSingle, this))); 
-		adicionarBotao(new Botao("Fase 1: Floresta - Multiplayer", sf::Vector2f(640, 500), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaFlorestaMulti, this)));
-		adicionarBotao(new Botao("Fase 2: Castelo - Multiplayer", sf::Vector2f(640, 620), sf::Vector2f(500, 100), std::bind(&MenuPrincipal::irParaCasteloMulti, this)));
+		adicionarBotao(new Botao("Fase 1: Floresta - Multiplayer", sf::Vector2f(640, 500), sf::Vector2f(550, 100), std::bind(&MenuPrincipal::irParaFlorestaMulti, this)));
+		adicionarBotao(new Botao("Fase 2: Castelo - Multiplayer", sf::Vector2f(640, 620), sf::Vector2f(545, 100), std::bind(&MenuPrincipal::irParaCasteloMulti, this)));
+		adicionarBotao(new Botao("X", sf::Vector2f(50, 50), sf::Vector2f(50, 50), std::bind(&MenuPrincipal::sair, this)));
 		
 		pGG->reiniciarJanela();
 	}

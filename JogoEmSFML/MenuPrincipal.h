@@ -10,6 +10,7 @@ namespace Menus
 	private:
 		std::vector<Botao*> botoes; //lista de botoes 
 
+		sf::RectangleShape fundo;
 		
 	public:
 		MenuPrincipal(idEstado ID_ESTADO);
@@ -19,6 +20,7 @@ namespace Menus
 		void irParaFlorestaMulti();
 		void irParaCasteloSingle();
 		void irParaCasteloMulti();
+		void sair();
 
 		void executarEstado();
 		void inicializarElementos();

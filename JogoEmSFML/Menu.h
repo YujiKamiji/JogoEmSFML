@@ -11,7 +11,7 @@ namespace Menus
 		sf::Text textoPrincipal;
 		bool ativo;
 	public:
-		Menu(idEstado ID_ESTADO);
+		Menu(idEstado ID_ESTADO, string s);
 		~Menu();
 		void executar(sf::Time deltaTime);
 		virtual void executarEstado() = 0;

@@ -3,16 +3,17 @@
 
 namespace Menus
 {
-	Menu::Menu(idEstado ID_ESTADO) :
+	Menu::Menu(idEstado ID_ESTADO, string s) :
 		Estado(ID_ESTADO),
 		Ente(),
 		textoPrincipal(),
 		ativo(true)
 	{
 		textoPrincipal.setFont(*(pGG->carregarFonte()));
-		textoPrincipal.setString("Menu");
+		textoPrincipal.setString(s);
 		textoPrincipal.setCharacterSize(50);
 		textoPrincipal.setFillColor(sf::Color::Red);
+		textoPrincipal.setOrigin(textoPrincipal.getLocalBounds().width / 2, textoPrincipal.getLocalBounds().height / 2); 
 		textoPrincipal.setPosition(100, 100);
 	}
 
