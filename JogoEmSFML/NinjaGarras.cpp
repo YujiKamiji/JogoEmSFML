@@ -143,7 +143,6 @@ namespace Entidades {
 
 				if (p->getAmigavel() == true) {
 					receberDano(p->getDano());
-					cout << "inimigo tomou dano" << endl;
 
 					if (getVidas() <= 0) //inimigo morreu
 					{

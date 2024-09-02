@@ -61,7 +61,6 @@ namespace Entidades {
 		if (e->getId() == JOGADOR || e->getId() == CHAO)
 		{
 			ativo = false;
-			cout << "bateu no chao" << endl;
 		}
 			
 	}

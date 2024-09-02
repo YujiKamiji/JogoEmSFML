@@ -9,7 +9,6 @@ namespace Gerenciadores
         if (instancia == nullptr)
         {
             instancia = new GerenciadorDeEstados();
-			cout << "Instancia criada" << endl;
         }
             
         return instancia;
@@ -45,20 +44,7 @@ namespace Gerenciadores
 
     void GerenciadorDeEstados::adicionarEstado(idEstado id)
     {      
-		cout << "Adicionei estado: " << id << endl;
-        
-		pilhaDeEstados.push(geradorDeEstados.criarEstado(id)); // Adiciona um estado na pilha
-
-		cout << "topo da pilha: " << pilhaDeEstados.top()->getIdEstado() << endl; 
-        std::cout << "Conteúdo da pilha de estados:" << std::endl;
-        std::stack<Estados::Estado*> tempStack = pilhaDeEstados;
-
-        while (!tempStack.empty())
-        {
-            Estados::Estado* estado = tempStack.top();
-            std::cout << estado->getIdEstado() << std::endl;
-            tempStack.pop();
-        }
+        pilhaDeEstados.push(geradorDeEstados.criarEstado(id)); // Adiciona um estado na pilha
     }
 
     void GerenciadorDeEstados::removerEstado(idEstado ID_SUB)
@@ -87,7 +73,6 @@ namespace Gerenciadores
         }
         else
         {
-            std::cout << "Top da pilha vazio" << std::endl;
             return nullptr;
         }
     }

@@ -61,7 +61,6 @@ namespace Entidades {
 				break;
 			case 0:
 				if (atacando == false) {
-					cout << "Ataque Shogun" << endl;
 					verificarJogadores();
 					atacar(deltaTime);
 				}
@@ -182,7 +181,6 @@ namespace Entidades {
 				Projetil* p = static_cast<Projetil*>(e);
 				if (p->getAmigavel() == true) {
 					receberDano(p->getDano());
-					cout << "inimigo tomou dano" << endl;
 
 					if (getVidas() <= 0) //inimigo morreu
 					{

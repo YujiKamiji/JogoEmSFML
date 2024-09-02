@@ -275,13 +275,11 @@ namespace Entidades {
 			if (e->getId() == ESPINHOS)
 			{
 				receberDano(e->getDano());
-				cout << "tomou dano dos espinhos" << endl;
 			}
 
 			if (e->getId() == NINJA_GARRAS || e->getId() == SHOGUN) 
 			{
 				receberDano(e->getDano());
-				cout << "tomou dano do ninja garras" << endl;
 			}
 
 			if (e->getId() == PROJETIL)
@@ -289,7 +287,6 @@ namespace Entidades {
 				if (static_cast<Projetil*>(e)->getAmigavel() == false)
 				{
 					receberDano(e->getDano()); 
-					cout << "tomou dano da shuriken" << endl; 
 				}
 				
 			}
@@ -307,9 +304,7 @@ namespace Entidades {
 		}
 		void Jogador::ganharPontos(const int Pontos)
 		{
-			cout << "pontos antes:" << pontuacao << endl;
 			pontuacao += Pontos;
-			cout << "ganhou pontos :" << pontuacao << endl;
 		}
 	}
 }

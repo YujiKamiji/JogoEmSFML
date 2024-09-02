@@ -16,7 +16,6 @@ void Jogo::executar()
 { 
 	while (pGG->janela_aberta() && pGE->getEstadoAtual())
 	{
-		cout << "Jogo::executar()" << endl;
 		pGE->executar();
 	}
 	

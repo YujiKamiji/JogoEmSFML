@@ -62,7 +62,6 @@ namespace Menus
 	{
 		inicializarElementos();	
 		ativo = true;
-		cout << "MenuPrincipal::executarEstado()" << endl;
 		sf::RenderWindow* janela = pGG->getJanela();
 
 		if (!janela) {
