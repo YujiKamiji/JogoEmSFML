@@ -105,9 +105,6 @@
     <ClCompile Include="Moeda.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Municao.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MenuOpc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -219,9 +216,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Moeda.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Municao.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuOpc.h">
