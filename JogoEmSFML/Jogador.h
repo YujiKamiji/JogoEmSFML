@@ -37,6 +37,7 @@ namespace Entidades {
 			sf::Vector2f getVelocidade();
 			AtaqueCorte* getAtaque();
 			ID getId() const;
+			int getPontuacao();
 
 			void colidir(Entidade* e, sf::Vector2f intersecao);
 			void recuperarVida(int Cura);

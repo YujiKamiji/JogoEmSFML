@@ -16,6 +16,7 @@ namespace Menus
 		MenuPrincipal(idEstado ID_ESTADO);
 		~MenuPrincipal();
 
+		void irParaMenuRanking();
 		void irParaFlorestaSingle();
 		void irParaFlorestaMulti();
 		void irParaCasteloSingle();

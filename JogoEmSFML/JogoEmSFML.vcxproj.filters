@@ -114,6 +114,18 @@
     <ClCompile Include="GeradorDeEstados.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BarraDeVida.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Botao.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPrincipal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuRanking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ente.h">
@@ -216,6 +228,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeradorDeEstados.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarraDeVida.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Botao.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPrincipal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuRanking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

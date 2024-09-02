@@ -27,6 +27,13 @@ namespace Menus
 		botoes.clear();
 	}
 
+
+	void MenuPrincipal::irParaMenuRanking()
+	{
+		ativo = false;
+		pGE->removerEstado(MENU_RANKING);
+	}
+
 	void MenuPrincipal::irParaFlorestaSingle()
 	{
 		ativo = false;
@@ -102,7 +109,8 @@ namespace Menus
 		adicionarBotao(new Botao("Fase 1: Floresta - Multiplayer", sf::Vector2f(640, 500), sf::Vector2f(550, 100), std::bind(&MenuPrincipal::irParaFlorestaMulti, this)));
 		adicionarBotao(new Botao("Fase 2: Castelo - Multiplayer", sf::Vector2f(640, 620), sf::Vector2f(545, 100), std::bind(&MenuPrincipal::irParaCasteloMulti, this)));
 		adicionarBotao(new Botao("X", sf::Vector2f(50, 50), sf::Vector2f(50, 50), std::bind(&MenuPrincipal::sair, this)));
-		
+		adicionarBotao(new Botao("Ranking", sf::Vector2f(100, 650), sf::Vector2f(130, 50), std::bind(&MenuPrincipal::irParaMenuRanking, this)));
+
 		pGG->reiniciarJanela();
 	}
 

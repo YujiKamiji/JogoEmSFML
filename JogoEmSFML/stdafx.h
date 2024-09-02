@@ -11,12 +11,13 @@
 
 #include <functional>
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 enum idEstado
 {
     MENU,           //0
-    MENU_OPCOES,    //1    
+    MENU_RANKING,    //1    
 	FLORESTA_SINGLE,//2
     FLORESTA_MULTI, //3
 	CASTELO_SINGLE, //4

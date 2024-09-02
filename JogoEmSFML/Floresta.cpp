@@ -51,6 +51,7 @@ namespace Fases {
 		if (p1->getPosicao().x > finalFase && p2->getPosicao().x > finalFase) {
 			if (multijogador)
 			{
+				escreverArquivo(p1->getPontuacao(), p2->getPontuacao());
 				pGE->removerEstado(CASTELO_MULTI);
 			}
 			else
@@ -401,5 +402,64 @@ namespace Fases {
 
 		pGC->incluirConsumivel(c1);
 		pGC->incluirConsumivel(c2);
+	}
+	void Floresta::escreverArquivo(int pontosP1, int pontosP2)
+	{
+		int contador = 0;
+		int recorde1 = 0;
+		int recorde2 = 0;
+		int recorde3 = 0;
+		int recorde4 = 0;
+
+		std::ifstream arquivo;
+		arquivo.open("ranking.txt", std::ios::in);
+		if (!arquivo.is_open())
+		{
+			cout << "Erro ao abrir o arquivo" << endl;
+			return;
+		}
+
+		std::string linha;
+
+		while (std::getline(arquivo, linha))
+		{
+			try {
+				int valor = std::stoi(linha);
+				switch (contador)
+				{
+				case 0:
+					recorde1 = p1->getPontuacao();
+					break;
+				case 1:
+					recorde2 = valor;
+					break;
+				case 2:
+					recorde3 = p2->getPontuacao();  
+					break;
+				case 3:
+					recorde4 = valor; 
+					break;
+				}
+			}
+			catch (const std::exception& excecao)
+			{
+				std::cerr << "Erro durante a leitura do arquivo: " << excecao.what() << std::endl;
+			}
+			contador++;
+		}
+		arquivo.close();
+
+		std::ofstream arquivoEscrever;
+		arquivoEscrever.open("ranking.txt", std::ios::out);
+		if (!arquivoEscrever.is_open())
+		{
+			cout << "Erro ao abrir o arquivo" << endl;
+			return;
+		}
+
+		arquivoEscrever << recorde1 << std::endl;
+		arquivoEscrever << recorde2 << std::endl;
+		arquivoEscrever << recorde3 << std::endl;
+		arquivoEscrever << recorde4 << std::endl;
 	}
 }

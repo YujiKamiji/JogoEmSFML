@@ -42,5 +42,7 @@ namespace Fases {
 		void criarEspinho();
 		void criarMoeda();
 		void criarCura();
+
+		void escreverArquivo(int pontosP1, int pontosP2); 
 	};
 }

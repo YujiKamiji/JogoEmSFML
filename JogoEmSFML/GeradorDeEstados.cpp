@@ -13,9 +13,10 @@ Estados::Estado* GeradorDeEstados::criarEstado(idEstado id)
 	switch(id)
 	{
 	case MENU:
-		return new Menus::MenuPrincipal(id); //TODO
+		return new Menus::MenuPrincipal(id); 
 		break;
-	case MENU_OPCOES: //TODO
+	case MENU_RANKING: 
+		return new Menus::MenuRanking(id);
 		break;
 	case FLORESTA_SINGLE:
 		return new Fases::Floresta(false, id);

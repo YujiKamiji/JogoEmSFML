@@ -3,7 +3,7 @@
 #include "Floresta.h"
 #include "Menu.h"
 #include "MenuPrincipal.h"
-#include "MenuOpc.h"
+#include "MenuRanking.h"
 #include "Castelo.h"
 
 class GeradorDeEstados

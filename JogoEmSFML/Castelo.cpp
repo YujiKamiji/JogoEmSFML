@@ -51,6 +51,7 @@ namespace Fases {
 
 	bool Castelo::chefeFinalDerrotado() {
 		if (!shogunChefe->getVivo()) {
+			escreverArquivo(p1->getPontuacao(), p2->getPontuacao());
 			pGE->removerEstado(MENU);
 			return false;
 		}	
@@ -397,4 +398,64 @@ namespace Fases {
 		pGC->incluirConsumivel(c2);
 		pGC->incluirConsumivel(c3);
 	}
+	void Castelo::escreverArquivo(int pontosP1, int pontosP2)
+	{
+		int contador = 0;
+		int recorde1 = 0;
+		int recorde2 = 0;
+		int recorde3 = 0;
+		int recorde4 = 0;
+
+		std::ifstream arquivo;
+		arquivo.open("ranking.txt", std::ios::in);
+		if (!arquivo.is_open())
+		{
+			cout << "Erro ao abrir o arquivo" << endl;
+			return;
+		}
+
+		std::string linha;
+
+		while (std::getline(arquivo, linha))
+		{
+			try {
+				int valor = std::stoi(linha);
+				switch (contador)
+				{
+				case 0:
+					recorde1 = valor;
+					break;
+				case 1:
+					recorde2 = p1->getPontuacao();
+					break;
+				case 2:
+					recorde3 = valor;
+					break;
+				case 3:
+					recorde4 = p2->getPontuacao();
+					break;
+				}
+			}
+			catch (const std::exception& excecao)
+			{
+				std::cerr << "Erro durante a leitura do arquivo: " << excecao.what() << std::endl;
+			}
+			contador++;
+		}
+		arquivo.close();
+
+		std::ofstream arquivoEscrever;
+		arquivoEscrever.open("ranking.txt", std::ios::out);
+		if (!arquivoEscrever.is_open())
+		{
+			cout << "Erro ao abrir o arquivo" << endl;
+			return;
+		}
+
+		arquivoEscrever << recorde1 << std::endl;
+		arquivoEscrever << recorde2 << std::endl;
+		arquivoEscrever << recorde3 << std::endl;
+		arquivoEscrever << recorde4 << std::endl;
+	}
+	
 }

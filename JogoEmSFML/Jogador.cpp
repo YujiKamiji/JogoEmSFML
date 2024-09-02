@@ -227,6 +227,11 @@ namespace Entidades {
 			return ID(id);
 		}
 
+		int Jogador::getPontuacao()
+		{
+			return pontuacao;
+		}
+
 		void Jogador::colidir(Entidade* e, sf::Vector2f intersecao)
 		{
 			sf::Vector2f posOutro = e->getPosicao();
